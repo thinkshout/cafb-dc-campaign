@@ -57,67 +57,79 @@
   position: absolute;
   top: 0;
   z-index: -1;
+  width: 100%;
 }
-/* line 55, ../_sass/style.sass */
+/* line 56, ../_sass/style.sass */
 #header .intro-text {
   color: white;
   font-size: 1.2em;
   text-shadow: 0 1px 2px #626262;
 }
-/* line 60, ../_sass/style.sass */
+/* line 61, ../_sass/style.sass */
 #header .big-call {
   float: right;
   margin-top: 1.5em;
 }
 
-/* line 65, ../_sass/style.sass */
+/* line 66, ../_sass/style.sass */
 #main-content {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 }
 
-/* line 71, ../_sass/style.sass */
+/* line 72, ../_sass/style.sass */
 .progress {
   border: 1px solid #008cba;
   height: 3em;
 }
-/* line 74, ../_sass/style.sass */
+/* line 75, ../_sass/style.sass */
 .progress .meter {
   width: 50%;
 }
-/* line 76, ../_sass/style.sass */
+/* line 77, ../_sass/style.sass */
 .progress.narrow {
   height: 1em;
 }
 
-/* line 80, ../_sass/style.sass */
+/* line 81, ../_sass/style.sass */
 .leaderboard ul > li {
   list-style-type: none;
   margin-bottom: 1em;
 }
-/* line 83, ../_sass/style.sass */
+/* line 84, ../_sass/style.sass */
 .leaderboard ul > li img {
   margin-right: 0.3em;
 }
 
-/* line 88, ../_sass/style.sass */
+/* line 89, ../_sass/style.sass */
 #campaign-list .medium-4 {
   text-align: center;
   margin-bottom: 2em;
 }
-/* line 91, ../_sass/style.sass */
+/* line 92, ../_sass/style.sass */
 #campaign-list .medium-4 .inner {
   -webkit-box-shadow: #626262 0 2px 25px -10px;
   -moz-box-shadow: #626262 0 2px 25px -10px;
   box-shadow: #626262 0 2px 25px -10px;
   padding: 1em;
 }
-/* line 94, ../_sass/style.sass */
+/* line 95, ../_sass/style.sass */
 #campaign-list .medium-4 .img {
   width: 100%;
 }
 
-/* line 97, ../_sass/style.sass */
+/* line 98, ../_sass/style.sass */
 .avatar {
   margin-right: 0.5em;
+}
+
+/* line 102, ../_sass/style.sass */
+form fieldset {
+  -webkit-box-shadow: #626262 0 2px 25px -10px;
+  -moz-box-shadow: #626262 0 2px 25px -10px;
+  box-shadow: #626262 0 2px 25px -10px;
+}
+/* line 104, ../_sass/style.sass */
+form .tip {
+  margin-top: 2em;
 }

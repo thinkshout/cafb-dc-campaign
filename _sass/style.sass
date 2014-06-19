@@ -51,6 +51,7 @@ $white:   #FFFFFF
     position: absolute
     top: 0
     z-index: -1
+    width: 100%
 
   .intro-text
     color: $white
@@ -96,3 +97,9 @@ $white:   #FFFFFF
 
 .avatar
   margin-right: 0.5em
+
+form
+  fieldset
+    @include box-shadow($gray-2 0 2px 25px -10px)
+  .tip
+    margin-top: 2em
