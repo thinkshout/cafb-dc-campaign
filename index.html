@@ -1,10 +1,60 @@
 ---
 layout: default
-title: Page Title
+title: Campaign 
 ---
-
-<ul class="posts">
-  {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
+<div class="row">
+  <div class="main-story small-12 medium-8 columns">
+    <img src="http://placehold.it/655x350&text=video or image" alt="">
+    <h2>Campaign Story</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis
+      eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit,
+      posuere a, pede. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in,
+      pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
+    </p>
+    <hr>
+    <div class="panel" style="overflow:hidden">
+      <p class="left">Join the campaign<br>as an individual or team</p>
+      <a class="right button big-call">Join</a> 
+    </div>
+    <hr>
+  </div>
+  <div class="aside small-12 medium-4 columns">
+    <div class="panel">
+      <h5>$5K raised of $10K goal</h5>
+      <div class="progress"><span class="meter"></span></div>
+    </div>
+    <hr>
+    <div class="social">
+      <p>
+        <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+        <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
+        <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
+      </p>
+    </div>
+    <hr>
+    <h4>Leaderboard</h4>
+    <div class="leaderboard">
+      <ul class="tabs">
+        <li class="tab-title active" data-tab><a href="#individual">Individual</a></li>
+        <li class="tab-title" data-tab><a href="#team">Teams</a></li>
+      </ul>
+      <div class="tabs-content panel">
+        <div id="individual" class="content active">
+          <ul>
+            <li><img class="left" src="http://placehold.it/50x50" alt=""> Claire Huxtable
+            <br>$1250.00</li>
+            <li><img class="left" src="http://placehold.it/50x50" alt=""> Theo Huxtable <br>$50.00</li>
+            <li><img class="left" src="http://placehold.it/50x50" alt=""> Rudy Huxtable <br>$100.00</li>
+            <li><img class="left" src="http://placehold.it/50x50" alt=""> Sandra Huxtable <br>$30.00</li>
+            <li><img class="left" src="http://placehold.it/50x50" alt=""> Cliff Huxtable <br>$540.00</li>
+          </ul>
+        </div>
+        <div id="team" class="content">
+          <p>Team</p>
+        </div>
+        <p class="text-center"><a class="button tiny" href="#">View All</a></p>
+      </div>
+    </div>
+  </div>
+</div>
