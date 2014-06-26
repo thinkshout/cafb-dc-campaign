@@ -19,8 +19,9 @@
         </div>
       </div><!-- end .page-section -->
     </div><!-- end .row -->
-    {% include updates.html %}
-    {% include donors.html %}
+    {% if page.matchers contains "show" %}{% include matchers.html %}{% endif %}
+    {% if page.updates contains "show" %}{% include updates.html %}{% endif %}
+    {% if page.donors contains "show" %}{% include donors.html %}{% endif %}
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.3/js/foundation.min.js"></script>
     <script>$(document).foundation();</script>

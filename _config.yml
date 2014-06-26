@@ -5,3 +5,5 @@ exclude: [ .gitignore, README.md, Gemfile, Gemfile.lock, Procfile, vendor ]
 baseurl: http://thinkshout.github.io/cafb-dc-campaign
 
 title: CAFB-DC
+
+fakeimg: http://placehold.it/

@@ -118,18 +118,38 @@
   width: 100%;
 }
 
-/* line 98, ../_sass/style.sass */
+/* line 99, ../_sass/style.sass */
+#matchers .matcher {
+  border-right: 1px solid #c2c2c2;
+  margin-bottom: 2em;
+  text-align: center;
+}
+/* line 103, ../_sass/style.sass */
+#matchers .matcher:last-child {
+  border-right: none;
+}
+/* line 105, ../_sass/style.sass */
+#matchers .matcher .inner {
+  padding: 1em;
+}
+/* line 107, ../_sass/style.sass */
+#matchers .matcher p {
+  font-size: 0.8em;
+  color: #929292;
+}
+
+/* line 111, ../_sass/style.sass */
 .avatar {
   margin-right: 0.5em;
 }
 
-/* line 102, ../_sass/style.sass */
+/* line 115, ../_sass/style.sass */
 form fieldset {
   -webkit-box-shadow: #626262 0 2px 25px -10px;
   -moz-box-shadow: #626262 0 2px 25px -10px;
   box-shadow: #626262 0 2px 25px -10px;
 }
-/* line 104, ../_sass/style.sass */
+/* line 117, ../_sass/style.sass */
 form .tip {
   margin-top: 2em;
 }
