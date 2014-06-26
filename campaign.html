@@ -31,7 +31,6 @@ donors: show
     <div class="panel">
       <h5>$5K raised of $10K goal</h5>
       <div class="progress"><span class="meter"></span></div>
-      <a class="button tiny">Match Campaign Funds</a>
     </div>
     <hr>
     <div class="social">
@@ -41,6 +40,8 @@ donors: show
         <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
       </p>
     </div>
+    <hr>
+    {% if page.matchers contains "show" %}{% include matchers_single.html %}{% endif %}
     <hr>
     <h4>Leaderboard</h4>
     <div class="leaderboard">

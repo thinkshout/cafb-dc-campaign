@@ -1,6 +1,9 @@
 ---
 layout: default
 title: Team/Individual Page 
+matchers: show
+donors: show
+updates: show
 ---
 <div class="row">
   <div class="main-story small-12 medium-8 columns">
@@ -24,13 +27,13 @@ title: Team/Individual Page
       <a class="right button big-call" href="join-team.html">Join Team</a> 
     </div>
     <hr>
+    {% if page.matchers contains "show" %}{% include matchers_single.html %}{% endif %}
   </div>
   <div class="aside small-12 medium-4 columns">
     <div class="panel">
       <h5>$5K raised of $10K goal</h5>
-      <h6 class="subheader"><a href="campaign.html">for Parent Campaign</a></h6>
       <div class="progress"><span class="meter"></span></div>
-      <a class="button tiny">Match Campaign Funds</a>
+      <h6 class="subheader"><a href="campaign.html">Parent Campaign</a></h6>
     </div>
     <hr>
     <div class="social">
