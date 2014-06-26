@@ -1,0 +1,43 @@
+---
+layout: default
+title: Campaign Page 
+matchers: hide 
+updates: show 
+donors: show
+---
+<div class="row">
+  <div class="main-story small-12 medium-8 columns">
+    <img src="http://placehold.it/655x350&text=video or image" alt="">
+    <h2>Campaign Story</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis
+      eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit,
+      posuere a, pede. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in,
+      pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
+    </p>
+    <p>
+      Suspendisse urna nibh, viverra non, semper suscipit,
+      posuere a, pede. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in,
+      pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
+    </p>
+    <hr>
+    <div class="panel" style="overflow:hidden">
+      <p class="left">Join the campaign<br>as an individual or team</p>
+      <a class="right button big-call">Join</a> 
+    </div>
+    <a class="button tiny" href="">View all Teams and Individuals</a>
+    <hr>
+  </div>
+  <div class="aside small-12 medium-4 columns">
+    <hr>
+    <div class="social">
+      <p>
+        <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+        <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
+        <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
+      </p>
+    </div>
+    <hr>
+    {% if page.matchers contains "show" %}{% include matchers_single.html %}{% endif %}
+  </div>
+</div>
