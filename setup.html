@@ -10,12 +10,17 @@ title: Create Campaign
       <fieldset class="small-12 medium-8 columns"> 
         <legend>Timing and Funding</legend>
         <label for="">Campaign Title <input type="text"></label>
-        <label for="">Affiliate Campaign<input type="text"></label>
+        <select id="" name="">
+          <option value="">Select an affialiate campaign</option>
+          <option value="">Feed the World</option>
+          <option value="">Feed the Globe</option>
+        </select>
         <label for="">How much are you raising? 
           <input type="text" placeholder="$">
         </label>
         <label for="">How long should the campaign run? </label>
-        <div class="row">
+        <label>No end date? <input id="no-end" type="checkbox"></label>
+        <div id="campaign-dates" class="row">
           <label class="small-12 medium-6 columns" for=""> Start Date
             <input type="text" placeholder="MM/DD/YYYY">
           </label>
