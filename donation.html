@@ -19,11 +19,6 @@ title: Donation
             <label for="">Donation amount ($5000 funds 1500 meals)
               <input id="donation-input" type="text" placeholder="$">
             </label>
-            <label for="">How often would you like to donate?</label>
-            <div class="panel">
-              <input name="frequency" type="radio"> One time
-              <input name="frequency" type="radio"> Monthly 
-            </div>
             <div class="row">
               <div class="medium-6 columns">
                 <label for="">First name</label>
@@ -32,6 +27,24 @@ title: Donation
               <div class="medium-6 columns">
                 <label for="">Last name</label>
                 <input class="medium-6 columns" type="text" placeholder="Last">
+              </div>
+            </div>
+            <div class="hide-for-small-only">
+              <label for="">Address</label>
+              <input class="medium-6 columns" type="text">
+              <div class="row">
+                <div class="medium-4 columns">
+                  <label for="">City</label>
+                  <input class="medium-4 columns" type="text">
+                </div>
+                <div class="medium-4 columns">
+                  <label for="">State</label>
+                  <input class="medium-4 columns" type="text"> 
+                </div>
+                <div class="medium-4 columns">
+                  <label for="">Zip</label>
+                  <input class="medium-4 columns" type="text" placeholder="90210">
+                </div>
               </div>
             </div>
             <label class="" for="">Email
@@ -75,6 +88,9 @@ title: Donation
                 <div class="medium-6 columns">
                   <input class="medium-6 columns" type="text" placeholder="Year">
                 </div>
+                <label class="small-12 columns" for="">CVV
+                  <input type="password" placeholder="3 or 4 digits">
+                </label>
               </div>
             </div>
             <hr>
