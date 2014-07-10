@@ -8,21 +8,22 @@ title: Be a fundraiser
   <div class="small-12 columns">
     <p>Welcome, F. Scott Fitzgerald</p>
     <form action="">
-      <h3>Tell us about your campaign</h3>
-      <label for=""> Select a campaign
+      <h3>Tell us about your fundraiser</h3>
+      <label for=""> For which campaign are you raising funds? 
         <select id="" name="">
           <option value="">Choose one...</option>
           <option value="">Feed the World</option>
           <option value="">Summer School Meals</option>
           <option value="">Feed the Tots</option>
         </select></label>
-      <label class="" for="">Are you creating a team or an individual fundraiser?</label>
+      <label class="" for="">Are you raising funds as a team or an individual?</label>
       <div class="row">
         <label class="medium-6 columns" for=""><input id="team" name="funder" type="radio"> Team</label>
         <label class="medium-6 columns" for=""><input id="indy" name="funder" type="radio"> Individual</label>
       </div>
       <div id="team-form">
-        <label for="">Team Name <input type="text"></label>
+        <h4>Team Fundraiser</h4>
+        <label for="">Organization Name <input type="text"></label>
         <label for="">Team Logo/Avatar (Max size 640x640) <input type="file"></label>
         <label for="">How much are you raising?</label> 
         <label>No monetary goal? <input id="no-end" type="checkbox"></label>
@@ -49,9 +50,13 @@ title: Be a fundraiser
         </label>
         <h3>Invite team members</h3>
         <label class="" for="">Enter comma separated emails<textarea rows="5"></textarea></label>
+        <label class="" for="">Customize invite 
+          <textarea rows="5">Hi you! ThinkShout has invited you to be a team member of their fundraiser to support the Summer School Meals program.</textarea>
+        </label>
       </div>
 
       <div id="indy-form">
+        <h4>Individual Fundraiser</h4>
         <label for="">Profile Image (Max size 640x640) <input type="file"></label>
         <label for="">How much are you raising?</label> 
         <label>No monetary goal? <input id="no-end" type="checkbox"></label>
@@ -71,13 +76,14 @@ title: Be a fundraiser
         <label for="">Story Body
           <textarea rows="5"></textarea>
         </label>
-        <label for=""><input type="checkbox"> Our organization has supported CAFB before.</label>
-        <label for=""><input type="checkbox"> Our staff volunteered with us.</label>
+        <label for=""><input type="checkbox"> I have supported CAFB before.</label>
         <label for="">Why are you choosing to support CAFB?
           <textarea rows="5"></textarea>
         </label>
-        <h3>Invite team members</h3>
+        <h3>Invite friends to support your campaign</h3>
         <label class="" for="">Enter comma separated emails<textarea rows="5"></textarea></label>
+        <label class="" for="">Customize invite 
+          <textarea rows="5">Hi you! ThinkShout has invited you to be a team member of their fundraiser to support the Summer School Meals program.</textarea>
       </div>
       <hr>
       <div class="row">
