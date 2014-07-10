@@ -19,7 +19,28 @@ $(document).ready(function(){
       formToShow.fadeIn(); 
       $('#indy-form').hide();
     }
-     
+  });
+
+  $('#team-member-form').hide();
+  $('#custom-team-member').click(function(){
+    $('#team-member-form').fadeToggle(); 
+  });
+ 
+  $('#indy-list').hide();
+  $('a[href="#team-list"]').click(function(e){
+    e.preventDefault();
+    $('#indy-list').hide();
+    $('#team-list').fadeIn();
+    $(this).removeClass('muted');
+    $('a[href="#indy-list"]').addClass('muted');
+  });
+
+  $('a[href="#indy-list"]').click(function(e){
+    e.preventDefault();
+    $('#team-list').hide();
+    $('#indy-list').fadeIn();
+    $(this).removeClass('muted');
+    $('a[href="#team-list"]').addClass('muted');
   });
 });
 
