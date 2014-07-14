@@ -1,20 +1,19 @@
 ---
 layout: default
-title: Team/Individual Page 
-matchers: show
+title: Individual on a Team Page 
+matchers: hide 
 donors: show
 updates: show
 ---
 <div class="row">
   <div class="main-story small-12 medium-8 columns">
     <img class="left avatar" src="{{site.fakeimg}}/80x80&text=logo" alt="">
-    <h4>Team Ghostbusters</h4>
-    <h5 class="sub-header"><a href="campaign.html">Raising money for Feed the World</a></h5>
+    <h4>Bill Murray's Fundraiser</h4>
+    <h5 class="sub-header"><a href="team.html">Team Ghostbusters</a></h5>
     <hr>
-    <h2>
-      Team Story Title 
+    <h3>
+      Inherited or customized by team member 
     </h2>
-    <img src="{{site.fakeimg}}/720x300" alt="">
     <p>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis
       eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit,
@@ -29,13 +28,12 @@ updates: show
       posuere a, pede. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in,
       pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
     </p>
-    <hr>
   </div>
   <div class="aside small-12 medium-4 columns">
     <div class="panel">
       <h5>$5K raised of $10K goal</h5>
       <div class="progress"><span class="meter"></span></div>
-      <h6 class="subheader"><a href="campaign.html">Feed the World</a></h6>
+      <h6 class="subheader"><a href="campaign.html">Parent Campaign</a></h6>
     </div>
     <hr>
     <div class="social">
@@ -44,25 +42,6 @@ updates: show
         <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
         <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
       </p>
-    </div>
-    <hr>
-    {% if page.matchers contains "show" %}{% include matchers_single.html %}{% endif %}
-    <hr>
-    <h4>Leaderboard</h4>
-    <div class="leaderboard">
-      <div class="panel">
-        <div id="individual" class="content active">
-          <ul>
-            <li><img class="left" src="http://placehold.it/50x50" alt=""> Claire Huxtable
-            <br>$1250.00</li>
-            <li><img class="left" src="http://placehold.it/50x50" alt=""> Theo Huxtable <br>$50.00</li>
-            <li><img class="left" src="http://placehold.it/50x50" alt=""> Rudy Huxtable <br>$100.00</li>
-            <li><img class="left" src="http://placehold.it/50x50" alt=""> Sandra Huxtable <br>$30.00</li>
-            <li><img class="left" src="http://placehold.it/50x50" alt=""> Cliff Huxtable <br>$540.00</li>
-          </ul>
-        </div>
-        <p class="text-center"><a class="button tiny" href="team-list.html">View All</a></p>
-      </div>
     </div>
   </div>
 </div>
