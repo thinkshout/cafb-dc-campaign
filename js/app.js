@@ -42,6 +42,21 @@ $(document).ready(function(){
     $(this).removeClass('muted');
     $('a[href="#team-list"]').addClass('muted');
   });
+
+  $('.read-more-text').hide();
+  $('.read-more').click(function(e){
+    e.preventDefault();
+    changeText($(this));
+    $(this).parent().parent().find('.read-more-text').slideToggle();
+  });
+
+  var changeText = function(el){
+    if (el.text() === 'Read more...') {
+      el.text('Hide');
+    }else if (el.text() === 'Hide') {
+      el.text('Read more...');
+    } 
+  }
 });
 
 $(document).foundation();
