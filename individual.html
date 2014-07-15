@@ -1,0 +1,51 @@
+---
+layout: default
+title: Individual Page 
+matchers: show
+donors: show
+updates: show
+---
+<div class="row">
+  <div class="main-story small-12 medium-8 columns">
+    <img class="left avatar" src="http://content9.flixster.com/photo/11/36/26/11362607_tmb.jpg" alt="">
+    <h4>Debra Winger's Fundraiser</h4>
+    <h5 class="sub-header"><a href="campaign.html">Raising money for Feed the World</a></h5>
+    <hr>
+    <h2>
+      Individual Story Title 
+    </h2>
+    <img src="{{site.fakeimg}}/720x300" alt="">
+    <p>
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis
+      eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit,
+      posuere a, pede. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in,
+      pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
+    </p>
+    <p>Suspendisse urna nibh, viverra non, semper suscipit,
+      posuere a, pede. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in,
+      pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
+    </p>
+    <p>Suspendisse urna nibh, viverra non, semper suscipit,
+      posuere a, pede. Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in,
+      pharetra a, ultricies in, diam. Sed arcu. Cras consequat.
+    </p>
+    <hr>
+  </div>
+  <div class="aside small-12 medium-4 columns">
+    <div class="panel">
+      <h5>$5K raised of $10K goal</h5>
+      <div class="progress"><span class="meter"></span></div>
+      <h6 class="subheader"><a href="campaign.html">Feed the World</a></h6>
+    </div>
+    <hr>
+    <div class="social">
+      <p>
+        <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+        <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
+        <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
+      </p>
+    </div>
+    <hr>
+    {% if page.matchers contains "show" %}{% include matchers_single.html %}{% endif %}
+  </div>
+</div>

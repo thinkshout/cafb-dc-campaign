@@ -1,18 +1,21 @@
 ---
-layout: default
+layout: no-header 
 title: Team/Individual Page 
 no-extra: true
 ---
 <div class="row">
-  <div class="main-story small-12 medium-8 columns">
-    <h2>
-      <img class="avatar left" src="http://placehold.it/100x100" alt="">
-      Join Team Feed the World 
-    </h2>
+  <div class="main-story small-12 medium-8 medium-offset-2 columns">
+    <img class="left avatar" src="{{site.fakeimg}}/80x80&text=logo" alt="">
+    <h4>Team Ghostbusters</h4>
+    <h5 class="sub-header"><a href="campaign.html">Raising money for Feed the World</a></h5>
     <hr>
-    <form action="">
+    <form action="individual-on-team-customize.html">
       <div class="row">
-        <div class="large-12 columns"><label>Name</label></div>
+        <div class="large-12 columns">
+          <h5>Welcome, bill.murray@ghostbusters.com</h5>
+          <h3>Create your account</h3>
+          <label>Name</label>
+        </div>
         <div class="large-6 columns">
             <input type="text" placeholder="First" />
          </div>
@@ -22,19 +25,14 @@ no-extra: true
        </div>
        <div class="row">
          <div class="large-12 columns">
-          <label>Email
-            <input type="text" placeholder="ex. you@domain.com" />
+          <label>Username
+            <input type="text" placeholder="" />
+          </label>
+          <label>Password
+            <input type="password" placeholder="" />
           </label>
         </div>
        </div>
-       <div class="row">
-         <div class="large-12 columns">
-           <label>
-             <input id="custom-team-member" type="checkbox"> Do you want to customize your donation page?
-           </label>
-         </div>
-       </div>
-       {% include team-member.html %}
        <hr>
        <div class="row">
          <div class="large-12 columns">
@@ -43,38 +41,5 @@ no-extra: true
          </div>
        </div>
     </form>
-  </div>
-  <div class="aside small-12 medium-4 columns">
-    <div class="panel">
-      <h5>$5K raised of $10K goal</h5>
-      <h6 class="subheader"><a href="campaign.html">for Parent Campaign</a></h6>
-      <div class="progress"><span class="meter"></span></div>
-      <a class="button tiny">Match Campaign Funds</a>
-    </div>
-    <hr>
-    <div class="social">
-      <p>
-        <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
-        <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
-        <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
-      </p>
-    </div>
-    <hr>
-    <h4>Leaderboard</h4>
-    <div class="leaderboard">
-      <div class="panel">
-        <div id="individual" class="content active">
-          <ul>
-            <li><img class="left" src="http://placehold.it/50x50" alt=""> Claire Huxtable
-            <br>$1250.00</li>
-            <li><img class="left" src="http://placehold.it/50x50" alt=""> Theo Huxtable <br>$50.00</li>
-            <li><img class="left" src="http://placehold.it/50x50" alt=""> Rudy Huxtable <br>$100.00</li>
-            <li><img class="left" src="http://placehold.it/50x50" alt=""> Sandra Huxtable <br>$30.00</li>
-            <li><img class="left" src="http://placehold.it/50x50" alt=""> Cliff Huxtable <br>$540.00</li>
-          </ul>
-        </div>
-        <p class="text-center"><a class="button tiny" href="#">View All</a></p>
-      </div>
-    </div>
   </div>
 </div>
