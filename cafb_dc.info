@@ -26,10 +26,11 @@ dependencies[] = diff
 dependencies[] = entity
 dependencies[] = entityreference
 dependencies[] = features
+dependencies[] = login_destination
 dependencies[] = pathauto
 dependencies[] = strongarm
 dependencies[] = token
 dependencies[] = views
 dependencies[] = views_ui
 
-files[] = ts_build.profile
+files[] = cafb_dc.profile
