@@ -12,7 +12,11 @@ core = 7.x
 
 ; admin_menu
 ;projects[admin_menu][version] = ""
-projects[admin_menu][subdir] = "contrib"
+projects[admin_menu][subdir]
+
+; admin_views
+;projects[admin_views][version] = ""
+projects[admin_views][subdir] = "contrib"
 
 ; context requires ctools 1.7+ (jquery_ui & admin recommended)
 ;projects[context][version] = ""
@@ -43,6 +47,10 @@ projects[login_destination][patch][] = "https://www.drupal.org/files/issues/logi
 ;projects[pathauto][version] = ""
 projects[pathauto][subdir] = "contrib"
 
+; redhen
+;projects[redhen][version] = ""
+projects[redhen][subdir] = "contrib"
+
 ; strongarm requires ctools
 ;projects[strongarm][version] = ""
 projects[strongarm][subdir] = "contrib"
@@ -52,6 +60,10 @@ projects[strongarm][subdir] = "contrib"
 projects[token][subdir] = "contrib"
 
 ; views
+;projects[views][version] = ""
+projects[views][subdir] = "contrib"
+
+; views_bulk_operations
 ;projects[views][version] = ""
 projects[views][subdir] = "contrib"
 

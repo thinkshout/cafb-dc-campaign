@@ -17,6 +17,7 @@ dependencies[] = taxonomy
 
 ; Contrib
 dependencies[] = admin_menu
+dependencies[] = admin_views
 dependencies[] = context
 dependencies[] = context_ui
 dependencies[] = ctools
@@ -27,9 +28,13 @@ dependencies[] = entityreference
 dependencies[] = features
 dependencies[] = login_destination
 dependencies[] = pathauto
+dependencies[] = redhen
+dependencies[] = redhen_fields
+dependencies[] = redhen_contact
 dependencies[] = strongarm
 dependencies[] = token
 dependencies[] = views
+dependencies[] = views_bulk_operations
 dependencies[] = views_ui
 
 files[] = cafb_dc.profile
