@@ -10,13 +10,9 @@ core = 7.x
 ;-----------------------------------------
 
 
-; admin_menu requires bean
+; admin_menu
 ;projects[admin_menu][version] = ""
 projects[admin_menu][subdir] = "contrib"
-
-; bean requires ctools, entity
-;projects[bean][version] = ""
-projects[bean][subdir] = "contrib"
 
 ; context requires ctools 1.7+ (jquery_ui & admin recommended)
 ;projects[context][version] = ""
@@ -95,3 +91,9 @@ libraries[chosen][download][url] = https://github.com/harvesthq/chosen.git
 libraries[chosen][directory_name] = "chosen"
 libraries[chosen][type] = "library"
 ;libraries[chosen][revision] = "333899ca51"
+
+;-----------------------------------------
+; Themes
+;-----------------------------------------
+projects[shiny][version] = 1.5
+projects[zen][version] = 5.5
