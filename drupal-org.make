@@ -37,6 +37,7 @@ projects[features][subdir] = "contrib"
 ; login_destination
 ;projects[login_destination][version] = ""
 projects[login_destination][subdir] = "contrib"
+projects[login_destination][patch][] = "https://www.drupal.org/files/issues/login_destination-add_ctools_exportables-1645260-23.patch"
 
 ; pathauto requires token
 ;projects[pathauto][version] = ""
