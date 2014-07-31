@@ -75,7 +75,7 @@ if [ "x$DESTINATION" == "x" ]; then
   usage
 fi
 
-if [ ! -f drupal-org.make ]; then
+if [ ! -f site.make ]; then
   echo "[error] Run this script from the distribution base path."
   exit 1
 fi
@@ -109,22 +109,29 @@ fi
 
 # Build the profile.
 echo "Building the profile..."
-drush make --no-core --contrib-destination --no-gitinfofile drupal-org.make tmp
-
+drush make --no-core --contrib-destination --no-gitinfofile --working-copy site.make tmp
+echo "Pulling in redhen_raiser core config:"
+cp tmp/profiles/redhen_raiser/redhen_raiser-core.make ./
 # Build the distribution and copy the profile in place.
 echo "Building the distribution..."
-drush make --no-gitinfofile drupal-org-core.make $TEMP_BUILD
-echo -n "Moving to destination... "
-cp -r tmp $TEMP_BUILD/profiles/$PROJECT
+drush make --no-gitinfofile core.make $TEMP_BUILD
+echo "Cleaning up..."
+rm redhen_raiser-core.make
+echo "Moving redhen_raiser profile to destination... "
+mv tmp/profiles/redhen_raiser $TEMP_BUILD/profiles/
+rmdir tmp/profiles
+echo "Moving custom files and modules to sites/all... "
+cp -R tmp/* $TEMP_BUILD/sites/all/
+echo "Cleaning up tmp files... "
 rm -rf tmp
-cp -r . $TEMP_BUILD/profiles/$PROJECT
+cp -r modules $TEMP_BUILD/sites/all/modules/custom
 mv $TEMP_BUILD $DESTINATION
 
 # run the install profile
 if [ $DBUSER  ] && [ $DBPASS ] && [ $DB ] ; then
   cd $DESTINATION
   echo "Running install profile"
-  drush si $PROJECT --site-name="$SITENAME" --db-url=mysql://$DBUSER:$DBPASS@localhost/$DB -y
+  drush si redhen_raiser --site-name="$SITENAME" --db-url=mysql://$DBUSER:$DBPASS@localhost/$DB -y
 else
   echo "Skipping install profile"
 fi
