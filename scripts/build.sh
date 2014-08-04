@@ -124,7 +124,7 @@ echo "Moving custom files and modules to sites/all... "
 cp -R tmp/* $TEMP_BUILD/sites/all/
 echo "Cleaning up tmp files... "
 rm -rf tmp
-cp -r modules $TEMP_BUILD/sites/all/modules/custom
+cp -r . $TEMP_BUILD/sites/all/
 mv $TEMP_BUILD $DESTINATION
 
 # run the install profile
