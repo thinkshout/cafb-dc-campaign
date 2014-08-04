@@ -42,6 +42,12 @@ projects[mandrill][version] = '2.0'
 ; Libraries
 ;======================================
 
+; ts_install_helpers
+libraries[ts_install_helpers][download][type] = git
+libraries[ts_install_helpers][download][url] = git@github.com:thinkshout/ts_install_helpers.git
+libraries[ts_install_helpers][directory_name] = "ts_install_helpers"
+libraries[ts_install_helpers][type] = "library"
+
 ; mandrill library
 libraries[mandrill][destination] = "libraries"
 libraries[mandrill][download][type] = "get"
