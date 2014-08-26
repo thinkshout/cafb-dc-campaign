@@ -13,7 +13,7 @@ function cafb_dc_stubbed_nodes() {
 
   $stubbed_nodes = array(
     // top-level menus:
-    'About1' => array(
+    'About' => array(
       'title' => 'About Capital Area Food Bank',
       'link_title' => 'About',
       'menu_name' => 'main-menu',
