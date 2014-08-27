@@ -3,5 +3,6 @@ description = Your customizations to RedHen Raiser's installation
 core = 7.x
 package = Custom
 version = 7.x-1.0
-project = charlotte
+project = dc_campaign
+dependencies[] = commerce_iats
 features[features_api][] = api:2

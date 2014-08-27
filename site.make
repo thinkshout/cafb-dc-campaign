@@ -34,6 +34,10 @@ projects[redhen_raiser][download][url] = "git@github.com:thinkshout/redhen_raise
 ; Modules
 ;======================================
 
+; commerce_iats
+projects[commerce_iats][subdir] = 'contrib'
+projects[commerce_iats][version] = '2.4'
+
 ; mandrill
 projects[mandrill][subdir] = 'contrib'
 projects[mandrill][version] = '2.0'
