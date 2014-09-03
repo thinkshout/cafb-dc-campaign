@@ -1,7 +1,7 @@
 redhen_raiser-core.make
 tmp/
 libraries/
-modules/
 !modules/custom/
-themes/
+modules/
 !themes/custom/
+themes/
