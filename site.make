@@ -67,5 +67,3 @@ libraries[mandrill][directory_name] = "mandrill"
 ;-----------------------------------------
 ; Themes
 ;-----------------------------------------
-projects[shiny][subdir] = 'contrib'
-projects[shiny][version] = 1.5
