@@ -8,9 +8,12 @@
  * Implements hook_install().
  */
 function redhen_raiser_custom_config_install() {
-  include_once 'sites/all/libraries/ts_install_helpers/ts_install_helpers.inc'; // Load helper functions.
+  // Load helper functions:
+  include_once 'sites/all/libraries/ts_install_helpers/ts_install_helpers.inc';
   include_once 'includes/cafb_dc_install.content.inc';
   module_enable(array('redhen_raiser_defaults'), TRUE);
+  variable_set('site_name', 'Capital Area Food Bank of DC');
+  variable_set('site_frontpage', 'node/1');
   $stubbed_nodes = cafb_dc_stubbed_nodes();
   $node_menu_items = ts_install_helpers_create_content($stubbed_nodes);
   ts_install_helpers_create_menu_items($node_menu_items);
