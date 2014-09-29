@@ -1,8 +1,7 @@
 # Capital Area Food Bank DC - Campaign 
 
-Built in:
-- [Jekyll](http://jekyllrb.com/)
-- [Compass](http://compass-style.org/)
-- [Susy](http://susy.oddbird.net/) 
+Run:
 
-Clone and run `jekyll serve -w` to watch for .sass changes.
+`scripts/build.sh ../drupal` to build the complete site in a sibling "drupal" directory.
+
+`scripts/deploy.sh` to deploy the site to its destination host, such as Pantheon or Acquia.
