@@ -44,3 +44,95 @@ function cafb_dc_stubbed_nodes() {
 
   return $stubbed_nodes;
 }
+
+/**
+ * Helper for creating stubbed contacts.
+ *
+ * @return array
+ *   Array of sample contacts.
+ */
+function cafb_dc_stubbed_contacts($number = 20) {
+  $stubs = array();
+
+  $default = array(
+    'type' => 'redhen_contact',
+    'bundle' => 'contact',
+  );
+
+  for ($i = 0; $i < $number; $i++) {
+    $first_name = random_data_first_name();
+    $middle_name = random_data_first_name();
+    $last_name = random_data_last_name();
+    $org = random_data_organization();
+    $state = random_data_state();
+    $city = random_data_city();
+    $postal_code = random_data_postal_code();
+    $street = random_data_street();
+    $street2 = random_data_street2();
+
+    $stubs[$i] = array();
+
+    $stubs[$i]['properties'] = array(
+      'redhen_state' => 1,
+      'first_name' => $first_name,
+      'middle_name' => $middle_name,
+      'last_name' => $last_name,
+    );
+
+    $stubs[$i]['fields'] = array(
+      'field_organization' => array(
+        'value' => $org,
+      ),
+      'redhen_contact_email' => array(
+        array(
+          'value' => $first_name . '.' . $last_name . '@example.com',
+          'default' => 1,
+        ),
+        array(
+          'value' => $first_name . '@example.org',
+        ),
+      ),
+      'field_billing_address' => array(
+        'country' => 'US',
+        'administrative_area' => $state,
+        'locality' => $city,
+        'postal_code' => $postal_code,
+        'thoroughfare' => $street,
+        'premise' => $street2,
+      ),
+    );
+
+    $stubs[$i] = array_merge($default, $stubs[$i]);
+  }
+
+  return $stubs;
+}
+
+/**
+ * Create users and link them to contacts.
+ *
+ * @param array $contacts
+ *   Array of redhen_contact entities.
+ *
+ * @return array
+ *   Array of updated redhen contact entities.
+ */
+function cafb_dc_create_users_link_contacts(&$contacts) {
+  /* @var $contact RedhenContact */
+  foreach ($contacts as $contact) {
+    // Create user.
+    $edit = array();
+    $edit['name'] = $contact->first_name . ' ' . $contact->last_name;
+    $edit['mail'] = $contact->email();
+    $edit['init'] = $edit['mail'];
+    $edit['pass'] = $edit['name'];
+    $edit['status'] = 1;
+    $user = user_save('', $edit);
+
+    // Link user to contact.
+    if ($user) {
+      $contact->uid = $user->uid;
+      $contact->save();
+    }
+  }
+}
