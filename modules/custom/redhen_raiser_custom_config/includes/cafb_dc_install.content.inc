@@ -127,6 +127,14 @@ function cafb_dc_create_users_link_contacts(&$contacts) {
     $edit['init'] = $edit['mail'];
     $edit['pass'] = $edit['name'];
     $edit['status'] = 1;
+
+    $image_name = $contact->first_name . $contact->last_name;
+    $image_destination = "public://$image_name.png";
+    $image_source = 'http://hhhhold.com/180-220/png';
+
+    $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
+    $edit['picture'] = $image_file_id;
+
     $user = user_save('', $edit);
 
     // Link user to contact.
