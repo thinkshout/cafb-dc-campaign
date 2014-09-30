@@ -11,6 +11,7 @@ function redhen_raiser_custom_config_install() {
   // Load helper functions:
   include_once 'sites/all/libraries/ts_install_helpers/ts_install_helpers.inc';
   include_once 'includes/cafb_dc_install.content.inc';
+  include_once 'includes/random_data.inc';
   module_enable(array('redhen_raiser_defaults'), TRUE);
   variable_set('site_name', 'Capital Area Food Bank of DC');
   variable_set('site_frontpage', 'node/1');
