@@ -207,9 +207,7 @@ function random_data_first_name() {
     'Phillips',
   );
 
-  $name = array_rand($first_names, 1);
-  return $first_names[$name];
-
+  return random_data_array_item($first_names);
 }
 
 /**
@@ -349,8 +347,7 @@ function random_data_last_name() {
     'Tyler',
   );
 
-  $name = array_rand($last_names, 1);
-  return $last_names[$name];
+  return random_data_array_item($last_names);
 }
 
 /**
@@ -374,8 +371,7 @@ function random_data_organization() {
     'Pet Supplies Are Us',
   );
 
-  $org = array_rand($organizations, 1);
-  return $organizations[$org];
+  return random_data_array_item($organizations);
 }
 
 /**
@@ -390,8 +386,7 @@ function random_data_state() {
     'MA',
   );
 
-  $state = array_rand($states, 1);
-  return $states[$state];
+  return random_data_array_item($states);
 }
 
 /**
@@ -407,8 +402,7 @@ function random_data_city() {
     'Boise',
   );
 
-  $city = array_rand($cities, 1);
-  return $cities[$city];
+  return random_data_array_item($cities);
 }
 
 /**
@@ -435,16 +429,14 @@ function random_data_street() {
     'Burnside',
     'Stark',
   );
-  $delta = array_rand($names, 1);
-  $name = $names[$delta];
+  $name = random_data_array_item($names);
 
   $suffixes = array(
     'Blvd',
     'St',
     'Ave',
   );
-  $delta = array_rand($suffixes, 1);
-  $suffix = $suffixes[$delta];
+  $suffix = random_data_array_item($suffixes);
 
   $street = $number . ' ' . $name . ' ' . $suffix;
   return $street;
@@ -459,8 +451,7 @@ function random_data_street2() {
     'Suite',
     '',
   );
-  $delta = array_rand($names, 1);
-  $name = $names[$delta];
+  $name = random_data_array_item($names);
 
   if ($name) {
     $number = (string) rand(1, 999);
@@ -468,4 +459,50 @@ function random_data_street2() {
 
   $street2 = $name . ' ' . $number;
   return $street2;
+}
+
+/**
+ * Generate a random campaign name.
+ */
+function random_data_campaign_name() {
+  $nouns = array(
+    'deer',
+    'lions',
+    'tigers',
+    'mice',
+    'doggies',
+    'kittens',
+    'bears',
+    'tarantulas',
+    'squids',
+  );
+  $animals1 = ucwords(random_data_array_item($nouns));
+  $animals2 = ucwords(random_data_array_item($nouns));
+
+  $adjectives = array(
+    'for',
+    'against',
+    'in support of',
+    'behind',
+    'despite',
+    'supporting',
+  );
+  $adjective = random_data_array_item($adjectives);
+
+  return $animals1 . ' ' . $adjective . ' ' . $animals2;
+}
+
+/**
+ * Return a random element of an array.
+ *
+ * @param array $items
+ *   Array of items.
+ *
+ * @return array|stdClass|string
+ *   One item of the array.
+ */
+function random_data_array_item(array $items) {
+  $delta = array_rand($items, 1);
+  $item = $items[$delta];
+  return $item;
 }

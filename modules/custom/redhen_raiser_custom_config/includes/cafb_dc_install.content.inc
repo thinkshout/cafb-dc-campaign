@@ -144,3 +144,71 @@ function cafb_dc_create_users_link_contacts(&$contacts) {
     }
   }
 }
+
+/**
+ * Helper for creating stubbed campaigns.
+ *
+ * @return array
+ *   Array of sample campaigns.
+ */
+function cafb_dc_stubbed_campaigns($number = 10) {
+  $stubs = array();
+
+  for ($i = 0; $i < $number; $i++) {
+    $stubs[$i] = array(
+      'type' => 'redhen_campaign',
+      'bundle' => 'general',
+    );
+
+    $stubs[$i]['properties'] = array(
+      'label' => random_data_campaign_name(),
+      'redhen_state' => 1,
+    );
+
+    $stubs[$i]['fields'] = array(
+      'redhen_campaign_donation_type' => array(
+        'redhen_donation_type' => 'redhen_raiser_donation',
+      ),
+      'redhen_campaign_goal' => array(
+        'value' => rand(100, 800000),
+      ),
+      'field_teaser' => array(
+        'value' => devel_create_greeking(rand(3, 7)),
+        'format' => 'rich_text',
+      ),
+      'field_start_date' => array(
+        'value' => date('Y-m-d'),
+      ),
+      'field_end_date' => array(
+        // 7-60 days from now.
+        'value' => date('Y-m-d', time() + (rand(7, 60) * 24 * 60 * 60)),
+      ),
+    );
+
+    // Story field.
+    $stubs[$i]['fields']['field_story']['format'] = 'rich_text';
+    $stubs[$i]['fields']['field_story']['value'] = '';
+    $paragraphs = rand(2, 5);
+    for ($p = 0; $p < $paragraphs; $p++) {
+      $stubs[$i]['fields']['field_story']['value'] .= devel_create_greeking(rand(20, 100)) . "\n\n";
+    }
+
+    // Banner image field.
+    $image_name = 'campaign-' . (string) rand(1, 999999);
+    $image_destination = "public://$image_name.png";
+    $image_source = 'http://hhhhold.com/900x400/png';
+    $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
+    $image_file = file_load($image_file_id);
+    $stubs[$i]['fields']['field_banner_image'] = (array) $image_file;
+
+    // Story media field.
+    $image_name = 'campaign-' . (string) rand(1, 999999);
+    $image_destination = "public://$image_name.png";
+    $image_source = 'http://hhhhold.com/350-700/png';
+    $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
+    $image_file = file_load($image_file_id);
+    $stubs[$i]['fields']['field_story_media'] = (array) $image_file;
+  }
+
+  return $stubs;
+}

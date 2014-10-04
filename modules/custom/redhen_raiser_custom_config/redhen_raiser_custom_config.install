@@ -31,4 +31,7 @@ function redhen_raiser_custom_config_install() {
   $stubbed_contacts = cafb_dc_stubbed_contacts(10);
   $created_contacts = ts_install_helpers_create_entities($stubbed_contacts);
   cafb_dc_create_users_link_contacts($created_contacts);
+
+  $stubbed_campaigns = cafb_dc_stubbed_campaigns(10);
+  $created_campaigns = ts_install_helpers_create_entities($stubbed_campaigns);
 }
