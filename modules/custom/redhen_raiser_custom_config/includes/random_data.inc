@@ -493,6 +493,33 @@ function random_data_campaign_name() {
 }
 
 /**
+ * Generate a random team name.
+ */
+function random_data_campaign_team_name() {
+  $names = array(
+    'magical stuff',
+    'spider lord',
+    'fan tastic',
+    'mousedom',
+    'awesome',
+    'rock',
+    'squirrel',
+    'jay',
+    'fred',
+    'john',
+    'mary',
+    'kate',
+    'engage',
+    'trek',
+    'fundog',
+    'smartwise',
+    'gamgee',
+    'shire',
+  );
+  return 'Team ' . random_data_array_item($names) . ' ' . random_data_array_item($names);
+}
+
+/**
  * Return a random element of an array.
  *
  * @param array $items

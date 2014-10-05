@@ -109,13 +109,10 @@ function cafb_dc_stubbed_contacts($number = 20) {
 }
 
 /**
- * Create users and link them to contacts.
+ * Create users and link them to contacts. Updates contact entities.
  *
  * @param array $contacts
  *   Array of redhen_contact entities.
- *
- * @return array
- *   Array of updated redhen contact entities.
  */
 function cafb_dc_create_users_link_contacts(&$contacts) {
   /* @var $contact RedhenContact */
@@ -194,7 +191,7 @@ function cafb_dc_stubbed_campaigns($number = 10) {
     }
 
     // Banner image field.
-    $image_name = 'campaign-' . (string) rand(1, 999999);
+    $image_name = 'campaign-' . (string) rand(1, 999999) . '.png';
     $image_destination = "public://$image_name.png";
     $image_source = 'http://hhhhold.com/900x400/png';
     $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
@@ -202,7 +199,78 @@ function cafb_dc_stubbed_campaigns($number = 10) {
     $stubs[$i]['fields']['field_banner_image'] = (array) $image_file;
 
     // Story media field.
-    $image_name = 'campaign-' . (string) rand(1, 999999);
+    $image_name = 'campaign-' . (string) rand(1, 999999) . '.png';
+    $image_destination = "public://$image_name.png";
+    $image_source = 'http://hhhhold.com/350-700/png';
+    $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
+    $image_file = file_load($image_file_id);
+    $stubs[$i]['fields']['field_story_media'] = (array) $image_file;
+  }
+
+  return $stubs;
+}
+
+/**
+ * Helper for creating stubbed campaign pages.
+ *
+ * @param string $type
+ *   Type of page to create. 'individual' or 'team'.
+ *
+ * @return array
+ *   Array of campaign pages.
+ */
+function cafb_dc_stubbed_campaign_pages($campaigns, $contacts, $number = 10, $type = 'individual') {
+  $stubs = array();
+
+  for ($i = 0; $i < $number; $i++) {
+    $stubs[$i] = array(
+      'type' => 'redhen_campaign_page',
+      'bundle' => 'team',
+    );
+
+    $stubs[$i]['properties']['redhen_state'] = 1;
+    if ($type == 'team') {
+      $stubs[$i]['properties']['label'] = random_data_campaign_team_name();
+    }
+    if ($type == 'individual') {
+      $stubs[$i]['properties']['label'] = random_data_first_name() . ' ' . random_data_last_name();
+    }
+
+    $contact = random_data_array_item($contacts);
+    $stubs[$i]['properties']['author_uid'] = $contact->contact_id;
+
+    $stubs[$i]['fields'] = array(
+      'redhen_campaign_goal' => array(
+        'value' => rand(50, 8000),
+      ),
+      'field_end_date' => array(
+        // 7-60 days from now.
+        'value' => date('Y-m-d', time() + (rand(7, 60) * 24 * 60 * 60)),
+      ),
+    );
+
+    $campaign = random_data_array_item($campaigns);
+    $stubs[$i]['properties']['campaign'] = $campaign->campaign_id;
+    $stubs[$i]['properties']['campaign_page_type'] = 2;
+
+    // Story field.
+    $stubs[$i]['fields']['field_story']['format'] = 'rich_text';
+    $stubs[$i]['fields']['field_story']['value'] = '';
+    $paragraphs = rand(2, 5);
+    for ($p = 0; $p < $paragraphs; $p++) {
+      $stubs[$i]['fields']['field_story']['value'] .= devel_create_greeking(rand(20, 100)) . "\n\n";
+    }
+
+    // Logo field.
+    $image_name = 'campaign-page-' . (string) rand(1, 999999) . '.png';
+    $image_destination = "public://$image_name.png";
+    $image_source = 'http://hhhhold.com/900x400/png';
+    $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
+    $image_file = file_load($image_file_id);
+    $stubs[$i]['fields']['field_logo'] = (array) $image_file;
+
+    // Story media field.
+    $image_name = 'campaign-page-' . (string) rand(1, 999999) . '.png';
     $image_destination = "public://$image_name.png";
     $image_source = 'http://hhhhold.com/350-700/png';
     $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
