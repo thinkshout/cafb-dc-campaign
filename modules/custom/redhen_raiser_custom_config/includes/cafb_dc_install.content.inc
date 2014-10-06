@@ -213,8 +213,16 @@ function cafb_dc_stubbed_campaigns($number = 10) {
 /**
  * Helper for creating stubbed campaign pages.
  *
+ * @param array $campaigns
+ *   Array of RedhenCampaign objects.
+ * @param array $contacts
+ *   Array of RedhenContact objects.
+ * @param int $number
+ *   How many campaign pages to create.
  * @param string $type
  *   Type of page to create. 'individual' or 'team'.
+ * @param array $team_pages
+ *   Team pages to reference, if making individual pages.
  *
  * @return array
  *   Array of campaign pages.
@@ -278,6 +286,60 @@ function cafb_dc_stubbed_campaign_pages($campaigns, $contacts, $number = 10, $ty
     $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
     $image_file = file_load($image_file_id);
     $stubs[$i]['fields']['field_story_media'] = (array) $image_file;
+  }
+
+  return $stubs;
+}
+
+/**
+ * Create sample campaign updates.
+ *
+ * @param array $campaigns
+ *   Array of RedhenCampaign objects.
+ * @param array $team_campaign_pages
+ *   Array of RedhenCampaignPage objects, team bundle.
+ * @param array $individual_campaign_pages
+ *   Array of RedhenCampaignPage objects, individual bundle.
+ * @param int $number
+ *   How many campaign updates to create.
+ *
+ * @return array
+ *   Array of created nodes.
+ */
+function cafb_dc_stubbed_campaign_updates($campaigns, $team_campaign_pages, $individual_campaign_pages, $number = 10) {
+  $stubs = array();
+
+  for ($i = 0; $i < $number; $i++) {
+    $campaign = random_data_array_item($campaigns);
+
+    $stubs[$i] = array(
+      'type' => 'campaign_update',
+      'body' => devel_create_para(rand(2, 5), 1),
+      'format' => 'rich_text',
+      'title' => devel_create_greeking(5, TRUE),
+    );
+    $stubs[$i]['custom_fields'] = array(
+      'field_campaign_context' => array(
+        'target_id' => $campaign->campaign_id,
+      ),
+    );
+
+    // Sometimes leave the team context field empty.
+    if (rand(0, 1)) {
+      $team_campaign_page = random_data_array_item($team_campaign_pages);
+      $stubs[$i]['custom_fields']['field_team_context']['target_id'] = $team_campaign_page->page_id;
+    }
+
+    // Use both individual and team pages. And sometimes leave it empty.
+    $rand = rand(1, 3);
+    if ($rand == 1) {
+      $page_for_context = random_data_array_item($individual_campaign_pages);
+      $stubs[$i]['custom_fields']['field_page_context']['target_id'] = $page_for_context->page_id;
+    }
+    if ($rand == 2) {
+      $page_for_context = random_data_array_item($team_campaign_pages);
+      $stubs[$i]['custom_fields']['field_page_context']['target_id'] = $page_for_context->page_id;
+    }
   }
 
   return $stubs;

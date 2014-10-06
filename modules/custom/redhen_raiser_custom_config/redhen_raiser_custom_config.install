@@ -32,17 +32,21 @@ function redhen_raiser_default_content() {
   include_once 'includes/cafb_dc_install.content.inc';
   include_once 'includes/random_data.inc';
 
+  // Basic pages and menus.
   $stubbed_nodes = cafb_dc_stubbed_nodes();
   $node_menu_items = ts_install_helpers_create_content($stubbed_nodes);
   ts_install_helpers_create_menu_items($node_menu_items);
 
+  // Contacts.
   $stubbed_contacts = cafb_dc_stubbed_contacts(10);
   $created_contacts = ts_install_helpers_create_entities($stubbed_contacts);
   cafb_dc_create_users_link_contacts($created_contacts);
 
+  // Campaigns.
   $stubbed_campaigns = cafb_dc_stubbed_campaigns(10);
   $created_campaigns = ts_install_helpers_create_entities($stubbed_campaigns);
 
+  // Team campaign pages.
   $stubbed_campaign_pages_team = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 10, 'team');
   $created_campaign_pages_team = ts_install_helpers_create_entities($stubbed_campaign_pages_team);
 
@@ -53,4 +57,10 @@ function redhen_raiser_default_content() {
   // Individual campaign pages that do not reference teams.
   $stubbed_campaign_pages_individual = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 10, 'individual');
   $created_campaign_pages_individual = ts_install_helpers_create_entities($stubbed_campaign_pages_individual);
+
+  // Campaign updates.
+  $stubbed_updates_team = cafb_dc_stubbed_campaign_updates($created_campaigns, $stubbed_campaign_pages_team, $created_campaign_pages_individual_team, 15);
+  $created_updates_team = ts_install_helpers_create_content($stubbed_updates_team, 'nodes');
+  $stubbed_updates_individual = cafb_dc_stubbed_campaign_updates($created_campaigns, $stubbed_campaign_pages_team, $created_campaign_pages_individual, 15);
+  $created_updates_individual = ts_install_helpers_create_content($stubbed_updates_individual, 'nodes');
 }
