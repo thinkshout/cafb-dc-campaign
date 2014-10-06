@@ -219,21 +219,26 @@ function cafb_dc_stubbed_campaigns($number = 10) {
  * @return array
  *   Array of campaign pages.
  */
-function cafb_dc_stubbed_campaign_pages($campaigns, $contacts, $number = 10, $type = 'individual') {
+function cafb_dc_stubbed_campaign_pages($campaigns, $contacts, $number = 10, $type = 'individual', $team_pages = array()) {
   $stubs = array();
 
   for ($i = 0; $i < $number; $i++) {
     $stubs[$i] = array(
       'type' => 'redhen_campaign_page',
-      'bundle' => 'team',
     );
 
     $stubs[$i]['properties']['redhen_state'] = 1;
     if ($type == 'team') {
+      $stubs[$i]['bundle'] = 'team';
       $stubs[$i]['properties']['label'] = random_data_campaign_team_name();
     }
     if ($type == 'individual') {
+      $stubs[$i]['bundle'] = 'individual';
       $stubs[$i]['properties']['label'] = random_data_first_name() . ' ' . random_data_last_name();
+      if ($team_pages) {
+        $team_page = random_data_array_item($team_pages);
+        $stubs[$i]['properties']['team'] = $team_page->page_id;
+      }
     }
 
     $contact = random_data_array_item($contacts);
@@ -256,10 +261,7 @@ function cafb_dc_stubbed_campaign_pages($campaigns, $contacts, $number = 10, $ty
     // Story field.
     $stubs[$i]['fields']['field_story']['format'] = 'rich_text';
     $stubs[$i]['fields']['field_story']['value'] = '';
-    $paragraphs = rand(2, 5);
-    for ($p = 0; $p < $paragraphs; $p++) {
-      $stubs[$i]['fields']['field_story']['value'] .= devel_create_greeking(rand(20, 100)) . "\n\n";
-    }
+    $stubs[$i]['fields']['field_story']['value'] .= devel_create_greeking(rand(20, 100));
 
     // Logo field.
     $image_name = 'campaign-page-' . (string) rand(1, 999999) . '.png';

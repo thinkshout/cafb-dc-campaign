@@ -15,6 +15,7 @@ function redhen_raiser_custom_config_install() {
   module_enable(array('redhen_raiser_defaults'), TRUE);
   variable_set('site_name', 'Capital Area Food Bank of DC');
   variable_set('site_frontpage', 'node/1');
+  variable_set('redhen_contact_alter_username', FALSE);
 
   // Disable constant rebuilding of theme registry.
   $theme_raiser_settings = variable_get('theme_raiser_settings', array());
@@ -35,6 +36,14 @@ function redhen_raiser_custom_config_install() {
   $stubbed_campaigns = cafb_dc_stubbed_campaigns(10);
   $created_campaigns = ts_install_helpers_create_entities($stubbed_campaigns);
 
-  $stubbed_campaign_pages = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 10);
-  $created_campaigns = ts_install_helpers_create_entities($stubbed_campaign_pages);
+  $stubbed_campaign_pages_team = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 10, 'team');
+  $created_campaign_pages_team = ts_install_helpers_create_entities($stubbed_campaign_pages_team);
+
+  // Individual campaign pages that reference teams.
+  $stubbed_campaign_pages_individual_team = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 10, 'individual', $created_campaign_pages_team);
+  $created_campaign_pages_individual_team = ts_install_helpers_create_entities($stubbed_campaign_pages_individual_team);
+
+  // Individual campaign pages that do not reference teams.
+  $stubbed_campaign_pages_individual = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 10, 'individual');
+  $created_campaign_pages_individual = ts_install_helpers_create_entities($stubbed_campaign_pages_individual);
 }
