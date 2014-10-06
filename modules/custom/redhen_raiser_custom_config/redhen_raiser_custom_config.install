@@ -8,14 +8,9 @@
  * Implements hook_install().
  */
 function redhen_raiser_custom_config_install() {
-  // Load helper functions:
-  include_once 'sites/all/libraries/ts_install_helpers/ts_install_helpers.inc';
-  include_once 'includes/cafb_dc_install.content.inc';
-  include_once 'includes/random_data.inc';
   module_enable(array('redhen_raiser_defaults'), TRUE);
   variable_set('site_name', 'Capital Area Food Bank of DC');
   variable_set('site_frontpage', 'node/1');
-  variable_set('redhen_contact_alter_username', FALSE);
 
   // Disable constant rebuilding of theme registry.
   $theme_raiser_settings = variable_get('theme_raiser_settings', array());
@@ -24,6 +19,18 @@ function redhen_raiser_custom_config_install() {
   );
   $theme_raiser_settings = array_merge($theme_raiser_settings, $settings_to_disable);
   variable_set('theme_raiser_settings', $theme_raiser_settings);
+
+  redhen_raiser_default_content();
+}
+
+/**
+ * Install default content.
+ */
+function redhen_raiser_default_content() {
+  // Load helper functions.
+  include_once 'sites/all/libraries/ts_install_helpers/ts_install_helpers.inc';
+  include_once 'includes/cafb_dc_install.content.inc';
+  include_once 'includes/random_data.inc';
 
   $stubbed_nodes = cafb_dc_stubbed_nodes();
   $node_menu_items = ts_install_helpers_create_content($stubbed_nodes);
