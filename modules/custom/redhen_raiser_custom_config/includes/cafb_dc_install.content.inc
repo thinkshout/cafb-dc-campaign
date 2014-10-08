@@ -344,3 +344,163 @@ function cafb_dc_stubbed_campaign_updates($campaigns, $team_campaign_pages, $ind
 
   return $stubs;
 }
+
+/**
+ * Create sample donations.
+ *
+ * @param array $contacts
+ *   Array of RedhenContact objects, as people giving donations.
+ * @param array @campaigns
+ *   Array of RedhenCampaign objects, as recipients of donations.
+ * @param int $number
+ *   How many donations to create.
+ */
+function cafb_dc_create_sample_donations($contacts, $campaigns, $number = 10) {
+  // @todo, enable $campagaign_pages and $campaign_updates as parameters, and
+  // use them to set custom contexts.
+  for ($i = 0; $i < $number; $i++) {
+    $campaign = random_data_array_item($campaigns);
+    cafb_dc_enable_donations($campaign);
+    $campaign_id = $campaign->campaign_id;
+    $contact = random_data_array_item($contacts);
+    $donation = new RedhenDonation(array(
+      'type' => 'redhen_raiser_donation',
+      'entity_type' => 'redhen_campaign',
+      'entity_id' => $campaign_id,
+      'author_uid' => $contact->uid,
+      'contact_id' => $contact->contact_id,
+      'status' => NULL,
+      'transaction_entity_type' => NULL,
+      // 'transaction_entity_id' => NULL,
+      'pledged' => NULL,
+      // 'received' => NULL,
+    ));
+    cafb_dc_process_sample_donation($donation);
+  }
+}
+
+/**
+ * Process single donation.
+ *
+ * @param RedhenDonation $donation
+ *   Donation object to process, which simulates the donation form submission,
+ *   including creating an order.
+ */
+function cafb_dc_process_sample_donation(RedhenDonation $donation) {
+  // Create $form array.
+  $form_id = 'redhen_donation_form';
+  $form = drupal_get_form($form_id, $donation);
+
+  // Create $form_state array.
+  $donation_settings = redhen_donation_entity_settings($donation->entity_type, $donation->entity_id);
+  $contact = redhen_contact_load($donation->contact_id);
+  $contact_email = $contact->email();
+  $payment_method = 'iats_credit_card|commerce_payment_iats_credit_card';
+  $form_state = array(
+    'donation' => $donation,
+    'donation_settings' => $donation_settings,
+    'redhen_contact' => $contact,
+    'build_info' => array(
+      'args' => array(
+        0 => $donation,
+      ),
+    ),
+    'input' => array(
+      'donation' => array(
+        // $25 to $5000.
+        'select' => rand(2500, 500000),
+      ),
+    ),
+    'values' => array(
+      'first_name' => $contact->first_name,
+      'middle_name' => $contact->middle_name,
+      'last_name' => $contact->last_name,
+      'email' => $contact_email,
+      'payment_method' => $payment_method,
+      'product' => 1,
+      'form_id' => 'redhen_donation_form',
+      'op' => 'Donate',
+      'commerce_customer_address' => array(
+        LANGUAGE_NONE => array(
+          0 => array_merge(
+            $contact->field_billing_address[LANGUAGE_NONE][0],
+            array('element_key' => $payment_method)
+          ),
+        ),
+      ),
+      'payment_details' => array(
+        'credit_card' => array(
+          'type' => 'visa',
+          'number' => '4222222222222220',
+          'exp_month' => '12',
+          'exp_year' => '2019',
+          'code' => '444',
+        ),
+      ),
+    ),
+  );
+
+  // Make the donation.
+  drupal_prepare_form($form_id, $form, $form_state);
+  redhen_donation_form_submit($form, $form_state);
+}
+
+/**
+ * Enable donations for a campaign.
+ *
+ * @param RedhenCampaign $campaign
+ *   Campaign entity for which to enable donations.
+ */
+function cafb_dc_enable_donations(RedhenCampaign $campaign) {
+  // @todo Enable iATS payment method rule sitewide if not yet enabled.
+  // - Set name & password to "TEST88".
+  $current_donation_settings = redhen_donation_entity_settings('redhen_campaign', $campaign->campaign_id);
+  if (!empty($current_donation_settings['status'])) {
+    return;
+  }
+  $enabled_donation_settings = array(
+    'status' => 1,
+    'open' => NULL,
+    'close' => NULL,
+    'settings' => array(
+      'donation_settings' => array(
+        'confirmation_page' => '',
+        'confirmation_message' => 'Thank you for your donation!',
+        'donation_entry' => 'select',
+        'donation_amounts' => array(
+          '5' => 'Five',
+          '20' => 'Twenty',
+        ),
+        'submit_label' => 'Donate',
+      ),
+      'commerce' => array(
+        'product_options' => array(
+          'product_select_label' => '',
+          'one_time_product' => '1',
+          'recurring' => array(),
+        ),
+        'profile_selector' => 'billing',
+        'payment_options' => array(
+          'payment_methods' => array(
+            0 => array(
+              'payment_method' => 'iats_credit_card|commerce_payment_iats_credit_card',
+              'label' => '',
+              'currency' => 'USD',
+              'delete' => 'Delete',
+            ),
+          ),
+          'add_field' => 'Add another payment method',
+        ),
+      ),
+      'redhen_fields' => array(
+        'fields' => array(
+          'field_organization' => 0,
+          'middle_name' => 0,
+        ),
+      ),
+    ),
+  );
+  $enabled_donation_settings['settings'] = serialize($enabled_donation_settings['settings']);
+  drupal_set_message('Enabled donations for Campaign ' . $campaign->campaign_id);
+  redhen_donation_update_entity_settings('redhen_campaign', $campaign->campaign_id, $enabled_donation_settings);
+}

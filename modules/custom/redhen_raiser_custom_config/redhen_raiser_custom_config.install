@@ -63,4 +63,7 @@ function redhen_raiser_default_content() {
   $created_updates_team = ts_install_helpers_create_content($stubbed_updates_team, 'nodes');
   $stubbed_updates_individual = cafb_dc_stubbed_campaign_updates($created_campaigns, $stubbed_campaign_pages_team, $created_campaign_pages_individual, 15);
   $created_updates_individual = ts_install_helpers_create_content($stubbed_updates_individual, 'nodes');
+
+  // Donations.
+  cafb_dc_create_sample_donations($created_contacts, $created_campaigns, 30);
 }
