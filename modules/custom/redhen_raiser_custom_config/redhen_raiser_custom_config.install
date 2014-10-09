@@ -59,9 +59,9 @@ function redhen_raiser_default_content() {
   $created_campaign_pages_individual = ts_install_helpers_create_entities($stubbed_campaign_pages_individual);
 
   // Campaign updates.
-  $stubbed_updates_team = cafb_dc_stubbed_campaign_updates($created_campaigns, $stubbed_campaign_pages_team, $created_campaign_pages_individual_team, 15);
+  $stubbed_updates_team = cafb_dc_stubbed_campaign_updates($created_campaigns, $created_campaign_pages_team, $created_campaign_pages_individual_team, 15);
   $created_updates_team = ts_install_helpers_create_content($stubbed_updates_team, 'nodes');
-  $stubbed_updates_individual = cafb_dc_stubbed_campaign_updates($created_campaigns, $stubbed_campaign_pages_team, $created_campaign_pages_individual, 15);
+  $stubbed_updates_individual = cafb_dc_stubbed_campaign_updates($created_campaigns, $created_campaign_pages_team, $created_campaign_pages_individual, 15);
   $created_updates_individual = ts_install_helpers_create_content($stubbed_updates_individual, 'nodes');
 
   // Donations.

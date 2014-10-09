@@ -333,10 +333,12 @@ function cafb_dc_stubbed_campaign_updates($campaigns, $team_campaign_pages, $ind
     // Use both individual and team pages. And sometimes leave it empty.
     $rand = rand(1, 3);
     if ($rand == 1) {
+      // Use a random individual campaign page.
       $page_for_context = random_data_array_item($individual_campaign_pages);
       $stubs[$i]['custom_fields']['field_page_context']['target_id'] = $page_for_context->page_id;
     }
     if ($rand == 2) {
+      // Use a random team campaign page.
       $page_for_context = random_data_array_item($team_campaign_pages);
       $stubs[$i]['custom_fields']['field_page_context']['target_id'] = $page_for_context->page_id;
     }
