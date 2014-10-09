@@ -3,3 +3,30 @@
  * @file
  * Custom additions to RedHen Raiser installation process.
  */
+
+/**
+ * Implements hook_default_rules_configuration_alter().
+ */
+function redhen_raiser_custom_config_default_rules_configuration_alter(&$configs) {
+  // Enable the commerce_payment_iats_credit_card rule.
+  $rule_name = 'commerce_payment_iats_credit_card';
+  $configs[$rule_name]->active = TRUE;
+}
+
+/**
+ * Implements hook_rules_config_load().
+ */
+function redhen_raiser_custom_config_rules_config_load($configs) {
+  // Set credentials for the commerce_payment_iats_credit_card payment method.
+  if (!empty($configs['commerce_payment_iats_credit_card'])) {
+    foreach ($configs['commerce_payment_iats_credit_card']->actions() as $action) {
+      if (
+        !empty($action->settings['payment_method']['method_id']) &&
+        $action->settings['payment_method']['method_id'] == 'iats_credit_card'
+      ) {
+        $action->settings['payment_method']['settings']['agent_code'] = 'TEST88';
+        $action->settings['payment_method']['settings']['agent_password'] = 'TEST88';
+      }
+    }
+  }
+}
