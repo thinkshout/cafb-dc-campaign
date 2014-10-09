@@ -66,4 +66,8 @@ function redhen_raiser_default_content() {
 
   // Donations.
   cafb_dc_create_sample_donations($created_contacts, $created_campaigns, 30);
+
+  // Bean blocks.
+  $stubbed_beans = cafb_dc_stubbed_beans();
+  ts_install_helpers_create_beans($stubbed_beans);
 }

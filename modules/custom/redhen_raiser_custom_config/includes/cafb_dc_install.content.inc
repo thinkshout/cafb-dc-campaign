@@ -346,6 +346,49 @@ function cafb_dc_stubbed_campaign_updates($campaigns, $team_campaign_pages, $ind
 }
 
 /**
+ * Helper to set up stubs for bean blocks.
+ */
+function cafb_dc_stubbed_beans() {
+  $stubs = array();
+
+  $image_name = 'promo-bean-' . (string) rand(1, 999999) . '.png';
+  $image_destination = "public://$image_name.png";
+  $image_source = 'http://hhhhold.com/600-300/png';
+  $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
+  $image_file = file_load($image_file_id);
+
+  $stubs['donation-matching'] = array(
+    'type' => 'promo',
+    'label' => 'Donation Matching',
+    'title' => 'Company Name',
+    'properties' => array(
+      'field_promo_image' => array(
+        LANGUAGE_NONE => array(
+          (array) $image_file,
+        ),
+      ),
+      'field_promo_image_link' => array(
+        LANGUAGE_NONE => array(
+          array(
+            'url' => 'http://www.example.net',
+          ),
+        ),
+      ),
+      'field_promo_text' => array(
+        LANGUAGE_NONE => array(
+          array(
+            'value' => '<p>Matches $1 for every $1 you give</p>',
+            'format' => 'rich_text',
+          ),
+        ),
+      ),
+    ),
+  );
+
+  return $stubs;
+}
+
+/**
  * Create sample donations.
  *
  * @param array $contacts
@@ -452,8 +495,6 @@ function cafb_dc_process_sample_donation(RedhenDonation $donation) {
  *   Campaign entity for which to enable donations.
  */
 function cafb_dc_enable_donations(RedhenCampaign $campaign) {
-  // @todo Enable iATS payment method rule sitewide if not yet enabled.
-  // - Set name & password to "TEST88".
   $current_donation_settings = redhen_donation_entity_settings('redhen_campaign', $campaign->campaign_id);
   if (!empty($current_donation_settings['status'])) {
     return;
