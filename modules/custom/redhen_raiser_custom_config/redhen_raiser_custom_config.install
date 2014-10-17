@@ -47,15 +47,15 @@ function redhen_raiser_default_content() {
   $created_campaigns = ts_install_helpers_create_entities($stubbed_campaigns);
 
   // Team campaign pages.
-  $stubbed_campaign_pages_team = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 10, 'team');
+  $stubbed_campaign_pages_team = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 60, 'team');
   $created_campaign_pages_team = ts_install_helpers_create_entities($stubbed_campaign_pages_team);
 
   // Individual campaign pages that reference teams.
-  $stubbed_campaign_pages_individual_team = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 10, 'individual', $created_campaign_pages_team);
+  $stubbed_campaign_pages_individual_team = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 40, 'individual', $created_campaign_pages_team);
   $created_campaign_pages_individual_team = ts_install_helpers_create_entities($stubbed_campaign_pages_individual_team);
 
   // Individual campaign pages that do not reference teams.
-  $stubbed_campaign_pages_individual = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 10, 'individual');
+  $stubbed_campaign_pages_individual = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 40, 'individual');
   $created_campaign_pages_individual = ts_install_helpers_create_entities($stubbed_campaign_pages_individual);
 
   // Campaign updates.
