@@ -50,3 +50,43 @@ function redhen_raiser_custom_config_image_styles_alter(&$styles) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_entity().
+ */
+function redhen_raiser_custom_config_preprocess_entity(&$variables) {
+  // Link the label of campaign pages, if not on a full page display.
+  if ($variables['view_mode'] == 'teaser') {
+    // Check to see if this is a campaign page entity.
+    if (array_key_exists('redhen_campaign_page', $variables)) {
+      // Get the URL to use for linking.
+      $uri = $variables['redhen_campaign_page']->uri();
+      $path = $uri['path'];
+
+      // Link the label.
+      if (!empty($variables['content']['label']['#items'][0]['#markup'])) {
+        $label_markup = &$variables['content']['label']['#items'][0]['#markup'];
+        $label_markup = l($label_markup, $path);
+      }
+
+      // Link the image.
+      if (!empty($variables['content']['owner']['redhen_contact'])) {
+        foreach ($variables['content']['owner']['redhen_contact'] as $contact_id => $contact) {
+          $variables['content']['owner']['redhen_contact'][$contact_id]['avatar']['#post_render'] = array(
+            '_redhen_raiser_custom_config_campaign_page_contact_image_post_render',
+          );
+          $variables['content']['owner']['redhen_contact'][$contact_id]['avatar']['link_url'] = $path;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Post-render callback to link an image to the designated campaign page.
+ */
+function _redhen_raiser_custom_config_campaign_page_contact_image_post_render($html, $variables) {
+  $linked_img = l($html, $variables['link_url'], array('html' => TRUE));
+
+  return $linked_img;
+}
