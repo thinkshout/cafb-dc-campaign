@@ -31,7 +31,7 @@ function redhen_raiser_custom_config_context_default_contexts() {
           'module' => 'bean',
           'delta' => 'donation-matching',
           'region' => 'sidebar_first',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
       ),
     ),
