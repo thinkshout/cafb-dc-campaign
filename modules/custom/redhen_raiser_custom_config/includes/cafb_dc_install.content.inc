@@ -274,7 +274,7 @@ function cafb_dc_stubbed_campaign_pages($campaigns, $contacts, $number = 10, $ty
     // Logo field.
     $image_name = 'campaign-page-' . (string) rand(1, 999999) . '.png';
     $image_destination = "public://$image_name.png";
-    $image_source = 'http://hhhhold.com/900x400/png';
+    $image_source = 'http://hhhhold.com/200x200/png';
     $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
     $image_file = file_load($image_file_id);
     $stubs[$i]['fields']['field_logo'] = (array) $image_file;
