@@ -24,18 +24,7 @@ function redhen_raiser_custom_config_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'bean-donation-matching' => array(
-          'module' => 'bean',
-          'delta' => 'donation-matching',
-          'region' => 'sidebar_first',
-          'weight' => '-9',
-        ),
-      ),
-    ),
-  );
+  $context->reactions = array();
   $context->condition_mode = 0;
 
   // Translatables
