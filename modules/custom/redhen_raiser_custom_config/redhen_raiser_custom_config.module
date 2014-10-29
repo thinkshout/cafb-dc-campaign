@@ -36,21 +36,3 @@ function redhen_raiser_custom_config_rules_config_load($configs) {
     }
   }
 }
-
-/**
- * Implements hook_image_styles_alter().
- */
-function redhen_raiser_custom_config_image_styles_alter(&$styles) {
-  // Set the user avatar style. Seen on campaign page listings, among others.
-  if (isset($styles['avatar']['label'])) {
-    $styles['avatar']['label'] = t('Avatar, for CAFB DC (200x200)');
-  }
-  if (isset($styles['avatar']['effects'])) {
-    foreach ($styles['avatar']['effects'] as $id => $effect) {
-      if ($effect['name'] == 'image_scale_and_crop') {
-        $styles['avatar']['effects'][$id]['data']['width'] = '200';
-        $styles['avatar']['effects'][$id]['data']['height'] = '200';
-      }
-    }
-  }
-}
