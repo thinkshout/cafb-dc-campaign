@@ -529,7 +529,12 @@ function random_data_campaign_team_name() {
  *   One item of the array.
  */
 function random_data_array_item(array $items) {
-  $delta = array_rand($items, 1);
-  $item = $items[$delta];
+  if (count($items >= 1)) {
+    $delta = array_rand($items, 1);
+    $item = $items[$delta];
+  }
+  else {
+    $item = NULL;
+  }
   return $item;
 }
