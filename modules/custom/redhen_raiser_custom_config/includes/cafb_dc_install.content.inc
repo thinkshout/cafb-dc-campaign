@@ -542,7 +542,7 @@ function cafb_dc_enable_donations(RedhenCampaign $campaign) {
         'payment_options' => array(
           'payment_methods' => array(
             0 => array(
-              'payment_method' => 'iats_credit_card|commerce_payment_iats_credit_card',
+              'payment_method' => 'iats_credit_card|cafb_iats_credit_card',
               'label' => '',
               'currency' => 'USD',
               'delete' => 'Delete',
@@ -562,4 +562,53 @@ function cafb_dc_enable_donations(RedhenCampaign $campaign) {
   $enabled_donation_settings['settings'] = serialize($enabled_donation_settings['settings']);
   drupal_set_message('Enabled donations for Campaign ' . $campaign->campaign_id);
   redhen_donation_update_entity_settings('redhen_campaign', $campaign->campaign_id, $enabled_donation_settings);
+}
+
+/**
+ * Add a sample payment rule for development.
+ */
+function cafb_dc_add_sample_payment_method() {
+  // Based on rules_ui_import_form_submit().
+  $rules_export = '{ "cafb_iats_credit_card" : {
+    "LABEL" : "iATS Payments: Credit card payment, CAFB",
+    "PLUGIN" : "reaction rule",
+    "OWNER" : "rules",
+    "TAGS" : [ "Commerce Payment" ],
+    "REQUIRES" : [ "commerce_payment" ],
+    "ON" : { "commerce_payment_methods" : [] },
+    "DO" : [
+      { "commerce_payment_enable_iats_credit_card" : {
+          "commerce_order" : [ "commerce-order" ],
+          "payment_method" : { "value" : {
+              "method_id" : "iats_credit_card",
+              "settings" : {
+                "agent_code" : "TEST88",
+                "agent_password" : "TEST88",
+                "direct_post" : { "enable_direct_post" : 0, "process_key" : "" },
+                "server" : "NA",
+                "log" : { "request" : 0, "response" : 0 },
+                "detailed_failure_message" : 0,
+                "invoice_prefix" : "INVOICE-",
+                "credit_card" : { "card_types" : { "visa" : 0, "mastercard" : 0, "amex" : 0, "discover" : 0 } }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }}';
+
+  module_load_include('inc', 'rules', 'ui/ui.forms');
+  $rules_config = rules_import($rules_export);
+
+  if ($existing_config = rules_config_load($rules_config->name)) {
+    // Copy DB id and remove the new indicator to overwrite the existing record.
+    $rules_config->id = $existing_config->id;
+    unset($rules_config->is_new);
+  }
+
+  $rules_config->save();
+  $vars = array('@entity' => t('Rules configuration'), '%label' => $rules_config->label());
+  watchdog('rules_config', 'Imported @entity %label.', $vars);
+  drupal_set_message(t('Imported @entity %label.', $vars));
 }

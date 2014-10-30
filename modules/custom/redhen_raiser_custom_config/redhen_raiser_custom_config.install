@@ -42,6 +42,9 @@ function redhen_raiser_default_content() {
   $created_contacts = ts_install_helpers_create_entities($stubbed_contacts);
   cafb_dc_create_users_link_contacts($created_contacts);
 
+  // Enable iATS payment method.
+  cafb_dc_add_sample_payment_method();
+
   // Campaigns.
   $stubbed_campaigns = cafb_dc_stubbed_campaigns(10);
   $created_campaigns = ts_install_helpers_create_entities($stubbed_campaigns);
