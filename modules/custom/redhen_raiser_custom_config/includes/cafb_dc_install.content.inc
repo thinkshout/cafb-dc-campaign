@@ -395,19 +395,29 @@ function cafb_dc_stubbed_beans() {
  *
  * @param array $contacts
  *   Array of RedhenContact objects, as people giving donations.
- * @param array @campaigns
+ * @param array $campaigns
  *   Array of RedhenCampaign objects, as recipients of donations.
  * @param int $number
  *   How many donations to create.
+ * @param array $campaign_pages
+ *   Array of RedhenCampaignPages to reference.
  */
-function cafb_dc_create_sample_donations($contacts, $campaigns, $number = 10) {
-  // @todo, enable $campagaign_pages and $campaign_updates as parameters, and
-  // use them to set custom contexts.
+function cafb_dc_create_sample_donations($contacts, $campaigns, $number = 10, $campaign_pages = array()) {
   for ($i = 0; $i < $number; $i++) {
     $campaign = random_data_array_item($campaigns);
     cafb_dc_enable_donations($campaign);
     $campaign_id = $campaign->campaign_id;
     $contact = random_data_array_item($contacts);
+    // Apply half of the donations to campaign pages.
+    if (rand(0, 1)) {
+      $campaign_page = random_data_array_item($campaign_pages);
+      $context_id = $campaign_page->page_id;
+      $context_type = 'redhen_campaign_page';
+    }
+    else {
+      $context_id = $campaign_id;
+      $context_type = 'redhen_campaign';
+    }
     $donation = new RedhenDonation(array(
       'type' => 'redhen_raiser_donation',
       'entity_type' => 'redhen_campaign',
@@ -416,9 +426,9 @@ function cafb_dc_create_sample_donations($contacts, $campaigns, $number = 10) {
       'contact_id' => $contact->contact_id,
       'status' => NULL,
       'transaction_entity_type' => NULL,
-      // 'transaction_entity_id' => NULL,
       'pledged' => NULL,
-      // 'received' => NULL,
+      'redhen_campaign_context_id' => $context_id,
+      'redhen_campaign_context_type' => $context_type,
     ));
     cafb_dc_process_sample_donation($donation);
   }
@@ -432,6 +442,12 @@ function cafb_dc_create_sample_donations($contacts, $campaigns, $number = 10) {
  *   including creating an order.
  */
 function cafb_dc_process_sample_donation(RedhenDonation $donation) {
+  // Set query parameters, to provide expected values from
+  // drupal_get_query_parameters() in redhen_campaign_form_redhen_donation_form_alter().
+  if ($donation->redhen_campaign_context_type == 'redhen_campaign_page') {
+    $_GET['campaign_page'] = $donation->redhen_campaign_context_id;
+  }
+
   // Create $form array.
   $form_id = 'redhen_donation_form';
   $form = drupal_get_form($form_id, $donation);
