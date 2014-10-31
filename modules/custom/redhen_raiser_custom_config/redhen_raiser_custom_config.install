@@ -67,8 +67,14 @@ function redhen_raiser_default_content() {
   $stubbed_updates_individual = cafb_dc_stubbed_campaign_updates($created_campaigns, $created_campaign_pages_team, $created_campaign_pages_individual, 15);
   $created_updates_individual = ts_install_helpers_create_content($stubbed_updates_individual, 'nodes');
 
+  $created_campaign_pages_all = array_merge(
+    $created_campaign_pages_team,
+    $created_campaign_pages_individual_team,
+    $created_campaign_pages_individual
+  );
+
   // Donations.
-  cafb_dc_create_sample_donations($created_contacts, $created_campaigns, 30);
+  cafb_dc_create_sample_donations($created_contacts, $created_campaigns, 30, $created_campaign_pages_all);
 
   // Bean blocks.
   $stubbed_beans = cafb_dc_stubbed_beans();

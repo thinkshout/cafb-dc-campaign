@@ -409,7 +409,7 @@ function cafb_dc_create_sample_donations($contacts, $campaigns, $number = 10, $c
     $campaign_id = $campaign->campaign_id;
     $contact = random_data_array_item($contacts);
     // Apply half of the donations to campaign pages.
-    if (rand(0, 1)) {
+    if (count($campaign_pages) && rand(0, 1)) {
       $campaign_page = random_data_array_item($campaign_pages);
       $context_id = $campaign_page->page_id;
       $context_type = 'redhen_campaign_page';
@@ -456,7 +456,7 @@ function cafb_dc_process_sample_donation(RedhenDonation $donation) {
   $donation_settings = redhen_donation_entity_settings($donation->entity_type, $donation->entity_id);
   $contact = redhen_contact_load($donation->contact_id);
   $contact_email = $contact->email();
-  $payment_method = 'iats_credit_card|commerce_payment_iats_credit_card';
+  $payment_method = 'iats_credit_card|cafb_iats_credit_card';
   $form_state = array(
     'donation' => $donation,
     'donation_settings' => $donation_settings,
