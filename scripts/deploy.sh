@@ -286,7 +286,7 @@ fi
 echo "Writing git ls-files -mo to $TEMP_BUILD/changes"
 # Checkout files that we don't want removed from the host, like settings.php.
 # This function should be defined in the host include script.
-# protectfiles;
+protectfiles;
 
 git ls-files -d --exclude-standard > $TEMP_BUILD/deletes
 echo "Adding file deletions to GIT"
