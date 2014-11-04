@@ -480,6 +480,13 @@ function cafb_dc_process_sample_donation(RedhenDonation $donation) {
       'product' => 1,
       'form_id' => 'redhen_donation_form',
       'op' => 'Donate',
+      'field_donation_comment' => array(
+        LANGUAGE_NONE => array(
+          0 => array(
+            'value' => devel_create_greeking(rand(5, 40)),
+          ),
+        ),
+      ),
       'commerce_customer_address' => array(
         LANGUAGE_NONE => array(
           0 => array_merge(
