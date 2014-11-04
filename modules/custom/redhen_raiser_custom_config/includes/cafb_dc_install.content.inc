@@ -239,10 +239,12 @@ function cafb_dc_stubbed_campaign_pages($campaigns, $contacts, $number = 10, $ty
     if ($type == 'team') {
       $stubs[$i]['bundle'] = 'team';
       $stubs[$i]['properties']['label'] = random_data_campaign_team_name();
+      $stubs[$i]['properties']['campaign_page_type'] = 2;
     }
     if ($type == 'individual') {
       $stubs[$i]['bundle'] = 'individual';
       $stubs[$i]['properties']['label'] = random_data_first_name() . ' ' . random_data_last_name();
+      $stubs[$i]['properties']['campaign_page_type'] = 1;
       if ($team_pages) {
         $team_page = random_data_array_item($team_pages);
         $stubs[$i]['properties']['team'] = $team_page->page_id;
@@ -264,7 +266,6 @@ function cafb_dc_stubbed_campaign_pages($campaigns, $contacts, $number = 10, $ty
 
     $campaign = random_data_array_item($campaigns);
     $stubs[$i]['properties']['campaign'] = $campaign->campaign_id;
-    $stubs[$i]['properties']['campaign_page_type'] = 2;
 
     // Story field.
     $stubs[$i]['fields']['field_story']['format'] = 'rich_text';
