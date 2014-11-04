@@ -127,7 +127,7 @@ function cafb_dc_create_users_link_contacts(&$contacts) {
 
     $image_name = $contact->first_name . $contact->last_name;
     $image_destination = "public://$image_name.png";
-    $image_source = 'http://hhhhold.com/180-220/png';
+    $image_source = ts_install_image_source(180, 220);
 
     $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
     $edit['picture'] = $image_file_id;
@@ -193,7 +193,7 @@ function cafb_dc_stubbed_campaigns($number = 10) {
     // Banner image field.
     $image_name = 'campaign-' . (string) rand(1, 999999) . '.png';
     $image_destination = "public://$image_name.png";
-    $image_source = 'http://hhhhold.com/900x400/png';
+    $image_source = ts_install_image_source(900, 400);
     $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
     $image_file = file_load($image_file_id);
     $stubs[$i]['fields']['field_banner_image'] = (array) $image_file;
@@ -201,7 +201,7 @@ function cafb_dc_stubbed_campaigns($number = 10) {
     // Story media field.
     $image_name = 'campaign-' . (string) rand(1, 999999) . '.png';
     $image_destination = "public://$image_name.png";
-    $image_source = 'http://hhhhold.com/350-700/png';
+    $image_source = ts_install_image_source(350, 700);
     $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
     $image_file = file_load($image_file_id);
     $stubs[$i]['fields']['field_story_media'] = (array) $image_file;
@@ -275,7 +275,7 @@ function cafb_dc_stubbed_campaign_pages($campaigns, $contacts, $number = 10, $ty
     // Logo field.
     $image_name = 'campaign-page-' . (string) rand(1, 999999) . '.png';
     $image_destination = "public://$image_name.png";
-    $image_source = 'http://hhhhold.com/200x200/png';
+    $image_source = ts_install_image_source(200, 200);
     $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
     $image_file = file_load($image_file_id);
     $stubs[$i]['fields']['field_logo'] = (array) $image_file;
@@ -283,7 +283,7 @@ function cafb_dc_stubbed_campaign_pages($campaigns, $contacts, $number = 10, $ty
     // Story media field.
     $image_name = 'campaign-page-' . (string) rand(1, 999999) . '.png';
     $image_destination = "public://$image_name.png";
-    $image_source = 'http://hhhhold.com/350-700/png';
+    $image_source = ts_install_image_source(350, 700);
     $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
     $image_file = file_load($image_file_id);
     $stubs[$i]['fields']['field_story_media'] = (array) $image_file;
@@ -356,7 +356,7 @@ function cafb_dc_stubbed_beans() {
 
   $image_name = 'promo-bean-' . (string) rand(1, 999999) . '.png';
   $image_destination = "public://$image_name.png";
-  $image_source = 'http://hhhhold.com/600-300/png';
+  $image_source = ts_install_image_source(600, 300);
   $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
   $image_file = file_load($image_file_id);
 
