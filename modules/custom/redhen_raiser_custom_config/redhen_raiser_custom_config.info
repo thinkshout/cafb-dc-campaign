@@ -15,5 +15,6 @@ features[context][] = cafb_campaign_home
 features[ctools][] = context:context:3
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
+features[variable][] = mail_system
 features[variable][] = mandrill_from
 features[variable][] = mandrill_from_name
