@@ -125,12 +125,9 @@ function cafb_dc_create_users_link_contacts(&$contacts) {
     $edit['pass'] = $edit['name'];
     $edit['status'] = 1;
 
-    $image_name = $contact->first_name . $contact->last_name;
-    $image_destination = "public://$image_name.png";
-    $image_source = ts_install_image_source(rand(180, 220), rand(180, 220));
-
-    $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
-    $edit['picture'] = $image_file_id;
+    $image_name = $contact->first_name . $contact->last_name . ".png";
+    $image_destination = "public://$image_name";
+    $edit['picture'] = ts_install_helpers_generate_image($width, $height, $image_name, $image_destination);
 
     $user = user_save('', $edit);
 
@@ -192,18 +189,14 @@ function cafb_dc_stubbed_campaigns($number = 10) {
 
     // Banner image field.
     $image_name = 'campaign-' . (string) rand(1, 999999) . '.png';
-    $image_destination = "public://$image_name.png";
-    $image_source = ts_install_image_source(900, 400);
-    $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
-    $image_file = file_load($image_file_id);
+    $image_destination = "public://$image_name";
+    $image_file = ts_install_helpers_generate_image(900, 400, $image_name, $image_destination);
     $stubs[$i]['fields']['field_banner_image'] = (array) $image_file;
 
     // Story media field.
     $image_name = 'campaign-' . (string) rand(1, 999999) . '.png';
-    $image_destination = "public://$image_name.png";
-    $image_source = ts_install_image_source(rand(350, 700), rand(350, 700));
-    $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
-    $image_file = file_load($image_file_id);
+    $image_destination = "public://$image_name";
+    $image_file = ts_install_helpers_generate_image(600, 400, $image_name, $image_destination);
     $stubs[$i]['fields']['field_story_media'] = (array) $image_file;
   }
 
@@ -274,18 +267,14 @@ function cafb_dc_stubbed_campaign_pages($campaigns, $contacts, $number = 10, $ty
 
     // Logo field.
     $image_name = 'campaign-page-' . (string) rand(1, 999999) . '.png';
-    $image_destination = "public://$image_name.png";
-    $image_source = ts_install_image_source(200, 200);
-    $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
-    $image_file = file_load($image_file_id);
+    $image_destination = "public://$image_name";
+    $image_file = ts_install_helpers_generate_image(200, 200, $image_name, $image_destination);
     $stubs[$i]['fields']['field_logo'] = (array) $image_file;
 
     // Story media field.
     $image_name = 'campaign-page-' . (string) rand(1, 999999) . '.png';
-    $image_destination = "public://$image_name.png";
-    $image_source = ts_install_image_source(rand(350, 700), rand(350, 700));
-    $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
-    $image_file = file_load($image_file_id);
+    $image_destination = "public://$image_name";
+    $image_file = ts_install_helpers_generate_image(600, 400, $image_name, $image_destination);
     $stubs[$i]['fields']['field_story_media'] = (array) $image_file;
   }
 
@@ -355,10 +344,8 @@ function cafb_dc_stubbed_beans() {
   $stubs = array();
 
   $image_name = 'promo-bean-' . (string) rand(1, 999999) . '.png';
-  $image_destination = "public://$image_name.png";
-  $image_source = ts_install_image_source(rand(300, 600), rand(300, 600));
-  $image_file_id = ts_install_helpers_copy_file($image_name, $image_destination, $image_source);
-  $image_file = file_load($image_file_id);
+  $image_destination = "public://$image_name";
+  $image_file = ts_install_helpers_generate_image(400, 400, $image_name, $image_destination);
 
   $stubs['donation-matching'] = array(
     'type' => 'promo',
@@ -469,7 +456,9 @@ function cafb_dc_process_sample_donation(RedhenDonation $donation) {
     ),
     'input' => array(
       // $25 to $5000.
-      'donation' => rand(2500, 500000),
+      'donation' => array(
+        'other' => rand(25, 5000) * 100,
+      ),
     ),
     'values' => array(
       'first_name' => $contact->first_name,
@@ -533,35 +522,13 @@ function cafb_dc_enable_donations(RedhenCampaign $campaign) {
         'confirmation_message' => 'Thank you for your donation!',
         'donation_entry' => 'select',
         'donation_amounts' => array(
-          '5' => 'Five',
-          '20' => 'Twenty',
+          '25' => '$25',
+          '50' => '$50',
+          '100' => '$100',
+          '250' => '$250',
+          '500' => '$500',
         ),
         'submit_label' => 'Donate',
-      ),
-      'commerce' => array(
-        'product_options' => array(
-          'product_select_label' => '',
-          'one_time_product' => '1',
-          'recurring' => array(),
-        ),
-        'profile_selector' => 'billing',
-        'payment_options' => array(
-          'payment_methods' => array(
-            0 => array(
-              'payment_method' => 'iats_credit_card|cafb_iats_credit_card',
-              'label' => '',
-              'currency' => 'USD',
-              'delete' => 'Delete',
-            ),
-          ),
-          'add_field' => 'Add another payment method',
-        ),
-      ),
-      'redhen_fields' => array(
-        'fields' => array(
-          'field_organization' => 0,
-          'middle_name' => 0,
-        ),
       ),
     ),
   );
