@@ -127,7 +127,7 @@ function cafb_dc_create_users_link_contacts(&$contacts) {
 
     $image_name = $contact->first_name . $contact->last_name . ".png";
     $image_destination = "public://$image_name";
-    $edit['picture'] = ts_install_helpers_generate_image($width, $height, $image_name, $image_destination);
+    $edit['picture'] = ts_install_helpers_generate_image(200, 200, $image_name, $image_destination);
 
     $user = user_save('', $edit);
 
