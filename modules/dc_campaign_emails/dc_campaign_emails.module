@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the DC Campaign Emails feature.
+ */
+
+include_once 'dc_campaign_emails.features.inc';
