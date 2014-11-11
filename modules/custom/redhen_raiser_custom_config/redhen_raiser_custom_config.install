@@ -28,7 +28,7 @@ function redhen_raiser_custom_config_install() {
  */
 function redhen_raiser_default_content() {
   // Load helper functions.
-  include_once 'sites/all/libraries/ts_install_helpers/ts_install_helpers.inc';
+  include_once 'sites/all/libraries/ts_install_helpers/ts_install_helpers.php';
   include_once 'includes/cafb_dc_install.content.inc';
   include_once 'includes/random_data.inc';
 
