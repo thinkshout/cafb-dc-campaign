@@ -17,6 +17,8 @@ function redhen_raiser_custom_config_strongarm() {
   $strongarm->value = array(
     'default-system' => 'MandrillMailSystem',
     'mandrill_test' => 'MandrillMailSystem',
+    'rules_rules_action_mail_rules_donation_acknowledgement_4' => 'MandrillMailSystem',
+    'redhen_campaign_invite' => 'MandrillMailSystem',
   );
   $export['mail_system'] = $strongarm;
 
