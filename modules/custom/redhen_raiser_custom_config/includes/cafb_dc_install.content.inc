@@ -457,6 +457,7 @@ function cafb_dc_process_sample_donation(RedhenDonation $donation) {
     'input' => array(
       // $25 to $5000.
       'donation' => array(
+        'select' => rand(25, 5000) * 100,
         'other' => rand(25, 5000) * 100,
       ),
     ),
@@ -490,7 +491,7 @@ function cafb_dc_process_sample_donation(RedhenDonation $donation) {
           'number' => '4222222222222220',
           'exp_month' => '12',
           'exp_year' => '2019',
-          'code' => '444',
+          'code' => '000',
         ),
       ),
     ),
