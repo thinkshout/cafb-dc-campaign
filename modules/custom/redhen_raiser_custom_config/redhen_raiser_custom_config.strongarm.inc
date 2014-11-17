@@ -36,5 +36,12 @@ function redhen_raiser_custom_config_strongarm() {
   $strongarm->value = 'Capital Area Food Bank of DC';
   $export['mandrill_from_name'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'mandrill_filter_format';
+  $strongarm->value = 'email';
+  $export['mandrill_filter_format'] = $strongarm;
+
   return $export;
 }
