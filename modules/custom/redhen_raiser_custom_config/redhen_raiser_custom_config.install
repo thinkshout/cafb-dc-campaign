@@ -10,6 +10,7 @@
 function redhen_raiser_custom_config_install() {
   module_enable(array('redhen_raiser_defaults'), TRUE);
   variable_set('site_name', 'Capital Area Food Bank of DC');
+  variable_set('site_slogan', 'Together We Can Solve Hunger™');
   variable_set('site_frontpage', 'node/1');
 
   // Disable constant rebuilding of theme registry.
