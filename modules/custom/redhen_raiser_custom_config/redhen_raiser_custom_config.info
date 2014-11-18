@@ -23,3 +23,4 @@ features[filter][] = email
 features[variable][] = mail_system
 features[variable][] = mandrill_from
 features[variable][] = mandrill_from_name
+features[variable][] = mandrill_filter_format
