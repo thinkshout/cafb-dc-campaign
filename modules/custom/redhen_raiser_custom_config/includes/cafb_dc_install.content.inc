@@ -393,7 +393,6 @@ function cafb_dc_stubbed_beans() {
 function cafb_dc_create_sample_donations($contacts, $campaigns, $number = 10, $campaign_pages = array()) {
   for ($i = 0; $i < $number; $i++) {
     $campaign = random_data_array_item($campaigns);
-    cafb_dc_enable_donations($campaign);
     $campaign_id = $campaign->campaign_id;
     $contact = random_data_array_item($contacts);
     // Apply half of the donations to campaign pages.
@@ -500,42 +499,6 @@ function cafb_dc_process_sample_donation(RedhenDonation $donation) {
   // Make the donation.
   drupal_prepare_form($form_id, $form, $form_state);
   redhen_donation_form_submit($form, $form_state);
-}
-
-/**
- * Enable donations for a campaign.
- *
- * @param RedhenCampaign $campaign
- *   Campaign entity for which to enable donations.
- */
-function cafb_dc_enable_donations(RedhenCampaign $campaign) {
-  $current_donation_settings = redhen_donation_entity_settings('redhen_campaign', $campaign->campaign_id);
-  if (!empty($current_donation_settings['status'])) {
-    return;
-  }
-  $enabled_donation_settings = array(
-    'status' => 1,
-    'open' => NULL,
-    'close' => NULL,
-    'settings' => array(
-      'donation_settings' => array(
-        'confirmation_page' => '',
-        'confirmation_message' => 'Thank you for your donation!',
-        'donation_entry' => 'select',
-        'donation_amounts' => array(
-          '25' => '$25',
-          '50' => '$50',
-          '100' => '$100',
-          '250' => '$250',
-          '500' => '$500',
-        ),
-        'submit_label' => 'Donate',
-      ),
-    ),
-  );
-  $enabled_donation_settings['settings'] = serialize($enabled_donation_settings['settings']);
-  drupal_set_message('Enabled donations for Campaign ' . $campaign->campaign_id);
-  redhen_donation_update_entity_settings('redhen_campaign', $campaign->campaign_id, $enabled_donation_settings);
 }
 
 /**
