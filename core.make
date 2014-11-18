@@ -5,4 +5,4 @@ core = 7.x
 
 projects[drupal][download][type] = "git"
 projects[drupal][download][url] = "https://github.com/pantheon-systems/drops-7.git"
-projects[drupal][download][revision] = "56f1003"
+projects[drupal][download][revision] = "31562bd3e"
