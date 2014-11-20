@@ -59,7 +59,7 @@ libraries[ts_install_helpers][type] = "library"
 ; IATS Payment library
 libraries[iatspayments][destination] = "libraries"
 libraries[iatspayments][download][type] = "get"
-libraries[iatspayments][download][url] = "https://github.com/iATSPayments/PHP/archive/v1.0.tar.gz"
+libraries[iatspayments][download][url] = "https://github.com/iATSPayments/PHP/archive/v1.3.tar.gz"
 libraries[iatspayments][directory_name] = "iatspayments"
 
 ; mandrill library
