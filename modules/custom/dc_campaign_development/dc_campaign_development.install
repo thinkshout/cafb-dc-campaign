@@ -1,0 +1,12 @@
+<?php
+/**
+ * @file
+ * Install file for the DC Campaign Development module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dc_campaign_development_install() {
+  redhen_raiser_default_content();
+}

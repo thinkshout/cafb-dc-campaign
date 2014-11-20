@@ -5,6 +5,7 @@ package = CAFB DC
 version = 7.x-1.0
 project = dc_campaign_development
 dependencies[] = devel
+dependencies[] = redhen_raiser_custom_config
 dependencies[] = rules_admin
 dependencies[] = views_ui
 features[features_api][] = api:2

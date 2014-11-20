@@ -21,7 +21,21 @@ function redhen_raiser_custom_config_install() {
   $theme_raiser_settings = array_merge($theme_raiser_settings, $settings_to_disable);
   variable_set('theme_raiser_settings', $theme_raiser_settings);
 
-  redhen_raiser_default_content();
+  redhen_raiser_default_nodes();
+}
+/**
+ * Install default content.
+ */
+function redhen_raiser_default_nodes() {
+  // Load helper functions.
+  include_once 'sites/all/libraries/ts_install_helpers/ts_install_helpers.php';
+  include_once 'includes/cafb_dc_install.content.inc';
+  include_once 'includes/random_data.inc';
+
+  // Basic pages and menus.
+  $stubbed_nodes = cafb_dc_stubbed_nodes();
+  $node_menu_items = ts_install_helpers_create_content($stubbed_nodes);
+  ts_install_helpers_create_menu_items($node_menu_items);
 }
 
 /**
@@ -32,11 +46,6 @@ function redhen_raiser_default_content() {
   include_once 'sites/all/libraries/ts_install_helpers/ts_install_helpers.php';
   include_once 'includes/cafb_dc_install.content.inc';
   include_once 'includes/random_data.inc';
-
-  // Basic pages and menus.
-  $stubbed_nodes = cafb_dc_stubbed_nodes();
-  $node_menu_items = ts_install_helpers_create_content($stubbed_nodes);
-  ts_install_helpers_create_menu_items($node_menu_items);
 
   // Contacts.
   $stubbed_contacts = cafb_dc_stubbed_contacts(10);
