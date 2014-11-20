@@ -453,14 +453,9 @@ function cafb_dc_process_sample_donation(RedhenDonation $donation) {
         0 => $donation,
       ),
     ),
-    'input' => array(
-      // $25 to $5000.
-      'donation' => array(
-        'select' => rand(25, 5000),
-        'other' => rand(25, 5000),
-      ),
-    ),
+    'currency' => 'USD',
     'values' => array(
+      'donation' => rand(25, 5000),
       'first_name' => $contact->first_name,
       'middle_name' => $contact->middle_name,
       'last_name' => $contact->last_name,
