@@ -8,4 +8,4 @@ HOSTTYPE=pantheon
 
 SITENAME="Capital Area Food Bank"
 
-GITREPO="ssh://codeserver.dev.148e4d53-bde0-426b-a5a1-eed2d29b848e@codeserver.dev.148e4d53-bde0-426b-a5a1-eed2d29b848e.drush.in:2222/~/repository.git"
+GITREPO="ssh://codeserver.dev.308a884d-477e-45e0-b3aa-1f5cc90eb30a@codeserver.dev.308a884d-477e-45e0-b3aa-1f5cc90eb30a.drush.in:2222/~/repository.git"
