@@ -38,6 +38,10 @@ projects[redhen_raiser][download][url] = "git@github.com:thinkshout/redhen_raise
 projects[commerce_iats][subdir] = 'contrib'
 projects[commerce_iats][version] = '2.6'
 
+; google_analytics
+projects[google_analytics][subdir] = 'contrib'
+projects[google_analytics][version] = '2.0'
+
 ; mailsystem
 projects[mailsystem][subdir] = 'contrib'
 projects[mailsystem][version] = '2.34'
