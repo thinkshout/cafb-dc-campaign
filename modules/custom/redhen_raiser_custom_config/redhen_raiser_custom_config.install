@@ -15,10 +15,14 @@ function redhen_raiser_custom_config_install() {
 
   // Disable constant rebuilding of theme registry.
   $theme_raiser_settings = variable_get('theme_raiser_settings', array());
-  $settings_to_disable = array(
+  $raiser_custom_settings = array(
+    'default_logo' => FALSE,
+    'logo_path' => 'sites/all/themes/custom/logo.png',
+    'default_favicon' => FALSE,
+    'favicon_path' => 'sites/all/themes/custom/favicon.ico',
     'zen_rebuild_registry' => FALSE,
   );
-  $theme_raiser_settings = array_merge($theme_raiser_settings, $settings_to_disable);
+  $theme_raiser_settings = array_merge($theme_raiser_settings, $raiser_custom_settings);
   variable_set('theme_raiser_settings', $theme_raiser_settings);
 
   redhen_raiser_default_nodes();
@@ -36,57 +40,4 @@ function redhen_raiser_default_nodes() {
   $stubbed_nodes = cafb_dc_stubbed_nodes();
   $node_menu_items = ts_install_helpers_create_content($stubbed_nodes);
   ts_install_helpers_create_menu_items($node_menu_items);
-}
-
-/**
- * Install default content.
- */
-function redhen_raiser_default_content() {
-  // Load helper functions.
-  include_once 'sites/all/libraries/ts_install_helpers/ts_install_helpers.php';
-  include_once 'includes/cafb_dc_install.content.inc';
-  include_once 'includes/random_data.inc';
-
-  // Contacts.
-  $stubbed_contacts = cafb_dc_stubbed_contacts(10);
-  $created_contacts = ts_install_helpers_create_entities($stubbed_contacts);
-  cafb_dc_create_users_link_contacts($created_contacts);
-
-  // Enable iATS payment method.
-  cafb_dc_add_sample_payment_method();
-
-  // Campaigns.
-  $stubbed_campaigns = cafb_dc_stubbed_campaigns(10);
-  $created_campaigns = ts_install_helpers_create_entities($stubbed_campaigns);
-
-  // Team campaign pages.
-  $stubbed_campaign_pages_team = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 60, 'team');
-  $created_campaign_pages_team = ts_install_helpers_create_entities($stubbed_campaign_pages_team);
-
-  // Individual campaign pages that reference teams.
-  $stubbed_campaign_pages_individual_team = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 40, 'individual', $created_campaign_pages_team);
-  $created_campaign_pages_individual_team = ts_install_helpers_create_entities($stubbed_campaign_pages_individual_team);
-
-  // Individual campaign pages that do not reference teams.
-  $stubbed_campaign_pages_individual = cafb_dc_stubbed_campaign_pages($created_campaigns, $created_contacts, 40, 'individual');
-  $created_campaign_pages_individual = ts_install_helpers_create_entities($stubbed_campaign_pages_individual);
-
-  // Campaign updates.
-  $stubbed_updates_team = cafb_dc_stubbed_campaign_updates($created_campaigns, $created_campaign_pages_team, $created_campaign_pages_individual_team, 15);
-  $created_updates_team = ts_install_helpers_create_content($stubbed_updates_team, 'nodes');
-  $stubbed_updates_individual = cafb_dc_stubbed_campaign_updates($created_campaigns, $created_campaign_pages_team, $created_campaign_pages_individual, 15);
-  $created_updates_individual = ts_install_helpers_create_content($stubbed_updates_individual, 'nodes');
-
-  $created_campaign_pages_all = array_merge(
-    $created_campaign_pages_team,
-    $created_campaign_pages_individual_team,
-    $created_campaign_pages_individual
-  );
-
-  // Donations.
-  cafb_dc_create_sample_donations($created_contacts, $created_campaigns, 30, $created_campaign_pages_all);
-
-  // Bean blocks.
-  $stubbed_beans = cafb_dc_stubbed_beans();
-  ts_install_helpers_create_beans($stubbed_beans);
 }
