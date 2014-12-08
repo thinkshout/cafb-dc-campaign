@@ -3,5 +3,4 @@ tmp/
 libraries/
 modules/contrib
 modules/README.txt
-!themes/custom/
-themes/
+themes/README.txt
