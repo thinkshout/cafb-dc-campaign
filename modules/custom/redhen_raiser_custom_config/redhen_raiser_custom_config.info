@@ -9,6 +9,7 @@ dependencies[] = commerce_iats
 dependencies[] = context
 dependencies[] = ctools
 dependencies[] = dc_campaign_emails
+dependencies[] = dc_campaign_core_permissions
 dependencies[] = features
 dependencies[] = filter
 dependencies[] = googleanalytics
