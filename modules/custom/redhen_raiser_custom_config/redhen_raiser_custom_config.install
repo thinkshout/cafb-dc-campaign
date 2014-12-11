@@ -14,12 +14,12 @@ function redhen_raiser_custom_config_install() {
   variable_set('site_frontpage', 'node/1');
   variable_set('theme_default', 'cafb_dc');
 
-  redhen_raiser_default_nodes();
+  redhen_raiser_custom_default_nodes();
 }
 /**
  * Install default content.
  */
-function redhen_raiser_default_nodes() {
+function redhen_raiser_custom_default_nodes() {
   // Load helper functions.
   include_once 'sites/all/libraries/ts_install_helpers/ts_install_helpers.php';
   include_once 'includes/cafb_dc_install.content.inc';
@@ -29,4 +29,11 @@ function redhen_raiser_default_nodes() {
   $stubbed_nodes = cafb_dc_stubbed_nodes();
   $node_menu_items = ts_install_helpers_create_content($stubbed_nodes);
   ts_install_helpers_create_menu_items($node_menu_items);
+}
+
+/**
+ * Set the new default theme to cafb_dc rather than raiser.
+ */
+function redhen_raiser_custom_config_update_7000(&$sandbox) {
+  variable_set('theme_default', 'cafb_dc');
 }
