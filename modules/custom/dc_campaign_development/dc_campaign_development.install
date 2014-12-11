@@ -63,10 +63,3 @@ function dc_campaign_development_default_content() {
   $stubbed_beans = cafb_dc_stubbed_beans();
   ts_install_helpers_create_beans($stubbed_beans);
 }
-
-/**
- * <Describe here what your update function does>
- */
-function dc_campaign_development_update_7000(&$sandbox) {
-  dc_campaign_development_default_content();
-}
