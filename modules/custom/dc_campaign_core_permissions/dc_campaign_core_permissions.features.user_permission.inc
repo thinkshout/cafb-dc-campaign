@@ -13,7 +13,9 @@ function dc_campaign_core_permissions_user_default_permissions() {
   // Exported permission: 'administer google analytics'.
   $permissions['administer google analytics'] = array(
     'name' => 'administer google analytics',
-    'roles' => array(),
+    'roles' => array(
+      'admin' => 'admin',
+    ),
     'module' => 'googleanalytics',
   );
 
