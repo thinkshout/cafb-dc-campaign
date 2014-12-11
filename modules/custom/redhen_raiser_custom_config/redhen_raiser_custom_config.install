@@ -12,18 +12,7 @@ function redhen_raiser_custom_config_install() {
   variable_set('site_name', 'Capital Area Food Bank of DC');
   variable_set('site_slogan', 'Together We Can Solve Hunger™');
   variable_set('site_frontpage', 'node/1');
-
-  // Disable constant rebuilding of theme registry.
-  $theme_raiser_settings = variable_get('theme_raiser_settings', array());
-  $raiser_custom_settings = array(
-    'default_logo' => FALSE,
-    'logo_path' => 'sites/all/themes/custom/logo.png',
-    'default_favicon' => FALSE,
-    'favicon_path' => 'sites/all/themes/custom/favicon.ico',
-    'zen_rebuild_registry' => FALSE,
-  );
-  $theme_raiser_settings = array_merge($theme_raiser_settings, $raiser_custom_settings);
-  variable_set('theme_raiser_settings', $theme_raiser_settings);
+  variable_set('theme_default', 'cafb_dc');
 
   redhen_raiser_default_nodes();
 }
