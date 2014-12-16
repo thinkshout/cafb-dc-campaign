@@ -41,6 +41,10 @@ projects[commerce_iats][version] = '2.7'
 projects[google_analytics][subdir] = 'contrib'
 projects[google_analytics][version] = '2.1'
 
+; commerce_google_analytics
+projects[commerce_google_analytics][subdir] = 'contrib'
+projects[commerce_google_analytics][version] = '1.1'
+
 ; mailsystem
 projects[mailsystem][subdir] = 'contrib'
 projects[mailsystem][version] = '2.34'

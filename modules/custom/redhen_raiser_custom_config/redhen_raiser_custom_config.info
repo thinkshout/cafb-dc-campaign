@@ -12,6 +12,7 @@ dependencies[] = dc_campaign_emails
 dependencies[] = features
 dependencies[] = filter
 dependencies[] = googleanalytics
+dependencies[] = commerce_google_analytics
 dependencies[] = mailsystem
 dependencies[] = mandrill
 dependencies[] = mandrill_template
