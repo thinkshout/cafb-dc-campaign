@@ -10,7 +10,8 @@ core = 7.x
 
 ; Download the RedHen Raiser install profile and recursively build all its dependencies:
 projects[redhen_raiser][type] = profile
-projects[redhen_raiser][version] = '1.0'
+projects[redhen_raiser][revision] = '6b2831a'
+
 
 ;======================================
 ; Use standard drush make syntax
