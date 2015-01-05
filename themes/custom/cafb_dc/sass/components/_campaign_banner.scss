@@ -46,6 +46,7 @@
     float: left;
     font-family: $raiser-heading-font;
     font-size: em(32);
+    height: 82px;
     left: auto;
     line-height: 1;
     margin-top: 4.5em;
@@ -61,7 +62,11 @@
     @include mobile {
       width: 100%;
       margin-top: 0;
+    }
 
+    @include small {
+      left: 0;
+      margin-top: 4.5em;
     }
   }
 
@@ -77,13 +82,13 @@
 
   .field-name-field-teaser {
     background: rgba(0,0,0,0.6);
-    bottom: auto;
+    //bottom: auto;
     box-sizing: border-box;
     clear: both;
     color: $white;
     float: left;
     font-size: 1.2em;
-    height: 150px;
+    height: 74px; //150px;
     margin-bottom: 0;
     max-width: none;
     padding: 0.5em 1em 0;
@@ -92,6 +97,11 @@
 
     @include mobile {
       width: 100%;
+    }
+
+    @include small {
+      position: absolute;
+      bottom: 0;
     }
   }
 
