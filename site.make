@@ -39,7 +39,7 @@ projects[redhen_raiser][download][revision] = '429ea44'
 
 ; commerce_iats
 projects[commerce_iats][subdir] = 'contrib'
-projects[commerce_iats][version] = '2.8'
+projects[commerce_iats][version] = '2.9'
 
 ; google_analytics
 projects[google_analytics][subdir] = 'contrib'
