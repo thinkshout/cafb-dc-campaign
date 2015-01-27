@@ -11,9 +11,9 @@ core = 7.x
 ; Download the RedHen Raiser install profile and recursively build all its dependencies:
 projects[redhen_raiser][type] = profile
 projects[redhen_raiser][download][type] = git
-projects[redhen_raiser][download][url] = "gcb@git.drupal.org:project/redhen_raiser.git"
+projects[redhen_raiser][download][url] = "git@git.drupal.org:project/redhen_raiser.git"
 projects[redhen_raiser][download][branch] = '7.x-1.x'
-projects[redhen_raiser][download][revision] = '3b404c8'
+projects[redhen_raiser][download][revision] = '429ea44'
 
 
 ;======================================
@@ -39,7 +39,7 @@ projects[redhen_raiser][download][revision] = '3b404c8'
 
 ; commerce_iats
 projects[commerce_iats][subdir] = 'contrib'
-projects[commerce_iats][version] = '2.7'
+projects[commerce_iats][version] = '2.9'
 
 ; google_analytics
 projects[google_analytics][subdir] = 'contrib'
