@@ -16,7 +16,11 @@ function redhen_raiser_custom_config_default_rules_configuration() {
       "REQUIRES" : [ "commerce_google_analytics", "redhen_donation" ],
       "ON" : { "redhen_donation_donation_completed" : [] },
       "DO" : [
-        { "commerce_google_analytics_send_order" : { "commerce_order" : [ "commerce-transaction:order" ] } }
+        { "commerce_google_analytics_send_order" : {
+            "commerce_order" : [ "commerce-transaction:order" ],
+            "method" : "default"
+          }
+        }
       ]
     }
   }');
