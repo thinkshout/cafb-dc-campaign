@@ -9,5 +9,4 @@ dependencies[] = rules
 features[features_api][] = api:2
 features[mandrill_template_map][] = standard
 features[rules_config][] = rules_donation_acknowledgement
-mtime = 1416352782
 project path = sites/all/modules/custom

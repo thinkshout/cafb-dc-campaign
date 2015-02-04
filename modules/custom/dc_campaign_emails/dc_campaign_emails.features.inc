@@ -18,8 +18,7 @@ function dc_campaign_emails_default_mandrill_template_map() {
     "sections" : null,
     "author_uid" : "0",
     "created" : "0",
-    "updated" : "0",
-    "rdf_mapping" : []
+    "updated" : "0"
   }');
   return $items;
 }
