@@ -13,7 +13,7 @@ projects[redhen_raiser][type] = profile
 projects[redhen_raiser][download][type] = git
 projects[redhen_raiser][download][url] = "git@git.drupal.org:project/redhen_raiser.git"
 projects[redhen_raiser][download][branch] = 'dc_raiser'
-projects[redhen_raiser][download][revision] = '3f7b491'
+projects[redhen_raiser][download][revision] = '98bed3d'
 
 ;======================================
 ; Use standard drush make syntax
