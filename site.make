@@ -52,6 +52,10 @@ projects[ga_push][version] = '1.0'
 projects[commerce_google_analytics][subdir] = 'contrib'
 projects[commerce_google_analytics][version] = '2.0-beta1'
 
+; hybridauth
+projects[hybridauth][subdir] = 'contrib'
+projects[hybridauth][version] = '2.9'
+
 ; mailsystem
 projects[mailsystem][subdir] = 'contrib'
 projects[mailsystem][version] = '2.34'
@@ -81,6 +85,12 @@ libraries[mandrill][destination] = "libraries"
 libraries[mandrill][download][type] = "get"
 libraries[mandrill][download][url] = "https://bitbucket.org/mailchimp/mandrill-api-php/get/1.0.52.tar.gz"
 libraries[mandrill][directory_name] = "mandrill"
+
+; hybridauth library
+libraries[hybridauth][destination] = "libraries"
+libraries[hybridauth][download][type] = "get"
+libraries[hybridauth][download][url] = "https://github.com/hybridauth/hybridauth/archive/v2.3.0.tar.gz"
+libraries[hybridauth][directory_name] = "hybridauth"
 
 ;-----------------------------------------
 ; Themes
