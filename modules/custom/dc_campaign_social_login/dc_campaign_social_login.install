@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * Install file for the Social Login module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function dc_campaign_social_login_install() {
+  // To alter forms properly, we need to be sure our modules weight is higher
+  // than the hybridauth module's.
+  $weight = db_select('system', 's')
+    ->fields('s', array('weight'))
+    ->condition('name', 'hybridauth', '=')
+    ->execute()
+    ->fetchField();
+
+  db_update('system')
+    ->fields(array('weight' => $weight + 1))
+    ->condition('name', 'dc_campaign_social_login', '=')
+    ->execute();
+}

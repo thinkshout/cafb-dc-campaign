@@ -4,3 +4,35 @@
  * Code for the DC Campaign Social Login feature.
  */
 
+include_once 'dc_campaign_social_login.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dc_campaign_social_login_form_user_login_alter(&$form, &$form_state, $form_id) {
+  $field_order = array(
+    'name',
+    'pass',
+    'hybridauth',
+    'register',
+    'reset',
+    'actions',
+  );
+  foreach ($field_order as $weight => $item) {
+    $form[$item]['#weight'] = $weight;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function dc_campaign_social_login_form_user_register_form_alter(&$form, &$form_state, $form_id) {
+  $field_order = array(
+    'redhen_contact',
+    'hybridauth',
+    'login',
+    'actions',
+  );
+  foreach ($field_order as $weight => $item) {
+    $form[$item]['#weight'] = $weight;
+  }}
