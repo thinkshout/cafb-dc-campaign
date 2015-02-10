@@ -114,9 +114,9 @@ After that, you will be able to log in at [site:login-url] using your [user:hybr
   $strongarm->api_version = 1;
   $strongarm->name = 'hybridauth_provider_Facebook_scope';
   $strongarm->value = array(
-    'user_about_me' => 'user_about_me',
     'email' => 'email',
     'offline_access' => 'offline_access',
+    'user_about_me' => 0,
     'user_activities' => 0,
     'user_birthday' => 0,
     'user_checkins' => 0,
@@ -256,7 +256,7 @@ After that, you will be able to log in at [site:login-url] using your [user:hybr
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'hybridauth_widget_title';
-  $strongarm->value = 'Log in via:';
+  $strongarm->value = '';
   $export['hybridauth_widget_title'] = $strongarm;
 
   $strongarm = new stdClass();
