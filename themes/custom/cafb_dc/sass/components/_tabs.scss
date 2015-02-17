@@ -1,0 +1,36 @@
+.tabs {
+  @include clearfix;
+  margin: 0;
+  padding-bottom: 0em;
+  white-space: nowrap;
+}
+
+.tabs.primary {
+  border-bottom: 1px solid $lt-gray;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.tabs.primary li {
+  border: none;
+  display: inline;
+  margin-right: 0.05em;
+  margin-left: 0;
+  position: relative;
+  z-index: 1000;
+}
+
+.tabs.primary li a {
+  background: $primary;
+  color: $white;
+  font-size: 14px;
+  padding: 0.5em;
+  text-shadow: none;
+
+  &.active {
+    background: $lt-primary;
+    color: $black;
+    text-shadow: none;
+  }
+}
+
