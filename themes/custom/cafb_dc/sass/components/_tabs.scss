@@ -1,6 +1,6 @@
 .tabs {
   @include clearfix;
-  margin: 0;
+  margin: 0 0 1em 0;
   padding-bottom: 0em;
   white-space: nowrap;
 }
@@ -26,6 +26,12 @@
   font-size: 14px;
   padding: 0.5em;
   text-shadow: none;
+
+  &:hover {
+    background: $lt-primary;
+    color: $black;
+    @include transition(0.3s all);
+  }
 
   &.active {
     background: $lt-primary;
