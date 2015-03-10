@@ -35,4 +35,13 @@ function dc_campaign_social_login_form_user_register_form_alter(&$form, &$form_s
   );
   foreach ($field_order as $weight => $item) {
     $form[$item]['#weight'] = $weight;
-  }}
+  }
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function dc_campaign_social_login_menu_alter(&$items) {
+  $items['user/%user/hybridauth']['title'] = "Social Media Accounts";
+  $items['user/%user/hybridauth/delete']['title'] = "Delete Social Media Authentication";
+}
