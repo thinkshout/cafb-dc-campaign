@@ -13,6 +13,202 @@ function dc_campaign_social_login_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_icon_pack_comment_form';
+  $strongarm->value = 'hybridauth_48';
+  $export['hybridauth_bonus_widget_icon_pack_comment_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_icon_pack_user_login';
+  $strongarm->value = 'hybridauth_32';
+  $export['hybridauth_bonus_widget_icon_pack_user_login'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_icon_pack_user_login_block';
+  $strongarm->value = 'hybridauth_32';
+  $export['hybridauth_bonus_widget_icon_pack_user_login_block'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_icon_pack_user_register_form';
+  $strongarm->value = 'hybridauth_48';
+  $export['hybridauth_bonus_widget_icon_pack_user_register_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_link_text_comment_form';
+  $strongarm->value = 'Social network account';
+  $export['hybridauth_bonus_widget_link_text_comment_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_link_text_user_login';
+  $strongarm->value = 'Social network account';
+  $export['hybridauth_bonus_widget_link_text_user_login'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_link_text_user_login_block';
+  $strongarm->value = 'Social network account';
+  $export['hybridauth_bonus_widget_link_text_user_login_block'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_link_text_user_register_form';
+  $strongarm->value = 'Social network account';
+  $export['hybridauth_bonus_widget_link_text_user_register_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_link_title_comment_form';
+  $strongarm->value = 'Social network account';
+  $export['hybridauth_bonus_widget_link_title_comment_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_link_title_user_login';
+  $strongarm->value = 'Social network account';
+  $export['hybridauth_bonus_widget_link_title_user_login'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_link_title_user_login_block';
+  $strongarm->value = 'Social network account';
+  $export['hybridauth_bonus_widget_link_title_user_login_block'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_link_title_user_register_form';
+  $strongarm->value = 'Social network account';
+  $export['hybridauth_bonus_widget_link_title_user_register_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_title_comment_form';
+  $strongarm->value = 'You can also login with your existing accounts:';
+  $export['hybridauth_bonus_widget_title_comment_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_title_user_login';
+  $strongarm->value = 'You can also log in with your existing accounts:';
+  $export['hybridauth_bonus_widget_title_user_login'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_title_user_login_block';
+  $strongarm->value = 'You can also log in with your existing accounts:';
+  $export['hybridauth_bonus_widget_title_user_login_block'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_title_user_register_form';
+  $strongarm->value = 'OR';
+  $export['hybridauth_bonus_widget_title_user_register_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_type_comment_form';
+  $strongarm->value = 'list';
+  $export['hybridauth_bonus_widget_type_comment_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_type_user_login';
+  $strongarm->value = 'list';
+  $export['hybridauth_bonus_widget_type_user_login'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_type_user_login_block';
+  $strongarm->value = 'list';
+  $export['hybridauth_bonus_widget_type_user_login_block'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_type_user_register_form';
+  $strongarm->value = 'list';
+  $export['hybridauth_bonus_widget_type_user_register_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_use_overlay_comment_form';
+  $strongarm->value = 1;
+  $export['hybridauth_bonus_widget_use_overlay_comment_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_use_overlay_user_login';
+  $strongarm->value = 1;
+  $export['hybridauth_bonus_widget_use_overlay_user_login'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_use_overlay_user_login_block';
+  $strongarm->value = 1;
+  $export['hybridauth_bonus_widget_use_overlay_user_login_block'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_use_overlay_user_register_form';
+  $strongarm->value = 1;
+  $export['hybridauth_bonus_widget_use_overlay_user_register_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_weight_comment_form';
+  $strongarm->value = '100';
+  $export['hybridauth_bonus_widget_weight_comment_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_weight_user_login';
+  $strongarm->value = '100';
+  $export['hybridauth_bonus_widget_weight_user_login'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_weight_user_login_block';
+  $strongarm->value = '100';
+  $export['hybridauth_bonus_widget_weight_user_login_block'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'hybridauth_bonus_widget_weight_user_register_form';
+  $strongarm->value = '100';
+  $export['hybridauth_bonus_widget_weight_user_register_form'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'hybridauth_destination';
   $strongarm->value = '';
   $export['hybridauth_destination'] = $strongarm;
@@ -235,7 +431,7 @@ After that, you will be able to log in at [site:login-url] using your [user:hybr
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'hybridauth_widget_icon_pack';
-  $strongarm->value = 'hybridauth_32';
+  $strongarm->value = 'hybridauth_48';
   $export['hybridauth_widget_icon_pack'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -256,7 +452,7 @@ After that, you will be able to log in at [site:login-url] using your [user:hybr
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'hybridauth_widget_title';
-  $strongarm->value = '';
+  $strongarm->value = 'You can also log in with your existing accounts:';
   $export['hybridauth_widget_title'] = $strongarm;
 
   $strongarm = new stdClass();
