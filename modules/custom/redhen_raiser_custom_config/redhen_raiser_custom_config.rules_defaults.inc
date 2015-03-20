@@ -19,7 +19,7 @@ function redhen_raiser_custom_config_default_rules_configuration() {
         { "commerce_google_analytics_save_ga_session_to_order" : { "commerce_order" : [ "commerce-transaction:order" ] } },
         { "commerce_google_analytics_send_order" : {
             "commerce_order" : [ "commerce-transaction:order" ],
-            "method" : "default"
+            "method" : "utmp-js"
           }
         }
       ]
