@@ -17,6 +17,7 @@ dependencies[] = commerce_product_reference
 dependencies[] = commerce_recurring
 dependencies[] = context
 dependencies[] = ctools
+dependencies[] = dc_campaign_blocks_contexts
 dependencies[] = dc_campaign_core_permissions
 dependencies[] = dc_campaign_emails
 dependencies[] = entity
