@@ -1,6 +1,6 @@
 ;======================================
-; Charlotte's Web
-; A sample implementation of
+; Capital Area Foodbank of DC Campaigns
+; An implementation of
 ; RedHen Raiser Distribution
 ;
 ; by ThinkShout
@@ -11,6 +11,7 @@ core = 7.x
 ; Download the RedHen Raiser install profile and recursively build all its dependencies:
 projects[redhen_raiser][type] = profile
 projects[redhen_raiser][version] = '1.3'
+projects[redhen_raiser][patch][] = 'https://www.drupal.org/files/issues/campaign_context_header_always_2460483.patch'
 
 ;======================================
 ; Use standard drush make syntax
