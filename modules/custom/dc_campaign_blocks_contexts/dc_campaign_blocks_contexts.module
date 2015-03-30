@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the DC Campaign Blocks & Contexts feature.
+ */
+
+include_once 'dc_campaign_blocks_contexts.features.inc';

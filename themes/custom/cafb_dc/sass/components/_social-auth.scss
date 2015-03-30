@@ -6,21 +6,17 @@
     font-size: em(16);
     overflow: hidden;
     text-align: center;
-
-  }
-}
-
-.page-user-register .hybridauth-widget-wrapper h3 {
-  &:after,
-  &:before {
-    box-shadow: 0 1px 0 $lt-primary;
-    content: "";
-    display: inline-block;
-    height: 1px;
-    margin-left: 1em;
-    margin-right: 1em;
-    position: relative;
-    width: 30%;
-    vertical-align: middle;
+    &:after,
+    &:before {
+      box-shadow: 0 1px 0 $lt-primary;
+      content: "";
+      display: inline-block;
+      height: 1px;
+      margin-left: 1em;
+      margin-right: 1em;
+      position: relative;
+      width: 30%;
+      vertical-align: middle;
+    }
   }
 }

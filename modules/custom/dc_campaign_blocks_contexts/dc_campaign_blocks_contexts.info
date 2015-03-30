@@ -1,0 +1,13 @@
+name = DC Campaign Blocks & Contexts
+description = Extra block types, custom contexts, and other site layout business.
+core = 7.x
+package = CAFB-DC
+version = 7.x-1.0
+project = dc_campaign_blocks_contexts
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = redhen_raiser_blocks
+features[context][] = sitewide_dc
+features[ctools][] = context:context:3
+features[features_api][] = api:2
+project path = sites/all/modules/custom/
