@@ -10,8 +10,7 @@ core = 7.x
 
 ; Download the RedHen Raiser install profile and recursively build all its dependencies:
 projects[redhen_raiser][type] = profile
-projects[redhen_raiser][version] = '1.3'
-projects[redhen_raiser][patch][] = 'https://www.drupal.org/files/issues/campaign_context_header_always_2460483.patch'
+projects[redhen_raiser][version] = '1.5'
 
 ;======================================
 ; Use standard drush make syntax
