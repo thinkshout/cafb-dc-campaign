@@ -1,7 +1,0 @@
-name = RedHen Donations Additions
-description = Adds an additional donation field to donations.
-package = RedHen
-core = 7.x
-project = redhen_donations_additions
-
-dependencies[] = redhen
