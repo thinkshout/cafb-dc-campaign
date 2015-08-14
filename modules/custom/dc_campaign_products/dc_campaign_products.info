@@ -4,4 +4,4 @@ package = CAFB-DC
 core = 7.x
 project = dc_campaign_products
 
-dependencies[] = redhen_donations
+dependencies[] = redhen_donation

@@ -10,24 +10,24 @@
  */
 function dc_campaign_products_install() {
 
-  // Create default Donation Product.
+  // Create default Product.
   $donation_product_settings = array(
-    'sku' => '501c3GIFTADDITION',
-    'title' => 'Donation Addition',
-    'type' => 'donation',
+    'sku' => 'hunger_bowl',
+    'title' => 'Hunger Bowl',
+    'type' => 'product',
   );
   $donation_product = entity_create('commerce_product', $donation_product_settings);
   entity_save('commerce_product', $donation_product);
 
   // @todo: initialize price
-  commerce_product_configure_product_type('donation');
+  commerce_product_configure_product_type('product');
 
   // Create default RedHen Donation object.
   $rh_donation_type_settings = array(
-    'name' => 'redhen_raiser_donation',
-    'label' => 'RedHen Raiser Donation',
+    'name' => 'redhen_raiser_product',
+    'label' => 'RedHen Raiser Product',
     'status' => REDHEN_STATE_ACTIVE,
-    'module' => 'redhen_raiser_donations',
+    'module' => 'dc_campaign_products',
     'settings' => array(
       'contact_settings' => array(
         'contact_type' => 'contact',
@@ -39,8 +39,8 @@ function dc_campaign_products_install() {
         'profile_selector' => 'field_billing_address',
       ),
       'commerce_settings' => array(
-        'one_time_product_type' => 'donation',
-        'line_item_type' => 'redhen_raiser_donation',
+        'one_time_product_type' => 'product',
+        'line_item_type' => 'redhen_raiser_product',
         'product_options' => array(
           'one_time_product' => '1',
         ),

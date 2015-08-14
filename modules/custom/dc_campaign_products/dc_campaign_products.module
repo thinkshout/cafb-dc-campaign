@@ -9,21 +9,7 @@
  *
  */
 function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'redhen_donation_form') {
-    $form['donation_add'] = array(
-      '#type' => 'select_or_other',
-      '#title' => '',
-      '#required' => FALSE,
-      '#multiple' => FALSE,
-      '#options' => '',
-      '#default_value' => '',
-      '#other' => isset($settings['settings']['donation_add_label']) ? $settings['settings']['donation_add_label'] : t('I will add an additional amount'),
-      '#other_description' => t('Please enter an amount.'),
-      '#other_unknown_defaults' => 'other',
-      '#other_delimiter' => ', ',
-      '#select_type' => 'checkboxes',
-    );
-  }
+  // Add product here.
   $form['#validate'][] = 'dc_campaign_products_form_validate';
 }
 
@@ -47,14 +33,18 @@ function dc_campaign_products_form_validate($form, &$form_state) {
   }
 }
 
+/*
+ * This relies on a hook in redhen donation that doesn't exist yet.
+ */
 function dc_campaign_products_redhen_order_alter(&$form, &$form_state, &$order_wrapper) {
 
+  // remove or replace this once there is a product form.
   $values = $form_state['values'];
   $donation = $form_state['donation'];
   $donation_type = redhen_donation_type_load($donation->bundle());
   $product_id = $values['product'];
   $order = $order_wrapper->value();
-  $product = commerce_product_load_by_sku('501c3GIFTADDITION');
+  $product = null;
 
   $order_id = $order->order_id;
   $line_item_type
