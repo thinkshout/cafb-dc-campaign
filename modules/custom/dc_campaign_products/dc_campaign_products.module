@@ -12,7 +12,6 @@ function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
   try {
     if ($form_id == 'redhen_donation_form') {
     $donation = $form_state['donation'];
-
     if (!isset($form_state['#donation_settings'])) {
         $form_state['donation_settings']
             = $settings
@@ -28,6 +27,7 @@ function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
 
     // Load Commerce products based on the donation type settings.
     $product_id = array($commerce_settings['product_options']['one_time_product']);
+    $form['product_id'] = $product_id;
     $product = commerce_product_load($product_id[0]);
     $wrapper = entity_metadata_wrapper('commerce_product', $product);
     $form['product_title'] = array('#markup' => $product->title);
@@ -81,10 +81,10 @@ function dc_campaign_products_redhen_order_alter(&$form, &$form_state, &$order_w
   $values = $form_state['values'];
   $donation = $form_state['donation'];
   $donation_type = redhen_donation_type_load($donation->bundle());
-  $product_id = $values['product'];
+  $product_id = $values['product_id'][0];
   $order = $order_wrapper->value();
-  $product = null;
-
+  $product = commerce_product_load($product_id);
+  $price = commerce_product_calculate_sell_price($product);
   $order_id = $order->order_id;
   $line_item_type
     = isset($donation_type->settings['commerce_settings']['line_item_type']) ?
@@ -94,7 +94,7 @@ function dc_campaign_products_redhen_order_alter(&$form, &$form_state, &$order_w
   if (isset($form_state['values']['quantity']) && !empty($form_state['values']['quantity'])) {
     $line_item = commerce_product_line_item_new($product, $product_id, $order_id, array(), $line_item_type);
     field_attach_submit('commerce_line_item', $line_item, $form['line_item'], $form_state);
-    $donation_amount = $form_state['values']['quantity'] * $form_state['values']['price'] ;
+    $donation_amount = $form_state['values']['quantity'] * $price;
     $currency = $form_state['currency'];
 
     redhen_donation_update_line_item_price($line_item, $donation_amount, $currency);
