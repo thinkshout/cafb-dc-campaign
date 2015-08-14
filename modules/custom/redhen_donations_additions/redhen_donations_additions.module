@@ -1,0 +1,79 @@
+<?php
+/**
+ * @file
+ * Code for the RedHen Raiser donations additions feature.
+ */
+
+/**
+ * Implements hook_form_alter().
+ *
+ */
+function redhen_donations_additions_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'redhen_donation_form') {
+    $form['donation_add'] = array(
+      '#type' => 'select_or_other',
+      '#title' => '',
+      '#required' => FALSE,
+      '#multiple' => FALSE,
+      '#options' => '',
+      '#default_value' => '',
+      '#other' => isset($settings['settings']['donation_add_label']) ? $settings['settings']['donation_add_label'] : t('I will add an additional amount'),
+      '#other_description' => t('Please enter an amount.'),
+      '#other_unknown_defaults' => 'other',
+      '#other_delimiter' => ', ',
+      '#select_type' => 'checkboxes',
+    );
+  }
+  $form['#validate'][] = 'redhen_donations_additions_form_validate';
+}
+
+function redhen_donations_additions_form_validate($form, &$form_state) {
+
+  // The select__or_other module does something funny with checkboxes where it places the other text into an array. So, lets fix that.
+  if (!empty($form_state['values']['donation_add'])) {
+
+    // Avoid a strict warning with array shift.
+    $additional_donation_value = array_values($form_state['values']['donation_add']);
+    $additional_donation = array_shift($additional_donation_value);
+    if (is_numeric($additional_donation) && $additional_donation > 0) {
+      $form_state['values']['donation_add'] = commerce_currency_decimal_to_amount($additional_donation, $form_state['currency']);
+    }
+    else {
+      form_set_error('donation_add', t('The additional donation must be entered as a positive number.'));
+    }
+  }
+  else {
+    $form_state['values']['donation_add'] = 0;
+  }
+}
+
+function redhen_donations_additions_redhen_order_alter(&$form, &$form_state, &$order_wrapper) {
+
+  $values = $form_state['values'];
+  $donation = $form_state['donation'];
+  $donation_type = redhen_donation_type_load($donation->bundle());
+  $product_id = $values['product'];
+  $order = $order_wrapper->value();
+  $product = commerce_product_load_by_sku('501c3GIFTADDITION');
+
+  $order_id = $order->order_id;
+  $line_item_type
+    = isset($donation_type->settings['commerce_settings']['line_item_type']) ?
+    $donation_type->settings['commerce_settings']['line_item_type'] :
+    'product';
+
+  if (isset($form_state['values']['donation_add']) && !empty($form_state['values']['donation_add'])) {
+    $line_item = commerce_product_line_item_new($product, 1, $order_id, array(), $line_item_type);
+    field_attach_submit('commerce_line_item', $line_item, $form['line_item'], $form_state);
+    $donation_amount = $form_state['values']['donation_add'];
+    $currency = $form_state['currency'];
+
+    redhen_donation_update_line_item_price($line_item, $donation_amount, $currency);
+
+    // Save the line item to get the ID.
+    commerce_line_item_save($line_item);
+
+    // Add the item to the list of line items.
+    $order_wrapper->commerce_line_items[] = $line_item;
+  }
+}
