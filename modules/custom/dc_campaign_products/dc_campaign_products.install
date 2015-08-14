@@ -2,13 +2,13 @@
 
 /**
  * @file
- * Installation hooks for redhen_donations_additions module.
+ * Installation hooks for dc_campaign_products module.
  */
 
 /**
  * Implements hook_install().
  */
-function redhen_donations_additions_install() {
+function dc_campaign_products_install() {
 
   // Create default Donation Product.
   $donation_product_settings = array(

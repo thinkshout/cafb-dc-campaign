@@ -8,7 +8,7 @@
  * Implements hook_form_alter().
  *
  */
-function redhen_donations_additions_form_alter(&$form, &$form_state, $form_id) {
+function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'redhen_donation_form') {
     $form['donation_add'] = array(
       '#type' => 'select_or_other',
@@ -24,10 +24,10 @@ function redhen_donations_additions_form_alter(&$form, &$form_state, $form_id) {
       '#select_type' => 'checkboxes',
     );
   }
-  $form['#validate'][] = 'redhen_donations_additions_form_validate';
+  $form['#validate'][] = 'dc_campaign_products_form_validate';
 }
 
-function redhen_donations_additions_form_validate($form, &$form_state) {
+function dc_campaign_products_form_validate($form, &$form_state) {
 
   // The select__or_other module does something funny with checkboxes where it places the other text into an array. So, lets fix that.
   if (!empty($form_state['values']['donation_add'])) {
@@ -47,7 +47,7 @@ function redhen_donations_additions_form_validate($form, &$form_state) {
   }
 }
 
-function redhen_donations_additions_redhen_order_alter(&$form, &$form_state, &$order_wrapper) {
+function dc_campaign_products_redhen_order_alter(&$form, &$form_state, &$order_wrapper) {
 
   $values = $form_state['values'];
   $donation = $form_state['donation'];
