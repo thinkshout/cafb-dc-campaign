@@ -9,8 +9,47 @@
  *
  */
 function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
-  // Add product here.
-  $form['#validate'][] = 'dc_campaign_products_form_validate';
+  try {
+    if ($form_id == 'redhen_donation_form') {
+    $donation = $form_state['donation'];
+
+    if (!isset($form_state['#donation_settings'])) {
+        $form_state['donation_settings']
+            = $settings
+            = redhen_donation_entity_settings(
+            $donation->entity_type,
+            $donation->entity_id,
+            TRUE
+        );
+    }
+
+    $donation_type = redhen_donation_type_load($donation->bundle());
+    $commerce_settings = $donation_type->settings['commerce_settings'];
+
+    // Load Commerce products based on the donation type settings.
+    $product_id = array($commerce_settings['product_options']['one_time_product']);
+    $product = commerce_product_load($product_id[0]);
+    $wrapper = entity_metadata_wrapper('commerce_product', $product);
+    $form['product_title'] = array('#markup' => $product->title);
+    $form['product_description'] = array('#markup' => $wrapper->field_product_description->value->value());
+    $form['product_image'] = array('#markup' =>  theme('image_style', array('path'=>$wrapper->field_product_image->file->value()->uri, 'style_name' => 'teaser_image')));
+
+    $price = commerce_product_calculate_sell_price($product);
+    $price_display = commerce_currency_format($price['amount'], $price['currency_code']);
+    $form['price'] = array('#markup' => $price_display);
+    $form['quantity'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Quantity'),
+        '#size' => 4,
+        '#required' => FALSE,
+      );
+
+      $form['#validate'][] = 'dc_campaign_products_form_validate';
+  }
+  }
+  catch (exception $e) {
+    dpm($e);
+  }
 }
 
 function dc_campaign_products_form_validate($form, &$form_state) {
