@@ -20,6 +20,45 @@
         font-size: 1.25em;
       }
     }
+    .product-group {
+      border: 1px solid #D5D8D5;
+      margin: 0 0 20px;
+      padding: 20px 0 0 10px;
+    }
+    .container-inline {
+      margin: 20px 0;
+    }
+    .product-title {
+      font-weight: bold;
+    }
+    .product-left {
+      float: left;
+      margin-right: 10px;
+      label {
+        width: 80px;
+        display: block;
+        float: left;
+      }
+      .form-item-quantity input {
+        margin-top: -7px;
+        width: auto;
+      }
+      .form-item-order-price label {
+        font-weight: bold;
+      }
+      .order-price {
+        font-weight: bold;
+      }
+    }
+    .product-image {
+      float: left;
+    }
+    .product-description {
+      max-width: 300px;
+    }
+    .field-name-commerce-customer-address {
+      clear: both;
+    }
 
     #edit-product-label {
       display: none;

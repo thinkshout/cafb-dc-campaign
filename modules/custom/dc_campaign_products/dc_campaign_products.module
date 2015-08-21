@@ -30,50 +30,70 @@ function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
         $wrapper = entity_metadata_wrapper('commerce_product', $product);
         $description = $wrapper->field_product_description->value();
         $image_uri = $wrapper->field_product_image->file->value()->uri;
+
         $form['product_group'] = array(
           '#title' => '',
           '#type' => 'fieldset',
           '#attributes' => array(
             'id' => array('product-group'),
+            'class' => array('product-group'),
           ),
         );
         $form['product_group']['product_title'] = array(
-          '#markup' => t('Add a ' . $product->title . t(' purchase')),
-        );
-        $form['product_group']['product_description'] = array(
-          '#markup' => $description,
+            '#markup' => t('Add a ' . $product->title . t(' purchase')),
+            '#prefix' => '<div class="product-title">',
+            '#suffix' => '</div>',
           );
-        $form['product_group']['product_image'] = array(
-          '#markup' => theme('image_style', array(
-            'path' => $image_uri,
-            'style_name' => 'teaser_image'
-          ))
-        );
+        $form['product_group']['product_left'] = array(
+            '#title' => '',
+            '#type' => 'fieldset',
+            '#attributes' => array(
+              'class' => array('product-left'),
+            ),
+          );
 
         $price = commerce_product_calculate_sell_price($product);
         $price_display = commerce_currency_format($price['amount'], $price['currency_code']);
+
         $price_markup = '<div class="form-item form-type-custom form-item-product-price">'
-                      . '<label for="product-price">' . t('Price:') . '</label>'
-                      . '<div id="product-price">' . $price_display . '</div></div>';
-
-
-        $form['product_group']['price'] = array(
+          . '<label for="product-price">' . t('Price: ') . '</label>'
+          . '<div id="product-price" class="product-price">' . $price_display . '</div></div>';
+        $form['product_group']['product_left']['price'] = array(
+            '#markup' => $price_markup,
+            '#prefix' => '<div class="container-inline">',
+            '#suffix' => '</div>',
+          );
+        $form['product_group']['product_left']['quantity'] = array(
+            '#type' => 'textfield',
+            '#title' => t('Quantity: '),
+            '#size' => 4,
+            '#required' => FALSE,
+            '#prefix' => '<div class="container-inline">',
+            '#suffix' => '</div>',
+          );
+        $form['product_group']['product_left']['product_description'] = array(
+            '#markup' => $description,
+            '#prefix' => '<div class="container-inline product-description">',
+            '#suffix' => '</div>',
+          );
+        $price_markup = '<div class="form-item form-type-custom form-item-order-price">'
+          . '<label for="order-price">' . t('Total: ') . '</label>'
+          . '<div id="order-price" class="order-price">' . $price_display . '</div></div>';
+        $form['product_group']['product_left']['order_price'] = array(
           '#markup' => $price_markup,
           '#prefix' => '<div class="container-inline">',
           '#suffix' => '</div>',
-
           );
-        $form['product_group']['quantity'] = array(
-          '#type' => 'textfield',
-          '#title' => t('Quantity'),
-          '#size' => 4,
-          '#required' => FALSE,
-          '#prefix' => '<div class="container-inline">',
-          '#suffix' => '</div>',
-        );
-
-          $form['#validate'][] = 'dc_campaign_products_form_validate';
-        }
+        $form['product_group']['product_image'] = array(
+            '#markup' => theme('image_style', array(
+              'path' => $image_uri,
+              'style_name' => 'square_thumbnail'
+            )),
+            '#prefix' => '<div class="product-image">',
+            '#suffix' => '</div>',
+          );
+        $form['#validate'][] = 'dc_campaign_products_form_validate';
+      }
     }
   }
   catch (exception $e) {
