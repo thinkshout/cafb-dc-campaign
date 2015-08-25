@@ -1,6 +1,8 @@
 name = DC Campaign Products
 description = Adds a product to donations.
 package = CAFB-DC
+core = 7.x
+project = dc_campaign_products
 
 dependencies[] = redhen_donation
 dependencies[] = redhen_raiser_donations
