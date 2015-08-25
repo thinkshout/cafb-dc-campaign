@@ -1,8 +1,11 @@
 <?php
 /**
  * @file
- * Code for the RedHen Raiser donations additions feature.
+ * Code for the DC Campaign Products feature.
  */
+
+include_once 'dc_campaign_products.features.inc';
+
 
 /**
  * Implements hook_form_alter().
