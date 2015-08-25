@@ -13,6 +13,10 @@ projects[redhen_raiser][type] = profile
 projects[redhen_raiser][version] = '1.5'
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-add-billing-address-2542948.patch
 
+; Add patches to donation for product support
+projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-add-order-alter-2557497.patch
+projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-make-donations-optional-2557489.patch
+
 ;======================================
 ; Use standard drush make syntax
 ; to customize your site. Take a
