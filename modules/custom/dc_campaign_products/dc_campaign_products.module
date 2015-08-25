@@ -11,6 +11,9 @@
 function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
   try {
     if ($form_id == 'redhen_donation_form') {
+
+      // Hide the tax field
+      $form['field_tax_deductible_amount']['#type']= 'hidden';
       $donation = $form_state['donation'];
       if (!isset($form_state['#donation_settings'])) {
         $form_state['donation_settings']
@@ -31,6 +34,13 @@ function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
         $description = $wrapper->field_product_description->value();
         $image_uri = $wrapper->field_product_image->file->value()->uri;
 
+        // Rearrange the form
+        $form['donation']['#weight'] = 2;
+        $form['donation']['#required'] = false;
+        $form['customer_profile']['#weight'] = 3;
+        $form['field_donation_comment']['#weight'] = 4;
+
+        // Add the product above the donation amount.
         $form['product_group'] = array(
           '#title' => '',
           '#type' => 'fieldset',
@@ -38,19 +48,20 @@ function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
             'id' => array('product-group'),
             'class' => array('product-group'),
           ),
+          '#weight' => 1,
         );
         $form['product_group']['product_title'] = array(
-            '#markup' => t('Add a ' . $product->title . t(' purchase')),
-            '#prefix' => '<div class="product-title">',
-            '#suffix' => '</div>',
-          );
+          '#markup' => t('Add a ' . $product->title . t(' purchase')),
+          '#prefix' => '<div class="product-title">',
+          '#suffix' => '</div>',
+        );
         $form['product_group']['product_left'] = array(
-            '#title' => '',
-            '#type' => 'fieldset',
-            '#attributes' => array(
-              'class' => array('product-left'),
-            ),
-          );
+          '#title' => '',
+          '#type' => 'fieldset',
+          '#attributes' => array(
+            'class' => array('product-left'),
+          ),
+        );
 
         $price = commerce_product_calculate_sell_price($product);
         $price_display = commerce_currency_format($price['amount'], $price['currency_code']);
@@ -59,39 +70,50 @@ function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
           . '<label for="product-price">' . t('Price: ') . '</label>'
           . '<div id="product-price" class="product-price">' . $price_display . '</div></div>';
         $form['product_group']['product_left']['price'] = array(
-            '#markup' => $price_markup,
-            '#prefix' => '<div class="container-inline">',
-            '#suffix' => '</div>',
-          );
-        $form['product_group']['product_left']['quantity'] = array(
-            '#type' => 'textfield',
-            '#title' => t('Quantity: '),
-            '#size' => 4,
-            '#required' => FALSE,
-            '#prefix' => '<div class="container-inline">',
-            '#suffix' => '</div>',
-          );
-        $form['product_group']['product_left']['product_description'] = array(
-            '#markup' => $description,
-            '#prefix' => '<div class="container-inline product-description">',
-            '#suffix' => '</div>',
-          );
-        $price_markup = '<div class="form-item form-type-custom form-item-order-price">'
-          . '<label for="order-price">' . t('Total: ') . '</label>'
-          . '<div id="order-price" class="order-price">' . $price_display . '</div></div>';
-        $form['product_group']['product_left']['order_price'] = array(
           '#markup' => $price_markup,
           '#prefix' => '<div class="container-inline">',
           '#suffix' => '</div>',
-          );
-        $form['product_group']['product_image'] = array(
-            '#markup' => theme('image_style', array(
-              'path' => $image_uri,
-              'style_name' => 'square_thumbnail'
-            )),
-            '#prefix' => '<div class="product-image">',
+        );
+        $form['product_group']['product_left']['quantity'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Quantity: '),
+          '#size' => 4,
+          '#required' => FALSE,
+          '#prefix' => '<div class="container-inline">',
+          '#suffix' => '</div>',
+          '#ajax' => array(
+            'callback' => '_dc_campaign_products_set_total',
+            'wrapper' => 'order-total-wrapper',
+          ),
+          '#default_value' => 0,
+        );
+        $form['product_group']['product_left']['product_description'] = array(
+          '#markup' => $description,
+          '#prefix' => '<div class="container-inline product-description">',
+          '#suffix' => '</div>',
+        );
+        // If we are editing an existing form, we already have the values
+        if (!empty($form['product_group']['product_left']['quantity']['#default_value'])
+          || isset($form_state['values']['quantity'][0])) {
+          $form['product_group']['product_left']['order_price'] = _dc_campaign_products_set_total($form, $form_state);
+        } else {
+          $total_markup = '<div class="form-item form-type-custom form-item-order-price">'
+            . '<label for="order-price">' . t('Total: ') . '</label>'
+            . '<div id="order-price" class="order-price">$0</div></div>';
+          $form['product_group']['product_left']['order_total'] = array(
+            '#markup' => $total_markup,
+            '#prefix' => '<div id="order-total-wrapper" class="container-inline">',
             '#suffix' => '</div>',
           );
+        }
+        $form['product_group']['product_image'] = array(
+          '#markup' => theme('image_style', array(
+            'path' => $image_uri,
+            'style_name' => 'square_thumbnail'
+          )),
+          '#prefix' => '<div class="product-image">',
+          '#suffix' => '</div>',
+        );
         $form['#validate'][] = 'dc_campaign_products_form_validate';
       }
     }
@@ -103,21 +125,50 @@ function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
 
 function dc_campaign_products_form_validate($form, &$form_state) {
 
-  // The select__or_other module does something funny with checkboxes where it places the other text into an array. So, lets fix that.
-  if (!empty($form_state['values']['donation_add'])) {
-
-    // Avoid a strict warning with array shift.
-    $additional_donation_value = array_values($form_state['values']['donation_add']);
-    $additional_donation = array_shift($additional_donation_value);
-    if (is_numeric($additional_donation) && $additional_donation > 0) {
-      $form_state['values']['donation_add'] = commerce_currency_decimal_to_amount($additional_donation, $form_state['currency']);
-    }
-    else {
-      form_set_error('donation_add', t('The additional donation must be entered as a positive number.'));
+  if (empty($form_state['values']['donation']) && empty($form_state['values']['quantity'])) {
+    form_set_error('quantity', t('Please select a quantity or a donation amount.'));
+  }
+  if (!empty($form_state['values']['quantity'])) {
+     if (!ctype_digit($form_state['values']['quantity'])) {
+       form_set_error('quantity', t('Please use whole number amounts for quantity.'));
+     }
+      if ($form_state['values']['quantity'] <= 0) {
+      form_set_error('quantity', t('The quantity must be a positive number.'));
     }
   }
-  else {
-    $form_state['values']['donation_add'] = 0;
+
+  // This code is added because the Ajax for price total adds an illegal option detected error.
+  $errors = form_get_errors();
+  if ($errors) {
+    // Clear errors.
+    form_clear_error();
+    // Clear error messages.
+    $error_messages = drupal_get_messages('error');
+    // Initialize an array where removed error messages are stored.
+    $removed_messages = array();
+
+
+    // Remove all errors originated by the 'foo][bar' element.
+    foreach ($errors as $name => $error_message) {
+      if ($name == 'donation][select') {
+        $removed_messages[] = $error_message;
+        unset($errors[$name]);
+      }
+    }
+
+    // Reinstate remaining errors.
+    foreach ($errors as $name => $error) {
+      form_set_error($name, $error);
+      // form_set_error() calls drupal_set_message(), so we have to filter out
+      // these from the error messages as well.
+      $removed_messages[] = $error;
+    }
+
+    // Reinstate remaining error messages (which, at this point, are messages that
+    // were originated outside of the validation process).
+    foreach (array_diff($error_messages['error'], $removed_messages) as $message) {
+      drupal_set_message($message, 'error');
+    }
   }
 }
 
@@ -130,9 +181,14 @@ function dc_campaign_products_redhen_order_alter(&$form, &$form_state, &$order_w
   $donation = $form_state['donation'];
   $donation_type = redhen_donation_type_load($donation->bundle());
   $product_id = $form_state['product_id'];
+  $deductible_amount = 0;
   $order = $order_wrapper->value();
   $product = commerce_product_load($product_id);
   $price = commerce_product_calculate_sell_price($product);
+  $product_wrapper = entity_metadata_wrapper('commerce_product', $product);
+  if (!empty($product_wrapper->field_tax_deductible_amount)) {
+    $deductible_amount = $product_wrapper->field_tax_deductible_amount->value();
+  }
   $order_id = $order->order_id;
   $line_item_type
     = isset($donation_type->settings['commerce_settings']['line_item_type']) ?
@@ -140,9 +196,10 @@ function dc_campaign_products_redhen_order_alter(&$form, &$form_state, &$order_w
     'product';
 
   if (isset($form_state['values']['quantity']) && !empty($form_state['values']['quantity'])) {
+    $quantity = $form_state['values']['quantity'];
     $line_item = commerce_product_line_item_new($product, $product_id, $order_id, array(), $line_item_type);
     field_attach_submit('commerce_line_item', $line_item, $form['line_item'], $form_state);
-    $donation_amount = $form_state['values']['quantity'] * $price['amount'];
+    $donation_amount = $quantity * $price['amount'];
     $currency = $form_state['currency'];
 
     redhen_donation_update_line_item_price($line_item, $donation_amount, $currency);
@@ -152,5 +209,39 @@ function dc_campaign_products_redhen_order_alter(&$form, &$form_state, &$order_w
 
     // Add the item to the list of line items.
     $order_wrapper->commerce_line_items[] = $line_item;
+
+    $additional_donation = $form_state['values']['donation'];
+    $deductible_amount['amount'] = $deductible_amount['amount'] * $quantity + $additional_donation;
+    $form_state['values']['field_tax_deductible_amount']['und'][0] = $deductible_amount;
+    if ($deductible_amount['amount'] != 0) {
+      $deduction = commerce_currency_format($deductible_amount['amount'], $price['currency_code'], $product);
+      drupal_set_message($deduction . t(' of your donation is tax deductible.'));
+    }
+  }
+}
+
+/**
+ * AJAX callback to grab all the nodes with a given term.
+ *
+ */
+function _dc_campaign_products_set_total($form, $form_state) {
+  if (isset($form_state['triggering_element'])) {
+    $product_id = $form_state['product_id'];
+    $quantity = $form_state['triggering_element']['#value'];
+
+    $product = commerce_product_load($product_id);
+    $price = commerce_product_calculate_sell_price($product);
+    $price_display = commerce_currency_format($quantity * $price['amount'], $price['currency_code']);
+
+    $total_markup = '<div class="form-item form-type-custom form-item-order-price">'
+      . '<label for="order-price">' . t('Total: ') . '</label>'
+      . '<div id="order-price" class="order-price">' . $price_display . '</div></div>';
+    $form['product_group']['product_left']['order_total'] = array(
+      '#markup' => $total_markup,
+      '#prefix' => '<div id="order-total-wrapper" class="container-inline">',
+      '#suffix' => '</div>',
+    );
+
+    return $form['product_group']['product_left']['order_total'];
   }
 }
