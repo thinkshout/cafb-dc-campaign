@@ -54,7 +54,7 @@ function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
           '#weight' => 1,
         );
         $form['product_group']['product_title'] = array(
-          '#markup' => t('Add a ' . $product->title . t(' purchase')),
+          '#markup' => t($product->title . t(' purchase')),
           '#prefix' => '<div class="product-title">',
           '#suffix' => '</div>',
         );
