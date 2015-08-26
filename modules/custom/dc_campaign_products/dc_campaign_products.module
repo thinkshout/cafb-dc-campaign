@@ -29,7 +29,7 @@ function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
       }
       $campaign = entity_load_single('redhen_campaign', $donation->entity_id);
       $campaign_wrapper = entity_metadata_wrapper('redhen_campaign', $campaign);
-      if (!isset($campaign_wrapper->field_product->product_id)) {
+      if (isset($campaign_wrapper->field_product->target_id)) {
         $product_id = $campaign_wrapper->field_product->product_id->value();
         $form_state['product_id'] = $product_id;
         $product = commerce_product_load($product_id);
