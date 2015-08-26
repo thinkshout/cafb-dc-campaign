@@ -40,6 +40,7 @@ function dc_campaign_products_form_alter(&$form, &$form_state, $form_id) {
         // Rearrange the form
         $form['donation']['#weight'] = 2;
         $form['donation']['#required'] = false;
+        $form['donation']['#title'] = t('Additional ') . $form['donation']['#title'];
         $form['customer_profile']['#weight'] = 3;
         $form['field_donation_comment']['#weight'] = 4;
 
