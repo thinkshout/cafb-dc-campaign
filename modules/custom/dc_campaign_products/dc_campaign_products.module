@@ -184,7 +184,11 @@ function dc_campaign_products_redhen_order_alter(&$form, &$form_state, &$order_w
     $values = $form_state['values'];
     $donation = $form_state['donation'];
     $donation_type = redhen_donation_type_load($donation->bundle());
-    $deductible_amount = 0;
+
+    // Set some sensible defaults because this gets printed in the email even if the admin doesn't set a value
+    $deductible_amount['amount'] = $form_state['values']['donation'];
+    $deductible_amount['currency_code'] = 'USD';
+    $form_state['values']['field_tax_deductible_amount']['und'][0] = $deductible_amount;
     $order = $order_wrapper->value();
 
     $order_id = $order->order_id;
