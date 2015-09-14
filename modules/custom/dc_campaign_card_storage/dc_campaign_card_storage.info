@@ -1,0 +1,9 @@
+name = DC Campaign Card Storage
+description = Stores Credit Card information in the database for reporting.
+package = CAFB-DC
+core = 7.x
+project = dc_campaign_card_storage
+
+dependencies[] = redhen_donation
+dependencies[] = redhen_raiser_donations
+project path = sites/all/modules/custom

@@ -246,43 +246,65 @@ function dc_campaign_products_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'redhen_donation-redhen_raiser_donation-field_tax_deductible_amount'
-  $field_instances['redhen_donation-redhen_raiser_donation-field_tax_deductible_amount'] = array(
+  // 'redhen_donation-redhen_raiser_donation-field_card_type'
+  $field_instances['redhen_donation-redhen_raiser_donation-field_card_type'] = array(
     'bundle' => 'redhen_raiser_donation',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
-        'module' => 'commerce_price',
-        'settings' => array(
-          'calculation' => FALSE,
-        ),
-        'type' => 'commerce_price_formatted_amount',
-        'weight' => 3,
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'redhen_donation',
-    'field_name' => 'field_tax_deductible_amount',
-    'label' => 'Tax Deductible Amount',
+    'field_name' => 'field_card_type',
+    'label' => 'Card Type',
     'required' => 0,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'email' => 'email',
+          'plain_text' => 'plain_text',
+          'rich_text' => 'rich_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'email' => array(
+              'weight' => 0,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+            'rich_text' => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+      ),
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'commerce_price',
+      'module' => 'text',
       'settings' => array(
-        'currency_code' => 'default',
+        'size' => 60,
       ),
-      'type' => 'commerce_price_full',
-      'weight' => 26,
+      'type' => 'text_textfield',
+      'weight' => 27,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Card Type');
   t('Price');
   t('Product Description');
   t('Product Image');

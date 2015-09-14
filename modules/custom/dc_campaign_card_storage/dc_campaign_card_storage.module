@@ -1,0 +1,30 @@
+<?php
+/**
+ * @file
+ * Code for the DC Card Storage feature.
+ */
+
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Add a field to the donation to store the credit card type outside of commerce.
+ *
+ */
+function dc_campaign_card_storage_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'redhen_donation_form') {
+
+    // Hide the card storage field.
+    $form['field_card_type']['#type']= 'hidden';
+  }
+}
+
+/*
+ * Based on a patch to add this hook.
+ *
+ * Implements hook redhen_order_alter().
+ */
+function dc_campaign_card_storage_redhen_order_alter(&$form, &$form_state, &$order_wrapper) {
+  $card_type = $form_state['values']['payment_details']['credit_card']['type'];
+  $form_state['values']['field_card_type']['und'][0]['value'] = $card_type;
+}

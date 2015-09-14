@@ -1,14 +1,14 @@
 name = DC Campaign Products
 description = Adds a product to donations.
-package = CAFB-DC
 core = 7.x
+package = CAFB-DC
 project = dc_campaign_products
-
 dependencies[] = redhen_donation
 dependencies[] = redhen_raiser_donations
 features[commerce_product_type][] = product
 features[features_api][] = api:2
 features[field_base][] = commerce_price
+features[field_base][] = field_card_type
 features[field_base][] = field_product_description
 features[field_base][] = field_product_image
 features[field_base][] = field_tax_deductible_amount
@@ -16,6 +16,14 @@ features[field_instance][] = commerce_product-product-commerce_price
 features[field_instance][] = commerce_product-product-field_product_description
 features[field_instance][] = commerce_product-product-field_product_image
 features[field_instance][] = commerce_product-product-field_tax_deductible_amount
-features[field_instance][] = redhen_donation-redhen_raiser_donation-field_tax_deductible_amount
+features[field_instance][] = redhen_donation-redhen_raiser_donation-field_card_type
 features[redhen_donation_type][] = redhen_raiser_donation
+features_exclude[dependencies][commerce_features] = commerce_features
+features_exclude[dependencies][commerce_price] = commerce_price
+features_exclude[dependencies][commerce_product_ui] = commerce_product_ui
+features_exclude[dependencies][entity] = entity
+features_exclude[dependencies][features] = features
+features_exclude[dependencies][image] = image
+features_exclude[dependencies][media] = media
+
 project path = sites/all/modules/custom
