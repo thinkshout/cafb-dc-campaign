@@ -5,5 +5,5 @@ core = 7.x
 
 projects[drupal][download][type] = "git"
 projects[drupal][download][url] = "https://github.com/pantheon-systems/drops-7.git"
-projects[drupal][download][revision] = "8ac3b39a9f772f4c82e78b12e924e66b2e5dd079"
+projects[drupal][download][revision] = "89c51bb3b84ef4fc6160282a2863e379aa345d9f"
 projects[drupal][patch][] = "https://www.drupal.org/files/issues/format_interval_add_rounding_option.patch"

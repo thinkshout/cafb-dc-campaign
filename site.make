@@ -10,7 +10,7 @@ core = 7.x
 
 ; Download the RedHen Raiser install profile and recursively build all its dependencies:
 projects[redhen_raiser][type] = profile
-projects[redhen_raiser][version] = '1.5'
+projects[redhen_raiser][version] = '1.9'
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-add-billing-address-2542948.patch
 
 ; Add patches to donation for product support
@@ -40,7 +40,7 @@ projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_
 
 ; commerce_iats
 projects[commerce_iats][subdir] = 'contrib'
-projects[commerce_iats][version] = '2.9'
+projects[commerce_iats][version] = '2.11'
 
 ; google_analytics
 projects[google_analytics][subdir] = 'contrib'
@@ -52,7 +52,7 @@ projects[ga_push][version] = '1.0'
 
 ; commerce_google_analytics
 projects[commerce_google_analytics][subdir] = 'contrib'
-projects[commerce_google_analytics][version] = '2.0-beta1'
+projects[commerce_google_analytics][version] = '2.0-beta2'
 
 ; hybridauth
 projects[hybridauth][subdir] = 'contrib'
@@ -64,7 +64,7 @@ projects[mailsystem][version] = '2.34'
 
 ; mandrill
 projects[mandrill][subdir] = 'contrib'
-projects[mandrill][version] = '2.0'
+projects[mandrill][version] = '2.2'
 
 ;======================================
 ; Libraries
