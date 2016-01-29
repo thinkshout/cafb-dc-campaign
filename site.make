@@ -10,7 +10,7 @@ core = 7.x
 
 ; Download the RedHen Raiser install profile and recursively build all its dependencies:
 projects[redhen_raiser][type] = profile
-projects[redhen_raiser][version] = '1.9'
+projects[redhen_raiser][version] = '1.10'
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-add-billing-address-2542948.patch
 
 ; Add patches to donation for product support
