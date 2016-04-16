@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thinkshout/ts_build_scripts.git",
-                "reference": "a834938e54b4562646e28fa5b82e82e043f8b746"
+                "reference": "047ba84741070593b2ceb94543340c3055de22b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thinkshout/ts_build_scripts/zipball/a834938e54b4562646e28fa5b82e82e043f8b746",
-                "reference": "a834938e54b4562646e28fa5b82e82e043f8b746",
+                "url": "https://api.github.com/repos/thinkshout/ts_build_scripts/zipball/047ba84741070593b2ceb94543340c3055de22b2",
+                "reference": "047ba84741070593b2ceb94543340c3055de22b2",
                 "shasum": ""
             },
             "bin": [
@@ -31,7 +31,7 @@
                 "source": "https://github.com/thinkshout/ts_build_scripts/tree/master",
                 "issues": "https://github.com/thinkshout/ts_build_scripts/issues"
             },
-            "time": "2016-04-12 22:17:18"
+            "time": "2016-04-12 23:27:26"
         }
     ],
     "packages-dev": [],
