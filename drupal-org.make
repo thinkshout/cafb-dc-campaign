@@ -10,13 +10,15 @@ core = 7.x
 
 ; Download the RedHen Raiser install profile and recursively build all its dependencies:
 projects[redhen_raiser][type] = profile
-projects[redhen_raiser][version] = '1.10'
+projects[redhen_raiser][version] = '1.11'
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-add-billing-address-2542948.patch
 
 ; Add patches to donation for product support
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-add-order-alter-2557497.patch
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_dontation-2557489-3-make_donations_optional.patch
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-credit_card_field_validation-2691773-2.patch
+projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-2707457-2-edit_donation_field_data.patch
+
 
 ;======================================
 ; Use standard drush make syntax
@@ -57,7 +59,7 @@ projects[commerce_google_analytics][version] = '2.0-beta2'
 
 ; hybridauth
 projects[hybridauth][subdir] = 'contrib'
-projects[hybridauth][version] = '2.13'
+projects[hybridauth][version] = '2.15'
 
 ; mailsystem
 projects[mailsystem][subdir] = 'contrib'
