@@ -21,6 +21,9 @@ postbuild () {
   cp -r profiles/$PROJECT/themes/ sites/all/themes/
   rm -rf profiles/$PROJECT/themes
 
+  # keep module from moving outside of redhen_raiser profile after we patch it
+  mv sites/all/modules/redhen_campaign profiles/redhen_raiser/modules/contrib/
+
   #not sure how this is getting here
   rm -f profiles/redhen_raiser/.gitignore
 }
