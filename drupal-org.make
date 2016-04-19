@@ -17,8 +17,10 @@ projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_ra
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-add-order-alter-2557497.patch
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_dontation-2557489-3-make_donations_optional.patch
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-credit_card_field_validation-2691773-2.patch
-projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-2707457-2-edit_donation_field_data.patch
 
+; Patches that work together to allow editing of donations
+projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-2707457-2-edit_donation_field_data.patch
+projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/redhen_campaign-2708871-2-edit_donation_campaign_page.patch
 
 ;======================================
 ; Use standard drush make syntax
