@@ -13,10 +13,10 @@ projects[redhen_raiser][type] = profile
 projects[redhen_raiser][version] = '1.11'
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-add-billing-address-2542948.patch
 
-; Add patches to donation for product support
-projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-add-order-alter-2557497.patch
-projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_dontation-2557489-3-make_donations_optional.patch
-projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-credit_card_field_validation-2691773-2.patch
+; Use the latest version of redhen_donation from the github dev branch
+projects[redhen_donation][download][type] = git
+projects[redhen_donation][download][url] = git@github.com:thinkshout/redhen_donation.git
+projects[redhen_donation][download][branch] 7.x-1.x
 
 ; Patches that work together to allow editing of donations
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-2707457-2-edit_donation_field_data.patch
