@@ -16,10 +16,9 @@ projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_ra
 ; Use the latest version of redhen_donation from the github dev branch
 projects[redhen_donation][download][type] = git
 projects[redhen_donation][download][url] = git@github.com:thinkshout/redhen_donation.git
-projects[redhen_donation][download][branch] 7.x-1.x
+projects[redhen_donation][download][branch] = donation_edit
 
-; Patches that work together to allow editing of donations
-projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-2707457-2-edit_donation_field_data.patch
+; Add campaign selection to donation edit page
 projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/redhen_campaign-2708871-2-edit_donation_campaign_page.patch
 
 ;======================================
