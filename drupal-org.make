@@ -18,8 +18,14 @@ projects[redhen_donation][download][type] = git
 projects[redhen_donation][download][url] = git@github.com:thinkshout/redhen_donation.git
 projects[redhen_donation][download][branch] = donation_edit
 
+; Keep using this patch that adds a drupal_alter until we switch to the invoke all that got committed as part of 2640726
+projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-add-order-alter-2557497.patch
+
 ; Add campaign selection to donation edit page
-projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/redhen_campaign-2708871-2-edit_donation_campaign_page.patch
+projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/redhen_campaign-2708871-3-add_edit_donation_campaign_page.patch
+
+; Fix bug in $contact->upsert() function
+projects[redhen][patch][] = https://www.drupal.org/files/issues/redhen-2711981-2-redhen_contact_upsert_get_existing.patch
 
 ;======================================
 ; Use standard drush make syntax
