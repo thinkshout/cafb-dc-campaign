@@ -15,16 +15,23 @@ projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_ra
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_for_blank_address_input-2726781-2.patch
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_donation_editing-2726807-2.patch
 
+; redhen_donation
 ; Add patches to donation for product support
 ; Note that we replace the version of redhen_donation provided by raiser.
-; redhen_donation
+; Use the latest version of redhen_donation from the github dev branch
+projects[redhen_donation][download][type] = git
+projects[redhen_donation][download][url] = git@github.com:thinkshout/redhen_donation.git
+projects[redhen_donation][download][branch] = donation_edit
 projects[redhen_donation][version] = "1.2"
 projects[redhen_donation][subdir] = "contrib"
+; Keep using this patch that adds a drupal_alter until we switch to the invoke all that got committed as part of 2640726
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-add-order-alter-2557497.patch
-projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_dontation-2557489-3-make_donations_optional.patch
-projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-credit_card_field_validation-2691773-2.patch
-projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-2707457-2-edit_donation_field_data.patch
 
+; Add allow donations to be moved between campaign fundraising pages
+projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/redhen_campaign-2708871-5-campaign_add_edit_recalculate.patch
+
+; Fix bug in $contact->upsert() function
+projects[redhen][patch][] = https://www.drupal.org/files/issues/redhen-2711981-2-redhen_contact_upsert_get_existing.patch
 
 ;======================================
 ; Use standard drush make syntax
