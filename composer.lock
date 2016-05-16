@@ -4,21 +4,71 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "37a0d7bfe66bb29098e5867f6c1ce83a",
-    "content-hash": "02b3ca8c329abb514b2dca64287c968b",
+    "hash": "68f22f2a77d0cbcce01163c588c81c4d",
+    "content-hash": "5f6f6f4cbc8723007e21d437819a8359",
     "packages": [
+        {
+            "name": "netresearch/composer-patches-plugin",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/netresearch/composer-patches-plugin.git",
+                "reference": "3a3de792955eb7e6bad2b5e892b63a1f6d9be000"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/netresearch/composer-patches-plugin/zipball/3a3de792955eb7e6bad2b5e892b63a1f6d9be000",
+                "reference": "3a3de792955eb7e6bad2b5e892b63a1f6d9be000",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "require-dev": {
+                "composer/composer": "1.*"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Netresearch\\Composer\\Patches\\Plugin",
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Opitz",
+                    "email": "christian.opitz@netresearch.de"
+                }
+            ],
+            "description": "Composer patches plugin",
+            "keywords": [
+                "composer",
+                "patches",
+                "plugin"
+            ],
+            "time": "2016-01-06 11:59:02"
+        },
         {
             "name": "thinkshout/ts_build_scripts",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thinkshout/ts_build_scripts.git",
-                "reference": "047ba84741070593b2ceb94543340c3055de22b2"
+                "reference": "0770564cddc80d8da43487fa6c0ec43eabda902c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thinkshout/ts_build_scripts/zipball/047ba84741070593b2ceb94543340c3055de22b2",
-                "reference": "047ba84741070593b2ceb94543340c3055de22b2",
+                "url": "https://api.github.com/repos/thinkshout/ts_build_scripts/zipball/0770564cddc80d8da43487fa6c0ec43eabda902c",
+                "reference": "0770564cddc80d8da43487fa6c0ec43eabda902c",
                 "shasum": ""
             },
             "bin": [
@@ -31,7 +81,25 @@
                 "source": "https://github.com/thinkshout/ts_build_scripts/tree/master",
                 "issues": "https://github.com/thinkshout/ts_build_scripts/issues"
             },
-            "time": "2016-04-12 23:27:26"
+            "time": "2016-04-27 00:51:55"
+        },
+        {
+            "name": "thinkshout/ts_build_scripts-patches",
+            "version": "1.0.0",
+            "require": {
+                "netresearch/composer-patches-plugin": "~1.0"
+            },
+            "type": "metapackage",
+            "extra": {
+                "patches": {
+                    "thinkshout/ts_build_scripts": [
+                        {
+                            "title": "Change placement of post-build function",
+                            "url": "settings/reorder_build_functions.patch"
+                        }
+                    ]
+                }
+            }
         }
     ],
     "packages-dev": [],
