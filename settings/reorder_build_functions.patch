@@ -1,0 +1,34 @@
+diff --git a/build.sh b/build.sh
+index f60c4b0..1ed3a9e 100755
+--- a/build.sh
++++ b/build.sh
+@@ -123,13 +123,7 @@ fi
+ cp -r tmp $TEMP_BUILD/profiles/$PROJECT
+ rm -rf tmp
+ cp -a . $TEMP_BUILD/profiles/$PROJECT
+-# Execute build customizations
+-if [ "`type -t postbuild`" = 'function' ]; then
+-    echo "Executing postbuild commands..."
+-    cd $TEMP_BUILD
+-    postbuild
+-    cd -
+-fi
++
+ mv $TEMP_BUILD $DESTINATION
+ 
+ # set permissions on the sites/default directory
+@@ -140,7 +134,13 @@ SETTINGS_SITE="$DESTINATION/profiles/$PROJECT/settings"
+ 
+ cp $SETTINGS_SITE/* $DESTINATION/sites/default/
+ printf "Copied all settings files into place.\n"
+-
++# Execute build customizations
++if [ "`type -t postbuild`" = 'function' ]; then
++    echo "Executing postbuild commands..."
++    cd $DESTINATION
++    postbuild
++    cd -
++fi
+ # run the install profile
+ SETTINGS="$SETTINGS_SITE/settings_additions.php"
+ if [ $DBUSER  ] && [ $DBPASS ] && [ $DB ] ; then

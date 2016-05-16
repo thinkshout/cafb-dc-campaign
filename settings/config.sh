@@ -14,9 +14,9 @@ GITREPO="ssh://codeserver.dev.308a884d-477e-45e0-b3aa-1f5cc90eb30a@codeserver.de
 MULTIDEV=true
 
 postbuild () {
-  cp -r profiles/$PROJECT/modules/ sites/all/modules/
-  cp -r profiles/$PROJECT/libraries/ sites/all/libraries/
-  cp -r profiles/$PROJECT/themes/ sites/all/themes/
+  mv profiles/$PROJECT/modules/* sites/all/modules/
+  mv profiles/$PROJECT/libraries/* sites/all/libraries/
+  mv profiles/$PROJECT/themes/* sites/all/themes/
 
   #not sure how this is getting here
   rm -f profiles/redhen_raiser/.gitignore
