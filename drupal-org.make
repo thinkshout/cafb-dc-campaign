@@ -14,6 +14,10 @@ projects[redhen_raiser][version] = '1.11'
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-add-billing-address-2542948.patch
 
 ; Add patches to donation for product support
+; Note that we replace the version of redhen_donation provided by raiser.
+; redhen_donation
+projects[redhen_donation][version] = "1.2"
+projects[redhen_donation][subdir] = "contrib"
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-add-order-alter-2557497.patch
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_dontation-2557489-3-make_donations_optional.patch
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-credit_card_field_validation-2691773-2.patch
