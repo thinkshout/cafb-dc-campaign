@@ -12,6 +12,7 @@ core = 7.x
 projects[redhen_raiser][type] = profile
 projects[redhen_raiser][version] = '1.11'
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-add-billing-address-2542948.patch
+projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_for_blank_address_input-2726781-2.patch
 
 ; Add patches to donation for product support
 ; Note that we replace the version of redhen_donation provided by raiser.
