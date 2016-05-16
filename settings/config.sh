@@ -15,12 +15,12 @@ MULTIDEV=true
 
 postbuild () {
   cp -r profiles/$PROJECT/modules/ sites/all/modules/
-  rm -rf profiles/$PROJECT/modules
   cp -r profiles/$PROJECT/libraries/ sites/all/libraries/
-  rm -rf profiles/$PROJECT/libraries
   cp -r profiles/$PROJECT/themes/ sites/all/themes/
-  rm -rf profiles/$PROJECT/themes
 
   #not sure how this is getting here
   rm -f profiles/redhen_raiser/.gitignore
+
+  #remove this directory, as it is not actually a profile.
+  rm -rf profiles/$PROJECT
 }
