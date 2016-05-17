@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "68f22f2a77d0cbcce01163c588c81c4d",
-    "content-hash": "5f6f6f4cbc8723007e21d437819a8359",
+    "hash": "3116063b450e9bcbcc7c2340f2088a4a",
+    "content-hash": "4f63ffe5f0c757dd548ebf2645585a42",
     "packages": [
         {
             "name": "netresearch/composer-patches-plugin",
@@ -63,12 +63,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thinkshout/ts_build_scripts.git",
-                "reference": "0770564cddc80d8da43487fa6c0ec43eabda902c"
+                "reference": "189aca04db0efa8206e703aa8a8ce2623d449370"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thinkshout/ts_build_scripts/zipball/0770564cddc80d8da43487fa6c0ec43eabda902c",
-                "reference": "0770564cddc80d8da43487fa6c0ec43eabda902c",
+                "url": "https://api.github.com/repos/thinkshout/ts_build_scripts/zipball/189aca04db0efa8206e703aa8a8ce2623d449370",
+                "reference": "189aca04db0efa8206e703aa8a8ce2623d449370",
                 "shasum": ""
             },
             "bin": [
@@ -81,7 +81,7 @@
                 "source": "https://github.com/thinkshout/ts_build_scripts/tree/master",
                 "issues": "https://github.com/thinkshout/ts_build_scripts/issues"
             },
-            "time": "2016-04-27 00:51:55"
+            "time": "2016-05-17 03:22:43"
         },
         {
             "name": "thinkshout/ts_build_scripts-patches",
@@ -95,7 +95,7 @@
                     "thinkshout/ts_build_scripts": [
                         {
                             "title": "Change placement of post-build function",
-                            "url": "settings/reorder_build_functions.patch"
+                            "url": "settings/remove_superfluous_profile_dir.patch"
                         }
                     ]
                 }

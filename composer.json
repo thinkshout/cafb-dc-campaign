@@ -18,7 +18,7 @@
             "thinkshout/ts_build_scripts": [
               {
                 "title": "Change placement of post-build function",
-                "url": "settings/reorder_build_functions.patch"
+                "url": "settings/remove_superfluous_profile_dir.patch"
               }
             ]
           }

@@ -21,10 +21,9 @@ postbuild () {
   # keep modules from moving outside of redhen_raiser profile after we patch them
   mv sites/all/modules/redhen_campaign profiles/redhen_raiser/modules/contrib/
   mv sites/all/modules/redhen profiles/redhen_raiser/modules/contrib/
+  mv sites/all/modules/contrib/redhen_donation profiles/redhen_raiser/modules/contrib/
 
   #not sure how this is getting here
   rm -f profiles/redhen_raiser/.gitignore
 
-  #remove this directory, as it is not actually a profile.
-  rm -rf profiles/$PROJECT
 }
