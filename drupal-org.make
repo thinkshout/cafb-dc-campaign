@@ -27,8 +27,8 @@ projects[redhen_donation][subdir] = "contrib"
 ; Keep using this patch that adds a drupal_alter until we switch to the invoke all that got committed as part of 2640726
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-add-order-alter-2557497.patch
 
-; Add allow donations to be moved between campaign fundraising pages
-projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/redhen_campaign-2708871-5-campaign_add_edit_recalculate.patch
+; Add the ability to re-allocate donations to different campaign pages.
+projects[redhen_campaign][patch][] = "https://www.drupal.org/files/issues/redhen_campaign-2708871-6-campaign_add_edit_recalculate.patch"
 
 ; Fix bug in $contact->upsert() function
 projects[redhen][patch][] = https://www.drupal.org/files/issues/redhen-2711981-2-redhen_contact_upsert_get_existing.patch
