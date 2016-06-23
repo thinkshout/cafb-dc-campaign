@@ -19,10 +19,8 @@ projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_don
 ; Add patches to donation for product support
 ; Note that we replace the version of redhen_donation provided by raiser.
 ; Use the latest version of redhen_donation from the github dev branch
-projects[redhen_donation][download][type] = git
-projects[redhen_donation][download][url] = git@github.com:thinkshout/redhen_donation.git
-projects[redhen_donation][download][branch] = donation_edit
-projects[redhen_donation][version] = "1.2"
+projects[redhen_donation][download][revision] = "fe81426f"
+projects[redhen_donation][download][type] = "git"
 projects[redhen_donation][subdir] = "contrib"
 ; Keep using this patch that adds a drupal_alter until we switch to the invoke all that got committed as part of 2640726
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-add-order-alter-2557497.patch
