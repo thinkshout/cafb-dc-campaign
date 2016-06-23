@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # match your install profile name
-PROJECT=cafb_dc
+PROJECT=redhen_raiser
 
 # pantheon, acquia, generic
 HOSTTYPE=pantheon
