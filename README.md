@@ -25,3 +25,16 @@ product type, and select "Billing Address" for the billing profile.
 
 This will enable you to process test payments using the CC# 4222222222222220.
 The other values (date, etc) don't matter.
+
+## Site structure notes ##
+Manage and create Campaigns:
+admin/content/redhen_campaign
+
+Manage Campaign Pages/Fundraisers:
+admin/content/redhen_campaign_page
+
+Create Campaign types: 
+admin/structure/redhen/campaign_types
+
+Create Campaign page types: 
+admin/structure/redhen/page_types
