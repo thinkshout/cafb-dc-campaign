@@ -5,7 +5,16 @@
  */
 
 include_once 'redhen_raiser_custom_config.features.inc';
-/**
- * @file
- * Custom additions to RedHen Raiser installation process.
+
+/*
+ * Implements hook_schema_alter().
  */
+function redhen_raiser_custom_config_schema_alter(&$schema) {
+  $schema['redhen_campaign']['fields']['donation_acknowledgement'] = array(
+    'type' => 'varchar',
+    'length' => 5000,
+    'not null' => TRUE,
+    'default' => 0,
+  );
+}
+
