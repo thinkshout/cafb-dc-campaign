@@ -9,6 +9,8 @@ Then run:
 `scripts/build.sh ~/Sites/<LOCAL FOLDER NAME YOU WANT> <LOCAL DATABASE USERNAME> <LOCAL DATABASE PASSWORD> <LOCAL DATABASE NAME>` to build the complete site in the ~/Sites/<LOCAL FOLDER NAME YOU WANT>
 directory.
 
+You will get an error related to the profile, but it's all right. Download and import the live Pantheon database and set up settings.php with the database settings, and you're on your way.
+
 `scripts/deploy.sh` to deploy the site to its destination host, such as Pantheon
 or Acquia (more information: https://github.com/thinkshout/ts_build_scripts/blob/master/README.md).
 
