@@ -28,7 +28,7 @@
  * @see template_process()
  */
 ?>
-<?php if (!($is_front) && $elements['#view_mode']== "progress"): ?>
+<?php if (!($is_front) && $elements['#view_mode'] == "progress"): ?>
   <style type="text/css">
     .custom-thermometer .redhen-campaign-thermo-percent-bar-wrapper .redhen-campaign-thermo-percent-bar {background-image: url(<?php print file_create_url($redhen_campaign->field_thermometer['und'][0]['uri']); ?>);}
   </style>
