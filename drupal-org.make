@@ -10,7 +10,11 @@ core = 7.x
 
 ; Download the RedHen Raiser install profile and recursively build all its dependencies:
 projects[redhen_raiser][type] = profile
-projects[redhen_raiser][version] = '1.11'
+; projects[redhen_raiser][version] = '1.11'
+projects[redhen_raiser][download][type] = "git"
+projects[redhen_raiser][download][tag] = "7.x-1.11"
+projects[redhen_raiser][download][url] = https://git.drupal.org/project/redhen_raiser.git
+projects[redhen_raiser][download][working-copy] = TRUE
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-add-billing-address-2542948.patch
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_for_blank_address_input-2726781-2.patch
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_donation_editing-2726807-2.patch
@@ -21,6 +25,7 @@ projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_don
 ; Use the latest version of redhen_donation from the github dev branch
 projects[redhen_donation][download][revision] = "fe81426f"
 projects[redhen_donation][download][type] = "git"
+projects[redhen_donation][download][working-copy] = TRUE
 projects[redhen_donation][subdir] = "contrib"
 ; Keep using this patch that adds a drupal_alter until we switch to the invoke all that got committed as part of 2640726
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-add-order-alter-2557497.patch
