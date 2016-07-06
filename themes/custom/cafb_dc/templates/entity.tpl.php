@@ -28,6 +28,15 @@
  * @see template_process()
  */
 ?>
+<?php if (!($is_front)): ?>
+  <style type="text/css">
+    .custom-thermometer .redhen-campaign-thermo-percent-bar-wrapper .redhen-campaign-thermo-percent-bar {background-image: url(<?php print file_create_url($redhen_campaign->field_thermometer['und'][0]['uri']); ?>);}
+  </style>
+<?php else: ?>
+  <style type="text/css">
+    .redhen-campaign-thermo-percent-<?php print $id; ?> { width: <?php print $percent; ?>%; }
+  </style>
+<?php endif; ?>
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <div class="content"<?php print $content_attributes; ?>>
     <?php

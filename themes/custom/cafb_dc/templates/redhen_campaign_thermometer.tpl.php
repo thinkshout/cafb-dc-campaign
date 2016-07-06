@@ -7,15 +7,6 @@
  */
 ?>
 
-<?php if (!($is_front)): ?>
-  <style type="text/css">
-    .custom-thermometer .redhen-campaign-thermo-percent-bar-wrapper .redhen-campaign-thermo-percent-bar {background: red;}
-  </style>
-<?php else: ?>
-  <style type="text/css">
-    .redhen-campaign-thermo-percent-<?php print $id; ?> { width: <?php print $percent; ?>%; }
-  </style>
-<?php endif; ?>
 <div class="redhen-campaign-thermo-percent-bar-wrapper">
   <div class="redhen-campaign-thermo-percent-bar redhen-campaign-thermo-percent-<?php print $id; ?>"></div>
 </div>
