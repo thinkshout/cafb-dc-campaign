@@ -19,17 +19,28 @@ function dc_campaign_emails_rules_action_info() {
           'description' => t("The mail's message body."),
         ),
       ),
+      'provides' => array(
+        'subtoken' => array(
+          'type' => 'text',
+          'label' => t('Subtoken'),
+        ),
+      ),
       'base' => 'dc_campaign_emails_rules_action_mail_token_replace',
       'access callback' => 'rules_system_integration_access',
     ),
   );
 }
 
-// This callback creates the hashed string by using the parameters provided through rules' UI
 function dc_campaign_emails_rules_action_mail_token_replace($message, $settings, RulesState $state, RulesPlugin $element) {
+  $message_body = $message;
 
-  $message = token_replace(token_replace($message), array('entity' => $state->variables['redhen_donation']->data));
-echo "";
-  //rules_action_mail($to, $subject, $message, $from = NULL, $langcode, $settings, $state, $element);
-
+  $new_body = token_replace($message_body, array(
+    'redhen_donation' => $state->variables['redhen_donation']->value(),
+    'transaction-time' => format_date($state->variables['transaction_time'], 'custom', 'n/j/Y', NULL),
+    'commerce_transaction' => $state->variables['commerce_transaction'],
+  ));
+  $subtoken = array(
+    'subtoken' => $new_body,
+  );
+  return $subtoken;
 }
