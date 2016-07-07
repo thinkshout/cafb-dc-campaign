@@ -29,9 +29,11 @@
  */
 ?>
 <?php if (!($is_front) && $elements['#view_mode'] == "progress"): ?>
+  <?php if (isset($redhen_campaign->field_thermometer['und'])): ?>
   <style type="text/css">
     .custom-thermometer .redhen-campaign-thermo-percent-bar-wrapper .redhen-campaign-thermo-percent-bar {background-image: url(<?php print file_create_url($redhen_campaign->field_thermometer['und'][0]['uri']); ?>);}
   </style>
+  <?php endif; ?>
 <?php endif; ?>
 <div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <div class="content"<?php print $content_attributes; ?>>

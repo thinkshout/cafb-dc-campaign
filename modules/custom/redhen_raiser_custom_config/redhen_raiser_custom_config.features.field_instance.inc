@@ -113,7 +113,7 @@ On behalf of the Capital Area Food Bank (CAFB) staff, volunteers, community part
   $field_instances['redhen_campaign-general-field_thermometer'] = array(
     'bundle' => 'general',
     'deleted' => 0,
-    'description' => 'The custom thermometer image. Should be 125 px high and 225 px wide.',
+    'description' => 'The custom thermometer image. Should be 1375 px high and 225 px wide.',
     'display' => array(
       'banner' => array(
         'label' => 'above',
@@ -172,8 +172,8 @@ On behalf of the Capital Area Food Bank (CAFB) staff, volunteers, community part
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
-      'max_resolution' => '225x125',
-      'min_resolution' => '225x125',
+      'max_resolution' => '225x1375',
+      'min_resolution' => '225x1375',
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -202,7 +202,7 @@ On behalf of the Capital Area Food Bank (CAFB) staff, volunteers, community part
   // Translatables
   // Included for use with string extractors like potx.
   t('Donation Acknowledgement Message');
-  t('The custom thermometer image. Should be 125 px high and 225 px wide.');
+  t('The custom thermometer image. Should be 1375 px high and 225 px wide.');
   t('Thermometer');
 
   return $field_instances;

@@ -40,7 +40,7 @@ function redhen_raiser_custom_config_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'mandrill_from_name';
-  $strongarm->value = 'Capital Area Food Bank of DC';
+  $strongarm->value = 'Capital Area Food Bank';
   $export['mandrill_from_name'] = $strongarm;
 
   return $export;
