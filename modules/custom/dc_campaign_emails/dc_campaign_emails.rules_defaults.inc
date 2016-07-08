@@ -13,7 +13,7 @@ function dc_campaign_emails_default_rules_configuration() {
       "LABEL" : "Donation Acknowledgement",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "redhen_donation" ],
+      "REQUIRES" : [ "rules", "dc_campaign_emails", "redhen_donation" ],
       "ON" : { "redhen_donation_donation_completed" : [] },
       "IF" : [
         { "entity_is_of_type" : { "entity" : [ "redhen-donation:entity" ], "type" : "redhen_campaign" } },
@@ -29,10 +29,15 @@ function dc_campaign_emails_default_rules_configuration() {
             "PROVIDE" : { "variable_added" : { "transaction_time" : "Transaction Time" } }
           }
         },
+        { "dc_campaign_emails_rules_mail_token_replace" : {
+            "USING" : { "message" : [ "redhen-donation:redhen-campaign-context:donation-acknowledgement" ] },
+            "PROVIDE" : { "subtoken" : { "subtoken" : "Subtoken" } }
+          }
+        },
         { "mail" : {
             "to" : [ "redhen-donation:contact:email" ],
             "subject" : "Thank you for your donation to Capital Area Food Bank\\u0027s [redhen-donation:redhen-campaign-context:label] Campaign.",
-            "message" : "[redhen-donation:redhen-campaign-context:donation-acknowledgement]",
+            "message" : "[subtoken:value]\\r\\n\\u003Cdiv data-row=\\u0022[transaction_time:value:custom:n\\/j\\/Y][commerce_transaction:payment-method-short-title][commerce_transaction:remote-id]\\u0022\\u003E\\u003C\\/div\\u003E",
             "language" : [ "" ]
           }
         }

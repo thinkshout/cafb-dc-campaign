@@ -2,6 +2,7 @@ name = DC Campaign Emails
 description = Rules configuration for transaction emails.
 core = 7.x
 package = CAFB-DC
+dependencies[] = dc_campaign_emails
 dependencies[] = entity
 dependencies[] = mandrill_template
 dependencies[] = redhen_donation
