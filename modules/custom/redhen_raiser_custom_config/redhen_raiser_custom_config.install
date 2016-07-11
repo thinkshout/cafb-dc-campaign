@@ -39,9 +39,41 @@ function redhen_raiser_custom_config_update_7000(&$sandbox) {
 /**
  * Add donation_acknowledgement column for custom donation acknowledgement.
  */
-function redhen_raiser_custom_config_update_7003(&$sandbox) {
+function redhen_raiser_custom_config_update_7010(&$sandbox) {
   if (!db_field_exists('redhen_campaign', 'donation_acknowledgement')) {
     $schema = drupal_get_schema('redhen_campaign');
-    db_add_field('redhen_campaign', 'donation_acknowledgement', $schema['fields']['donation_acknowledgement']);
+    db_add_field('redhen_campaign', 'donation_acknowledgement', array(
+      'type' => 'varchar',
+      'length' => 5000,
+      'not null' => TRUE,
+      'default' => 'Dear [redhen_donation:contact:first-name],
+<br>
+On behalf of the Capital Area Food Bank (CAFB) staff, volunteers, community partners and those we serve, I would like to thank you for your generous gift of [redhen_donation:received] in support of the [redhen_donation:redhen-campaign-context:label] campaign. This is our 35th year of helping to feed those in our community who struggle with hunger. The ability to do so is the direct result of your generous and caring support.
+<br>
+Last year, the Capital Area Food Bank distributed 42 million pounds of food &#8212; a third of which are fruits and vegetables. Working together with out network of over 500 community partners, the CAFB provided 35 million meals to children, seniors and families experiencing hunger.
+<br>
+In addition to our core mission, we operate a number of direct service programs including Kids Cafe, Weekend Bag and Senior Brown Bag which serve thousands of children and adults every single month.
+<br>
+Your donation has given us a financial boost, but also, a morale boost. We strive every day to help our neighbors help themselves, and we are meeting this need thanks to you. Together, we can solve hunger.
+<br>
+Yours sincerely,
+<br>
+Nancy E. Roman
+President & CEO
+Capital Area Food Bank
+<br>
+In accordance with Internal Revenue Services tax laws, we are acknowledging that you have not received any goods or services in return for this contribution.
+<br>
+Below is a summary of your gift.
+<strong>Amount:</strong> [redhen_donation:received]
+<strong>Tax Deductible Amount:</strong> [redhen_donation:field_tax_deductible_amount]
+<strong>Date: </strong> [transaction_time:value:custom:n/j/Y]
+<strong>Payment Method:</strong> [commerce_transaction:payment-method-short-title]
+<strong>Transaction ID:</strong> [commerce_transaction:remote-id]
+<br>
+<strong>On behalf of our staff, volunteers, community partners and those we serve, thank you again for your generous gift. Please save or print this receipt for your tax records.</strong>
+<br>
+Capital Area Food Bank Tax ID (501(c)(3) # 52-1167581',
+    ));
   }
 }
