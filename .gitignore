@@ -8,3 +8,5 @@ modules/developer
 themes/contrib
 settings/local.settings.php
 tmp
+modules/README.txt
+themes/README.txt
