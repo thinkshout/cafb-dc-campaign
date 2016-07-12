@@ -17,6 +17,15 @@
   }
 }
 
+.custom-thermometer .redhen-campaign-thermo-percent-bar-wrapper {
+  height: 125px;
+  overflow: hidden;
+  .redhen-campaign-thermo-percent-bar {
+    background: transparent no-repeat center 0;
+    height: 125px;
+  }
+}
+
 .field-name-redhen-campaign-goal {
   color: $white;
   font-size: em(20);

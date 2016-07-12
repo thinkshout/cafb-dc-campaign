@@ -134,9 +134,101 @@ Capital Area Food Bank Tax ID (501(c)(3) # 52-1167581',
     ),
   );
 
+  // Exported field_instance: 'redhen_campaign-general-field_thermometer'.
+  $field_instances['redhen_campaign-general-field_thermometer'] = array(
+    'bundle' => 'general',
+    'deleted' => 0,
+    'description' => 'The custom thermometer image. Should be 1375 px high and 225 px wide.',
+    'display' => array(
+      'banner' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'contextual_banner' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 14,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'progress' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promotion' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'redhen_campaign',
+    'field_name' => 'field_thermometer',
+    'label' => 'Thermometer',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '225x1375',
+      'min_resolution' => '225x1375',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'public' => 'public',
+          'vimeo' => 0,
+          'youtube' => 0,
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'default' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'media_generic',
+      'weight' => 36,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Donation Acknowledgement Message');
+  t('The custom thermometer image. Should be 1375 px high and 225 px wide.');
+  t('Thermometer');
 
   return $field_instances;
 }
