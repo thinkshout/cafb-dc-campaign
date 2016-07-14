@@ -21,6 +21,12 @@ function dc_campaign_emails_default_rules_configuration() {
             "entity" : [ "redhen-donation:transaction-entity" ],
             "type" : "commerce_order"
           }
+        },
+        { "entity_is_of_bundle" : {
+            "entity" : [ "redhen-donation:redhen-campaign-context" ],
+            "type" : "redhen_campaign",
+            "bundle" : { "value" : { "general" : "general" } }
+          }
         }
       ],
       "DO" : [
@@ -30,13 +36,16 @@ function dc_campaign_emails_default_rules_configuration() {
           }
         },
         { "dc_campaign_emails_rules_mail_token_replace" : {
-            "USING" : { "message" : [ "redhen-donation:redhen-campaign-context:donation-acknowledgement" ] },
+            "USING" : { "message" : [
+                "redhen-donation:redhen-campaign-context:field-donation-acknowledgement"
+              ]
+            },
             "PROVIDE" : { "subtoken" : { "subtoken" : "Subtoken" } }
           }
         },
         { "mail" : {
             "to" : [ "redhen-donation:contact:email" ],
-            "subject" : "Thank you for your donation to Capital Area Food Bank\\u0027s [redhen-donation:redhen-campaign-context:label] Campaign.",
+            "subject" : "thax",
             "message" : "[subtoken:value]\\r\\n\\u003Cdiv data-row=\\u0022[transaction_time:value:custom:n\\/j\\/Y][commerce_transaction:payment-method-short-title][commerce_transaction:remote-id]\\u0022\\u003E\\u003C\\/div\\u003E",
             "language" : [ "" ]
           }
