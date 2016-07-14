@@ -11,9 +11,9 @@ function redhen_raiser_custom_config_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
-  // 'redhen_campaign-redhen_campaign-field_donation_acknowledgement'.
-  $field_instances['redhen_campaign-redhen_campaign-field_donation_acknowledgement'] = array(
-    'bundle' => 'redhen_campaign',
+  // 'redhen_campaign-general-field_donation_acknowledgement'.
+  $field_instances['redhen_campaign-general-field_donation_acknowledgement'] = array(
+    'bundle' => 'general',
     'default_value' => array(
       0 => array(
         'value' => 'Dear [redhen_donation:contact:first-name],
