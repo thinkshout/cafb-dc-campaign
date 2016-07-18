@@ -32,6 +32,8 @@ projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_
 
 ; Add the ability to re-allocate donations to different campaign pages.
 projects[redhen_campaign][patch][] = "https://www.drupal.org/files/issues/redhen_campaign-2708871-6-campaign_add_edit_recalculate.patch"
+; Don't over-write campaign authors if they exist.
+projects[redhen_campaign][patch][] = "https://www.drupal.org/files/issues/dont-overwrite-author-2768803-1.patch"
 
 ; Fix bug in $contact->upsert() function
 projects[redhen][patch][] = https://www.drupal.org/files/issues/redhen-2711981-2-redhen_contact_upsert_get_existing.patch
