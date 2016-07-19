@@ -43,7 +43,8 @@ Below is a summary of your gift.
 <br>
 <strong>On behalf of our staff, volunteers, community partners and those we serve, thank you again for your generous gift. Please save or print this receipt for your tax records.</strong>
 <br>
-Capital Area Food Bank Tax ID (501(c)(3) # 52-1167581',
+Capital Area Food Bank Tax ID (501(c)(3) # 52-1167581
+<br>',
       ),
     ),
     'deleted' => 0,
