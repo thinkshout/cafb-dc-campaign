@@ -39,6 +39,8 @@ projects[redhen_campaign][patch][] = "https://www.drupal.org/files/issues/dont-o
 projects[redhen][version] = "1.11"
 ; Fix bug in $contact->upsert() function
 projects[redhen][patch][] = https://www.drupal.org/files/issues/redhen-2711981-2-redhen_contact_upsert_get_existing.patch
+; Add Invite donors tab.
+projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/add-donor-invite-tab-2780939-1.patch
 
 ;======================================
 ; Use standard drush make syntax
