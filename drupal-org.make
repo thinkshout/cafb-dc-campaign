@@ -18,6 +18,8 @@ projects[redhen_raiser][download][working-copy] = TRUE
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-add-billing-address-2542948.patch
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_for_blank_address_input-2726781-2.patch
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_donation_editing-2726807-2.patch
+; Adds social buttons to RedHen Campaign Invite Donors tab
+projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/invite-donors-social-2783523-1.patch
 
 ; redhen_donation
 ; Add patches to donation for product support
@@ -34,6 +36,8 @@ projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_
 projects[redhen_campaign][patch][] = "https://www.drupal.org/files/issues/redhen_campaign-2708871-6-campaign_add_edit_recalculate.patch"
 ; Don't over-write campaign authors if they exist.
 projects[redhen_campaign][patch][] = "https://www.drupal.org/files/issues/dont-overwrite-author-2768803-1.patch"
+; Adds Invite Donors tab
+projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/invite-donors-2780939-3.patch
 
 ; redhen
 projects[redhen][version] = "1.11"
