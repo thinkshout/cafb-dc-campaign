@@ -21,6 +21,13 @@ function dc_campaign_products_commerce_product_default_types() {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function dc_campaign_products_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
+}
+
+/**
  * Implements hook_default_redhen_donation_type().
  */
 function dc_campaign_products_default_redhen_donation_type() {

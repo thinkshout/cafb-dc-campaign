@@ -10,7 +10,7 @@
 function dc_campaign_products_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'commerce_product-product-commerce_price'
+  // Exported field_instance: 'commerce_product-product-commerce_price'.
   $field_instances['commerce_product-product-commerce_price'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -81,7 +81,7 @@ function dc_campaign_products_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_product-product-field_product_description'
+  // 'commerce_product-product-field_product_description'.
   $field_instances['commerce_product-product-field_product_description'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -143,7 +143,7 @@ function dc_campaign_products_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-product-field_product_image'
+  // Exported field_instance: 'commerce_product-product-field_product_image'.
   $field_instances['commerce_product-product-field_product_image'] = array(
     'bundle' => 'product',
     'deleted' => 0,
@@ -204,7 +204,7 @@ function dc_campaign_products_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'commerce_product-product-field_tax_deductible_amount'
+  // 'commerce_product-product-field_tax_deductible_amount'.
   $field_instances['commerce_product-product-field_tax_deductible_amount'] = array(
     'bundle' => 'product',
     'default_value' => NULL,
@@ -246,7 +246,7 @@ function dc_campaign_products_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'redhen_donation-redhen_raiser_donation-field_card_type'
+  // 'redhen_donation-redhen_raiser_donation-field_card_type'.
   $field_instances['redhen_donation-redhen_raiser_donation-field_card_type'] = array(
     'bundle' => 'redhen_raiser_donation',
     'default_value' => NULL,

@@ -10,7 +10,7 @@
 function dc_campaign_products_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'commerce_price'
+  // Exported field_base: 'commerce_price'.
   $field_bases['commerce_price'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -32,7 +32,7 @@ function dc_campaign_products_field_default_field_bases() {
     'type' => 'commerce_price',
   );
 
-  // Exported field_base: 'field_card_type'
+  // Exported field_base: 'field_card_type'.
   $field_bases['field_card_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -53,7 +53,7 @@ function dc_campaign_products_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_product_description'
+  // Exported field_base: 'field_product_description'.
   $field_bases['field_product_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -72,7 +72,7 @@ function dc_campaign_products_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_product_image'
+  // Exported field_base: 'field_product_image'.
   $field_bases['field_product_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -94,7 +94,7 @@ function dc_campaign_products_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_tax_deductible_amount'
+  // Exported field_base: 'field_tax_deductible_amount'.
   $field_bases['field_tax_deductible_amount'] = array(
     'active' => 1,
     'cardinality' => 1,
