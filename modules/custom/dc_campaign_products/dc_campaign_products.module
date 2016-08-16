@@ -6,6 +6,21 @@
 
 include_once 'dc_campaign_products.features.inc';
 
+/**
+ * Implements hook_menu().
+ */
+function dc_campaign_products_menu() {
+  $items = array();
+
+  $items['redhen/purchase_reports'] = array(
+    'title' => 'Purchase Reports',
+    'access callback' => 'user_access',
+    'access arguments' => array('view redhen_raiser_donation redhen donation'),
+    'page callback' => 'drupal_goto',
+    'page arguments' => array('redhen/purchases'),
+  );
+  return $items;
+}
 
 /**
  * Implements hook_form_alter().
