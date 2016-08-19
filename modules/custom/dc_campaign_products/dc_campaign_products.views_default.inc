@@ -63,6 +63,8 @@ function dc_campaign_products_views_default_views() {
     'field_tribute_address_premise' => 'field_tribute_address_premise',
     'field_tribute_address_locality' => 'field_tribute_address_locality',
     'field_tribute_address_postal_code' => 'field_tribute_address_postal_code',
+    'line_item_title' => 'line_item_title',
+    'line_item_label' => 'line_item_label',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -248,76 +250,137 @@ function dc_campaign_products_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
+    'line_item_title' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'line_item_label' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
   );
   /* Relationship: Commerce Line Item: Donation */
   $handler->display->display_options['relationships']['redhen_donation']['id'] = 'redhen_donation';
   $handler->display->display_options['relationships']['redhen_donation']['table'] = 'commerce_line_item';
   $handler->display->display_options['relationships']['redhen_donation']['field'] = 'redhen_donation';
+  /* Relationship: Commerce Line item: Referenced products */
+  $handler->display->display_options['relationships']['commerce_product_product_id']['id'] = 'commerce_product_product_id';
+  $handler->display->display_options['relationships']['commerce_product_product_id']['table'] = 'field_data_commerce_product';
+  $handler->display->display_options['relationships']['commerce_product_product_id']['field'] = 'commerce_product_product_id';
+  /* Relationship: Commerce Line Item: Order ID */
+  $handler->display->display_options['relationships']['order_id']['id'] = 'order_id';
+  $handler->display->display_options['relationships']['order_id']['table'] = 'commerce_line_item';
+  $handler->display->display_options['relationships']['order_id']['field'] = 'order_id';
+  /* Relationship: Donation: Order order_id */
+  $handler->display->display_options['relationships']['order']['id'] = 'order';
+  $handler->display->display_options['relationships']['order']['table'] = 'redhen_donation';
+  $handler->display->display_options['relationships']['order']['field'] = 'order';
+  $handler->display->display_options['relationships']['order']['relationship'] = 'redhen_donation';
+  /* Relationship: Commerce Order: Donation */
+  $handler->display->display_options['relationships']['redhen_donation_2']['id'] = 'redhen_donation_2';
+  $handler->display->display_options['relationships']['redhen_donation_2']['table'] = 'commerce_order';
+  $handler->display->display_options['relationships']['redhen_donation_2']['field'] = 'redhen_donation';
+  $handler->display->display_options['relationships']['redhen_donation_2']['relationship'] = 'order_id';
+  $handler->display->display_options['relationships']['redhen_donation_2']['label'] = 'Donation by Order';
+  /* Relationship: Donation: Order order_id */
+  $handler->display->display_options['relationships']['order_1']['id'] = 'order_1';
+  $handler->display->display_options['relationships']['order_1']['table'] = 'redhen_donation';
+  $handler->display->display_options['relationships']['order_1']['field'] = 'order';
+  $handler->display->display_options['relationships']['order_1']['relationship'] = 'redhen_donation';
+  /* Relationship: Commerce Line Item: Donation */
+  $handler->display->display_options['relationships']['redhen_donation_1']['id'] = 'redhen_donation_1';
+  $handler->display->display_options['relationships']['redhen_donation_1']['table'] = 'commerce_line_item';
+  $handler->display->display_options['relationships']['redhen_donation_1']['field'] = 'redhen_donation';
   /* Relationship: Donation: RedHen Campaign Context */
   $handler->display->display_options['relationships']['redhen_campaign_context']['id'] = 'redhen_campaign_context';
   $handler->display->display_options['relationships']['redhen_campaign_context']['table'] = 'redhen_donation';
   $handler->display->display_options['relationships']['redhen_campaign_context']['field'] = 'redhen_campaign_context';
-  $handler->display->display_options['relationships']['redhen_campaign_context']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['relationships']['redhen_campaign_context']['relationship'] = 'redhen_donation_2';
   /* Relationship: Donation: RedHen Campaign Page Context */
   $handler->display->display_options['relationships']['redhen_campaign_page_context']['id'] = 'redhen_campaign_page_context';
   $handler->display->display_options['relationships']['redhen_campaign_page_context']['table'] = 'redhen_donation';
   $handler->display->display_options['relationships']['redhen_campaign_page_context']['field'] = 'redhen_campaign_page_context';
-  $handler->display->display_options['relationships']['redhen_campaign_page_context']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['relationships']['redhen_campaign_page_context']['relationship'] = 'redhen_donation_2';
   /* Relationship: Donation: RedHen Contact contact_id */
   $handler->display->display_options['relationships']['contact']['id'] = 'contact';
   $handler->display->display_options['relationships']['contact']['table'] = 'redhen_donation';
   $handler->display->display_options['relationships']['contact']['field'] = 'contact';
-  $handler->display->display_options['relationships']['contact']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['relationships']['contact']['relationship'] = 'redhen_donation_2';
+  /* Relationship: Commerce Order: Donation */
+  $handler->display->display_options['relationships']['redhen_donation_3']['id'] = 'redhen_donation_3';
+  $handler->display->display_options['relationships']['redhen_donation_3']['table'] = 'commerce_order';
+  $handler->display->display_options['relationships']['redhen_donation_3']['field'] = 'redhen_donation';
+  $handler->display->display_options['relationships']['redhen_donation_3']['relationship'] = 'order';
+  $handler->display->display_options['relationships']['redhen_donation_3']['label'] = 'Donation by Commerce Order';
   /* Field: Donation: URL */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'views_entity_redhen_donation';
   $handler->display->display_options['fields']['url']['field'] = 'url';
-  $handler->display->display_options['fields']['url']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['fields']['url']['relationship'] = 'redhen_donation_2';
   $handler->display->display_options['fields']['url']['exclude'] = TRUE;
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   /* Field: Donation: Donation ID */
-  $handler->display->display_options['fields']['donation_id']['id'] = 'donation_id';
-  $handler->display->display_options['fields']['donation_id']['table'] = 'redhen_donation';
-  $handler->display->display_options['fields']['donation_id']['field'] = 'donation_id';
-  $handler->display->display_options['fields']['donation_id']['relationship'] = 'redhen_donation';
-  $handler->display->display_options['fields']['donation_id']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['donation_id']['alter']['path'] = '[url]';
-  $handler->display->display_options['fields']['donation_id']['separator'] = '';
-  /* Field: Donation: Amount received. */
-  $handler->display->display_options['fields']['received']['id'] = 'received';
-  $handler->display->display_options['fields']['received']['table'] = 'redhen_donation';
-  $handler->display->display_options['fields']['received']['field'] = 'received';
-  $handler->display->display_options['fields']['received']['relationship'] = 'redhen_donation';
-  $handler->display->display_options['fields']['received']['label'] = 'Raw Amount';
-  $handler->display->display_options['fields']['received']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['received']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['received']['separator'] = '';
+  $handler->display->display_options['fields']['donation_id_3']['id'] = 'donation_id_3';
+  $handler->display->display_options['fields']['donation_id_3']['table'] = 'redhen_donation';
+  $handler->display->display_options['fields']['donation_id_3']['field'] = 'donation_id';
+  $handler->display->display_options['fields']['donation_id_3']['relationship'] = 'redhen_donation_2';
+  $handler->display->display_options['fields']['donation_id_3']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['donation_id_3']['alter']['path'] = '[url]';
+  $handler->display->display_options['fields']['donation_id_3']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['donation_id_3']['separator'] = '';
+  /* Field: Commerce Line Item: Quantity */
+  $handler->display->display_options['fields']['quantity']['id'] = 'quantity';
+  $handler->display->display_options['fields']['quantity']['table'] = 'commerce_line_item';
+  $handler->display->display_options['fields']['quantity']['field'] = 'quantity';
+  $handler->display->display_options['fields']['quantity']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['quantity']['precision'] = '0';
+  /* Field: Commerce Line Item: Title */
+  $handler->display->display_options['fields']['line_item_title']['id'] = 'line_item_title';
+  $handler->display->display_options['fields']['line_item_title']['table'] = 'commerce_line_item';
+  $handler->display->display_options['fields']['line_item_title']['field'] = 'line_item_title';
+  $handler->display->display_options['fields']['line_item_title']['label'] = 'Product';
+  $handler->display->display_options['fields']['line_item_title']['element_label_colon'] = FALSE;
+  /* Field: Commerce Product: Price */
+  $handler->display->display_options['fields']['commerce_price']['id'] = 'commerce_price';
+  $handler->display->display_options['fields']['commerce_price']['table'] = 'field_data_commerce_price';
+  $handler->display->display_options['fields']['commerce_price']['field'] = 'commerce_price';
+  $handler->display->display_options['fields']['commerce_price']['relationship'] = 'commerce_product_product_id';
+  $handler->display->display_options['fields']['commerce_price']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['commerce_price']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['commerce_price']['type'] = 'commerce_price_raw_amount';
+  $handler->display->display_options['fields']['commerce_price']['settings'] = array(
+    'calculation' => '0',
+  );
   /* Field: Global: Math expression */
   $handler->display->display_options['fields']['expression']['id'] = 'expression';
   $handler->display->display_options['fields']['expression']['table'] = 'views';
   $handler->display->display_options['fields']['expression']['field'] = 'expression';
   $handler->display->display_options['fields']['expression']['exclude'] = TRUE;
   $handler->display->display_options['fields']['expression']['precision'] = '0';
-  $handler->display->display_options['fields']['expression']['expression'] = '[received]/100';
+  $handler->display->display_options['fields']['expression']['expression'] = '[quantity]*[commerce_price]/100';
   /* Field: Donation: I prefer to make this donation anonymously */
   $handler->display->display_options['fields']['field_anonymous']['id'] = 'field_anonymous';
   $handler->display->display_options['fields']['field_anonymous']['table'] = 'field_data_field_anonymous';
   $handler->display->display_options['fields']['field_anonymous']['field'] = 'field_anonymous';
-  $handler->display->display_options['fields']['field_anonymous']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['fields']['field_anonymous']['relationship'] = 'redhen_donation_2';
   $handler->display->display_options['fields']['field_anonymous']['label'] = 'Anonymous';
   $handler->display->display_options['fields']['field_anonymous']['element_label_colon'] = FALSE;
   /* Field: Donation: Card Type */
   $handler->display->display_options['fields']['field_card_type']['id'] = 'field_card_type';
   $handler->display->display_options['fields']['field_card_type']['table'] = 'field_data_field_card_type';
   $handler->display->display_options['fields']['field_card_type']['field'] = 'field_card_type';
-  $handler->display->display_options['fields']['field_card_type']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['fields']['field_card_type']['relationship'] = 'redhen_donation_2';
   $handler->display->display_options['fields']['field_card_type']['element_label_colon'] = FALSE;
   /* Field: Donation: Amount received. */
   $handler->display->display_options['fields']['received_1']['id'] = 'received_1';
   $handler->display->display_options['fields']['received_1']['table'] = 'redhen_donation';
   $handler->display->display_options['fields']['received_1']['field'] = 'received';
-  $handler->display->display_options['fields']['received_1']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['fields']['received_1']['relationship'] = 'redhen_donation_2';
   $handler->display->display_options['fields']['received_1']['label'] = 'Amount received';
   $handler->display->display_options['fields']['received_1']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['received_1']['alter']['text'] = '$[expression]';
@@ -414,7 +477,7 @@ function dc_campaign_products_views_default_views() {
   $handler->display->display_options['fields']['created_1']['id'] = 'created_1';
   $handler->display->display_options['fields']['created_1']['table'] = 'redhen_donation';
   $handler->display->display_options['fields']['created_1']['field'] = 'created';
-  $handler->display->display_options['fields']['created_1']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['fields']['created_1']['relationship'] = 'redhen_donation_2';
   $handler->display->display_options['fields']['created_1']['label'] = 'Date';
   $handler->display->display_options['fields']['created_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created_1']['date_format'] = 'custom';
@@ -424,61 +487,50 @@ function dc_campaign_products_views_default_views() {
   $handler->display->display_options['fields']['field_tribute_type']['id'] = 'field_tribute_type';
   $handler->display->display_options['fields']['field_tribute_type']['table'] = 'field_data_field_tribute_type';
   $handler->display->display_options['fields']['field_tribute_type']['field'] = 'field_tribute_type';
-  $handler->display->display_options['fields']['field_tribute_type']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['fields']['field_tribute_type']['relationship'] = 'redhen_donation_2';
   $handler->display->display_options['fields']['field_tribute_type']['label'] = 'Tribute Type';
   $handler->display->display_options['fields']['field_tribute_type']['element_label_colon'] = FALSE;
   /* Field: Donation: A tribute to (Name) */
   $handler->display->display_options['fields']['field_dedication']['id'] = 'field_dedication';
   $handler->display->display_options['fields']['field_dedication']['table'] = 'field_data_field_dedication';
   $handler->display->display_options['fields']['field_dedication']['field'] = 'field_dedication';
-  $handler->display->display_options['fields']['field_dedication']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['fields']['field_dedication']['relationship'] = 'redhen_donation_2';
   /* Field: Donation: Please mail a letter on my behalf */
   $handler->display->display_options['fields']['field_letter_request']['id'] = 'field_letter_request';
   $handler->display->display_options['fields']['field_letter_request']['table'] = 'field_data_field_letter_request';
   $handler->display->display_options['fields']['field_letter_request']['field'] = 'field_letter_request';
-  $handler->display->display_options['fields']['field_letter_request']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['fields']['field_letter_request']['relationship'] = 'redhen_donation_2';
   $handler->display->display_options['fields']['field_letter_request']['label'] = 'Tribute Letter';
   /* Field: Donation: Tribute address - Thoroughfare (i.e. Street address) */
   $handler->display->display_options['fields']['field_tribute_address_thoroughfare']['id'] = 'field_tribute_address_thoroughfare';
   $handler->display->display_options['fields']['field_tribute_address_thoroughfare']['table'] = 'field_data_field_tribute_address';
   $handler->display->display_options['fields']['field_tribute_address_thoroughfare']['field'] = 'field_tribute_address_thoroughfare';
-  $handler->display->display_options['fields']['field_tribute_address_thoroughfare']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['fields']['field_tribute_address_thoroughfare']['relationship'] = 'redhen_donation_2';
   $handler->display->display_options['fields']['field_tribute_address_thoroughfare']['label'] = 'Tribute address - Street 1';
   $handler->display->display_options['fields']['field_tribute_address_thoroughfare']['element_label_colon'] = FALSE;
   /* Field: Donation: Tribute address - Premise (i.e. Apartment / Suite number) */
   $handler->display->display_options['fields']['field_tribute_address_premise']['id'] = 'field_tribute_address_premise';
   $handler->display->display_options['fields']['field_tribute_address_premise']['table'] = 'field_data_field_tribute_address';
   $handler->display->display_options['fields']['field_tribute_address_premise']['field'] = 'field_tribute_address_premise';
-  $handler->display->display_options['fields']['field_tribute_address_premise']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['fields']['field_tribute_address_premise']['relationship'] = 'redhen_donation_2';
   $handler->display->display_options['fields']['field_tribute_address_premise']['label'] = 'Tribute address - Street 2';
   /* Field: Donation: Tribute address - Locality (i.e. City) */
   $handler->display->display_options['fields']['field_tribute_address_locality']['id'] = 'field_tribute_address_locality';
   $handler->display->display_options['fields']['field_tribute_address_locality']['table'] = 'field_data_field_tribute_address';
   $handler->display->display_options['fields']['field_tribute_address_locality']['field'] = 'field_tribute_address_locality';
-  $handler->display->display_options['fields']['field_tribute_address_locality']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['fields']['field_tribute_address_locality']['relationship'] = 'redhen_donation_2';
   /* Field: Donation: Tribute address - Postal code */
   $handler->display->display_options['fields']['field_tribute_address_postal_code']['id'] = 'field_tribute_address_postal_code';
   $handler->display->display_options['fields']['field_tribute_address_postal_code']['table'] = 'field_data_field_tribute_address';
   $handler->display->display_options['fields']['field_tribute_address_postal_code']['field'] = 'field_tribute_address_postal_code';
-  $handler->display->display_options['fields']['field_tribute_address_postal_code']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['fields']['field_tribute_address_postal_code']['relationship'] = 'redhen_donation_2';
   $handler->display->display_options['fields']['field_tribute_address_postal_code']['element_label_colon'] = FALSE;
-  /* Sort criterion: Commerce Line Item: Created date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'commerce_line_item';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Commerce Line Item: Line item is of a product line item type */
-  $handler->display->display_options['filters']['product_line_item_type']['id'] = 'product_line_item_type';
-  $handler->display->display_options['filters']['product_line_item_type']['table'] = 'commerce_line_item';
-  $handler->display->display_options['filters']['product_line_item_type']['field'] = 'product_line_item_type';
-  $handler->display->display_options['filters']['product_line_item_type']['value'] = '1';
-  /* Filter criterion: Donation: Amount received. */
-  $handler->display->display_options['filters']['received']['id'] = 'received';
-  $handler->display->display_options['filters']['received']['table'] = 'redhen_donation';
-  $handler->display->display_options['filters']['received']['field'] = 'received';
-  $handler->display->display_options['filters']['received']['relationship'] = 'redhen_donation';
-  $handler->display->display_options['filters']['received']['operator'] = '>';
-  $handler->display->display_options['filters']['received']['value']['value'] = '0';
+  /* Field: Commerce Line Item: Label */
+  $handler->display->display_options['fields']['line_item_label']['id'] = 'line_item_label';
+  $handler->display->display_options['fields']['line_item_label']['table'] = 'commerce_line_item';
+  $handler->display->display_options['fields']['line_item_label']['field'] = 'line_item_label';
+  $handler->display->display_options['fields']['line_item_label']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['line_item_label']['element_label_colon'] = FALSE;
   /* Filter criterion: Date: Date (redhen_donation) */
   $handler->display->display_options['filters']['date_filter_1']['id'] = 'date_filter_1';
   $handler->display->display_options['filters']['date_filter_1']['table'] = 'redhen_donation';
@@ -525,12 +577,29 @@ function dc_campaign_products_views_default_views() {
     'redhen_donation.created' => 'redhen_donation.created',
   );
   $handler->display->display_options['filters']['date_filter_2']['date_method'] = 'AND';
+  /* Filter criterion: Commerce Line Item: Label */
+  $handler->display->display_options['filters']['line_item_label']['id'] = 'line_item_label';
+  $handler->display->display_options['filters']['line_item_label']['table'] = 'commerce_line_item';
+  $handler->display->display_options['filters']['line_item_label']['field'] = 'line_item_label';
+  $handler->display->display_options['filters']['line_item_label']['operator'] = '!=';
+  $handler->display->display_options['filters']['line_item_label']['value'] = '501c3GIFT';
   /* Filter criterion: RedHen Campaign: Campaign Name */
   $handler->display->display_options['filters']['label']['id'] = 'label';
   $handler->display->display_options['filters']['label']['table'] = 'redhen_campaign';
   $handler->display->display_options['filters']['label']['field'] = 'label';
   $handler->display->display_options['filters']['label']['relationship'] = 'redhen_campaign_context';
   $handler->display->display_options['filters']['label']['operator'] = 'contains';
+  $handler->display->display_options['filters']['label']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['label']['expose']['operator_id'] = 'label_op';
+  $handler->display->display_options['filters']['label']['expose']['label'] = 'Campaign Name';
+  $handler->display->display_options['filters']['label']['expose']['operator'] = 'label_op';
+  $handler->display->display_options['filters']['label']['expose']['identifier'] = 'label';
+  $handler->display->display_options['filters']['label']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+  );
   /* Filter criterion: RedHen Campaign Page: Campaign Page Name */
   $handler->display->display_options['filters']['label_1']['id'] = 'label_1';
   $handler->display->display_options['filters']['label_1']['table'] = 'redhen_campaign_page';
