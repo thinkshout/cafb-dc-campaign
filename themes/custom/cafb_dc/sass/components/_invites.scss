@@ -1,6 +1,10 @@
 #edit-invite-options {
   overflow: hidden;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
   .invite_option,
   .form-item-use-email {
@@ -10,13 +14,31 @@
     vertical-align: top;
 
     @include clear-btn;
-  }
-
-  .form-item {
-    margin-top: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   input[type="checkbox"] {
     display: none;
+  }
+
+  .form-item-use-email{
+    padding: 0;
+  }
+
+  label[for="edit-use-email"] {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    line-height: 3em;
+    width: 72px;
+  }
+
+  .facebook_invite {
+    width: 103px;
+  }
+
+  .google_invite {
+    width: 93px;
   }
 }
