@@ -19,9 +19,7 @@ projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_ra
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_for_blank_address_input-2726781-2.patch
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_donation_editing-2726807-2.patch
 ; Adds social buttons to RedHen Campaign Invite Donors tab
-projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/invite-donors-social-2783523-1.patch
-; Adds classes to social buttons so they can be styled individually
-projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/class-share-buttons-2787777-1.patch
+projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/invite-donors-social-2783523-4.patch
 
 ; redhen_donation
 ; Add patches to donation for product support
