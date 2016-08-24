@@ -36,8 +36,10 @@ function dc_campaign_products_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'url' => 'url',
-    'donation_id' => 'donation_id',
-    'received' => 'received',
+    'donation_id_3' => 'donation_id_3',
+    'quantity' => 'quantity',
+    'line_item_title' => 'line_item_title',
+    'commerce_price' => 'commerce_price',
     'expression' => 'expression',
     'field_anonymous' => 'field_anonymous',
     'field_card_type' => 'field_card_type',
@@ -63,24 +65,35 @@ function dc_campaign_products_views_default_views() {
     'field_tribute_address_premise' => 'field_tribute_address_premise',
     'field_tribute_address_locality' => 'field_tribute_address_locality',
     'field_tribute_address_postal_code' => 'field_tribute_address_postal_code',
-    'line_item_title' => 'line_item_title',
     'line_item_label' => 'line_item_label',
   );
-  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['default'] = 'created_1';
   $handler->display->display_options['style_options']['info'] = array(
     'url' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'donation_id' => array(
+    'donation_id_3' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'received' => array(
+    'quantity' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'line_item_title' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'commerce_price' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -246,11 +259,6 @@ function dc_campaign_products_views_default_views() {
     'field_tribute_address_postal_code' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'line_item_title' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -532,34 +540,12 @@ function dc_campaign_products_views_default_views() {
   $handler->display->display_options['fields']['line_item_label']['exclude'] = TRUE;
   $handler->display->display_options['fields']['line_item_label']['element_label_colon'] = FALSE;
   /* Filter criterion: Date: Date (redhen_donation) */
-  $handler->display->display_options['filters']['date_filter_1']['id'] = 'date_filter_1';
-  $handler->display->display_options['filters']['date_filter_1']['table'] = 'redhen_donation';
-  $handler->display->display_options['filters']['date_filter_1']['field'] = 'date_filter';
-  $handler->display->display_options['filters']['date_filter_1']['relationship'] = 'redhen_donation';
-  $handler->display->display_options['filters']['date_filter_1']['operator'] = '<=';
-  $handler->display->display_options['filters']['date_filter_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['date_filter_1']['expose']['operator_id'] = 'date_filter_1_op';
-  $handler->display->display_options['filters']['date_filter_1']['expose']['label'] = 'End Date';
-  $handler->display->display_options['filters']['date_filter_1']['expose']['operator'] = 'date_filter_1_op';
-  $handler->display->display_options['filters']['date_filter_1']['expose']['identifier'] = 'date_filter_1';
-  $handler->display->display_options['filters']['date_filter_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    4 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['date_filter_1']['form_type'] = 'date_popup';
-  $handler->display->display_options['filters']['date_filter_1']['year_range'] = '-10:+1';
-  $handler->display->display_options['filters']['date_filter_1']['date_fields'] = array(
-    'redhen_donation.created' => 'redhen_donation.created',
-  );
-  $handler->display->display_options['filters']['date_filter_1']['date_method'] = 'AND';
-  /* Filter criterion: Date: Date (redhen_donation) */
   $handler->display->display_options['filters']['date_filter_2']['id'] = 'date_filter_2';
   $handler->display->display_options['filters']['date_filter_2']['table'] = 'redhen_donation';
   $handler->display->display_options['filters']['date_filter_2']['field'] = 'date_filter';
-  $handler->display->display_options['filters']['date_filter_2']['relationship'] = 'redhen_donation';
+  $handler->display->display_options['filters']['date_filter_2']['relationship'] = 'redhen_donation_2';
   $handler->display->display_options['filters']['date_filter_2']['operator'] = '>=';
+  $handler->display->display_options['filters']['date_filter_2']['group'] = 1;
   $handler->display->display_options['filters']['date_filter_2']['exposed'] = TRUE;
   $handler->display->display_options['filters']['date_filter_2']['expose']['operator_id'] = 'date_filter_2_op';
   $handler->display->display_options['filters']['date_filter_2']['expose']['label'] = 'Start Date';
@@ -577,18 +563,44 @@ function dc_campaign_products_views_default_views() {
     'redhen_donation.created' => 'redhen_donation.created',
   );
   $handler->display->display_options['filters']['date_filter_2']['date_method'] = 'AND';
+  /* Filter criterion: Date: Date (redhen_donation) */
+  $handler->display->display_options['filters']['date_filter_1']['id'] = 'date_filter_1';
+  $handler->display->display_options['filters']['date_filter_1']['table'] = 'redhen_donation';
+  $handler->display->display_options['filters']['date_filter_1']['field'] = 'date_filter';
+  $handler->display->display_options['filters']['date_filter_1']['relationship'] = 'redhen_donation_2';
+  $handler->display->display_options['filters']['date_filter_1']['operator'] = '<=';
+  $handler->display->display_options['filters']['date_filter_1']['group'] = 1;
+  $handler->display->display_options['filters']['date_filter_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['date_filter_1']['expose']['operator_id'] = 'date_filter_1_op';
+  $handler->display->display_options['filters']['date_filter_1']['expose']['label'] = 'End Date';
+  $handler->display->display_options['filters']['date_filter_1']['expose']['operator'] = 'date_filter_1_op';
+  $handler->display->display_options['filters']['date_filter_1']['expose']['identifier'] = 'date_filter_1';
+  $handler->display->display_options['filters']['date_filter_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['date_filter_1']['form_type'] = 'date_popup';
+  $handler->display->display_options['filters']['date_filter_1']['year_range'] = '-10:+1';
+  $handler->display->display_options['filters']['date_filter_1']['date_fields'] = array(
+    'redhen_donation.created' => 'redhen_donation.created',
+  );
+  $handler->display->display_options['filters']['date_filter_1']['date_method'] = 'AND';
   /* Filter criterion: Commerce Line Item: Label */
   $handler->display->display_options['filters']['line_item_label']['id'] = 'line_item_label';
   $handler->display->display_options['filters']['line_item_label']['table'] = 'commerce_line_item';
   $handler->display->display_options['filters']['line_item_label']['field'] = 'line_item_label';
   $handler->display->display_options['filters']['line_item_label']['operator'] = '!=';
   $handler->display->display_options['filters']['line_item_label']['value'] = '501c3GIFT';
+  $handler->display->display_options['filters']['line_item_label']['group'] = 1;
   /* Filter criterion: RedHen Campaign: Campaign Name */
   $handler->display->display_options['filters']['label']['id'] = 'label';
   $handler->display->display_options['filters']['label']['table'] = 'redhen_campaign';
   $handler->display->display_options['filters']['label']['field'] = 'label';
   $handler->display->display_options['filters']['label']['relationship'] = 'redhen_campaign_context';
   $handler->display->display_options['filters']['label']['operator'] = 'contains';
+  $handler->display->display_options['filters']['label']['group'] = 1;
   $handler->display->display_options['filters']['label']['exposed'] = TRUE;
   $handler->display->display_options['filters']['label']['expose']['operator_id'] = 'label_op';
   $handler->display->display_options['filters']['label']['expose']['label'] = 'Campaign Name';
@@ -606,6 +618,7 @@ function dc_campaign_products_views_default_views() {
   $handler->display->display_options['filters']['label_1']['field'] = 'label';
   $handler->display->display_options['filters']['label_1']['relationship'] = 'redhen_campaign_page_context';
   $handler->display->display_options['filters']['label_1']['operator'] = 'contains';
+  $handler->display->display_options['filters']['label_1']['group'] = 1;
   $handler->display->display_options['filters']['label_1']['exposed'] = TRUE;
   $handler->display->display_options['filters']['label_1']['expose']['operator_id'] = 'label_1_op';
   $handler->display->display_options['filters']['label_1']['expose']['label'] = 'Team or Donor';
