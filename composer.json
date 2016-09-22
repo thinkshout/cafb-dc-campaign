@@ -3,32 +3,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/thinkshout/ts_build_scripts.git"
-    },
-    {
-      "type": "package",
-      "package": {
-        "type": "metapackage",
-        "name": "thinkshout/ts_build_scripts-patches",
-        "version": "1.0.0",
-        "require": {
-          "netresearch/composer-patches-plugin": "~1.0"
-        },
-        "extra": {
-          "patches": {
-            "thinkshout/ts_build_scripts": [
-              {
-                "title": "Change placement of post-build function",
-                "url": "settings/remove_superfluous_profile_dir.patch"
-              }
-            ]
-          }
-        }
-      }
     }
   ],
   "require": {
-    "thinkshout/ts_build_scripts": "dev-master",
-    "thinkshout/ts_build_scripts-patches": "~1.0"
+    "thinkshout/ts_build_scripts": "dev-master"
   },
   "config": {
     "bin-dir": "scripts"
