@@ -20,7 +20,7 @@ projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_for
 ;projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_donation_editing-2726807-2.patch
 ; Adds social buttons to RedHen Campaign Invite Donors tab
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/invite-donors-social-2783523-4.patch
-projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-2822403-remove-delete_0.patch
+projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-2822403-remove-delete_1.patch
 
 ; redhen_donation
 ; Add patches to donation for product support
