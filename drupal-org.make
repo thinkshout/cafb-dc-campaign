@@ -26,7 +26,7 @@ projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_ra
 ; Add patches to donation for product support
 ; Note that we replace the version of redhen_donation provided by raiser.
 ; Use the latest version of redhen_donation from the github dev branch
-projects[redhen_donation][download][revision] = "fe81426f"
+projects[redhen_donation][download][revision] = "0b848979"
 projects[redhen_donation][download][type] = "git"
 projects[redhen_donation][download][working-copy] = TRUE
 projects[redhen_donation][subdir] = "contrib"
