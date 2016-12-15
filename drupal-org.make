@@ -34,6 +34,8 @@ projects[redhen_donation][subdir] = "contrib"
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-add-order-alter-2557497.patch
 ; Set default value to $0 on donation amounts form field
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-default_donation_amount-2825883-2.patch
+; Fix reversed function arguments when initializing a new donation.
+projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-2836240-3.patch
 
 ; Add the ability to re-allocate donations to different campaign pages.
 projects[redhen_campaign][patch][] = "https://www.drupal.org/files/issues/redhen_campaign-2708871-6-campaign_add_edit_recalculate.patch"
