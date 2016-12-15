@@ -1,0 +1,4 @@
+name = DC Campaign Tokens
+description = Custom tokens.
+core = 7.x
+package = CAFB-DC

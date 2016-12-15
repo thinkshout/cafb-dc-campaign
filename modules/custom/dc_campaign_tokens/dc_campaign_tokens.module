@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * Custom tokens.
+ */
+
+/**
+ * Implements hook_token_info().
+ */
+function dc_campaign_tokens_token_info() {
+  $info['tokens']['dc_campaign_donation']['transaction_remote_id'] = array(
+    'name' => t('Donation transaction remote ID'),
+    'description' => t('Donation transaction remote ID.'),
+  );
+
+  $info['tokens']['dc_campaign_donation']['transaction_date'] = array(
+    'name' => t('Donation transaction date'),
+    'description' => t('Donation transaction date.'),
+  );
+
+  $info['tokens']['dc_campaign_donation']['transaction_payment_method'] = array(
+    'name' => t('Donation transaction payment method'),
+    'description' => t('Donation transaction payment method.'),
+  );
+
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function dc_campaign_tokens_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+
+  if ($type == 'dc_campaign_donation') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'transaction_remote_id':
+          $replacements[$original] = $data['commerce_transaction']->remote_id;
+          break;
+
+        case 'transaction_date':
+          $replacements[$original] = date('n/j/Y', time());
+          break;
+
+        case 'transaction_payment_method':
+          $payment_method = commerce_payment_method_instance_load($data['commerce_transaction']->instance_id);
+          $replacements[$original] = $payment_method['display_title'];
+          break;
+      }
+    }
+  }
+
+  return $replacements;
+}
