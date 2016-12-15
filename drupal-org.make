@@ -30,8 +30,6 @@ projects[redhen_donation][download][revision] = "0b848979"
 projects[redhen_donation][download][type] = "git"
 projects[redhen_donation][download][working-copy] = TRUE
 projects[redhen_donation][subdir] = "contrib"
-; Keep using this patch that adds a drupal_alter until we switch to the invoke all that got committed as part of 2640726
-projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-add-order-alter-2557497.patch
 ; Set default value to $0 on donation amounts form field
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-default_donation_amount-2825883-2.patch
 
