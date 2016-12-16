@@ -17,34 +17,32 @@ function redhen_raiser_custom_config_field_default_field_instances() {
     'default_value' => array(
       0 => array(
         'value' => 'Dear [redhen_donation:contact:first-name],
-<br>
+
 On behalf of the Capital Area Food Bank (CAFB) staff, volunteers, community partners and those we serve, I would like to thank you for your generous gift of [redhen_donation:received] in support of the [redhen_donation:redhen-campaign-context:label] campaign. This is our 35th year of helping to feed those in our community who struggle with hunger. The ability to do so is the direct result of your generous and caring support.
-<br>
+
 Last year, the Capital Area Food Bank distributed 42 million pounds of food &#8212; a third of which are fruits and vegetables. Working together with out network of over 500 community partners, the CAFB provided 35 million meals to children, seniors and families experiencing hunger.
-<br>
+
 In addition to our core mission, we operate a number of direct service programs including Kids Cafe, Weekend Bag and Senior Brown Bag which serve thousands of children and adults every single month.
-<br>
+
 Your donation has given us a financial boost, but also, a morale boost. We strive every day to help our neighbors help themselves, and we are meeting this need thanks to you. Together, we can solve hunger.
-<br>
+
 Yours sincerely,
-<br>
 Nancy E. Roman
 President & CEO
 Capital Area Food Bank
-<br>
+
 In accordance with Internal Revenue Services tax laws, we are acknowledging that you have not received any goods or services in return for this contribution.
-<br>
+
 Below is a summary of your gift.
-<strong>Amount:</strong> [redhen_donation:received]
-<strong>Tax Deductible Amount:</strong> [redhen_donation:field_tax_deductible_amount]
-<strong>Date: </strong> [dc_campaign_donation:transaction_date]
-<strong>Payment Method:</strong> [dc_campaign_donation:transaction_payment_method]
-<strong>Transaction ID:</strong> [dc_campaign_donation:transaction_remote_id]
-<br>
-<strong>On behalf of our staff, volunteers, community partners and those we serve, thank you again for your generous gift. Please save or print this receipt for your tax records.</strong>
-<br>
-Capital Area Food Bank Tax ID (501(c)(3) # 52-1167581
-<br>',
+Amount: [redhen_donation:received]
+Tax Deductible Amount: [redhen_donation:field_tax_deductible_amount]
+Date: [dc_campaign_donation:transaction_date]
+Payment Method: [dc_campaign_donation:transaction_payment_method]
+Transaction ID: [dc_campaign_donation:transaction_remote_id]
+
+On behalf of our staff, volunteers, community partners and those we serve, thank you again for your generous gift. Please save or print this receipt for your tax records.
+
+Capital Area Food Bank Tax ID (501(c)(3) # 52-1167581',
       ),
     ),
     'deleted' => 0,
