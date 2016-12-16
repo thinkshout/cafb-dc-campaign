@@ -37,9 +37,9 @@ In accordance with Internal Revenue Services tax laws, we are acknowledging that
 Below is a summary of your gift.
 <strong>Amount:</strong> [redhen_donation:received]
 <strong>Tax Deductible Amount:</strong> [redhen_donation:field_tax_deductible_amount]
-<strong>Date: </strong> [transaction_time:value:custom:n/j/Y]
-<strong>Payment Method:</strong> [commerce_transaction:payment-method-short-title]
-<strong>Transaction ID:</strong> [commerce_transaction:remote-id]
+<strong>Date: </strong> [dc_campaign_donation:transaction_date]
+<strong>Payment Method:</strong> [dc_campaign_donation:transaction_payment_method]
+<strong>Transaction ID:</strong> [dc_campaign_donation:transaction_remote_id]
 <br>
 <strong>On behalf of our staff, volunteers, community partners and those we serve, thank you again for your generous gift. Please save or print this receipt for your tax records.</strong>
 <br>
