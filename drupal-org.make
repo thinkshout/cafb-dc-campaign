@@ -42,6 +42,8 @@ projects[redhen_campaign][patch][] = "https://www.drupal.org/files/issues/redhen
 projects[redhen_campaign][patch][] = "https://www.drupal.org/files/issues/dont-overwrite-author-2768803-1.patch"
 ; Adds Invite Donors tab
 projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/invite-donors-2780939-3.patch
+; Add path editing elements to campaign & campaign page edit forms
+projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/add_pathauto_editing-2861681-2.patch
 
 ; redhen
 projects[redhen][version] = "1.11"
