@@ -97,6 +97,10 @@ projects[mailsystem][version] = '2.34'
 projects[mandrill][subdir] = 'contrib'
 projects[mandrill][version] = '2.2'
 
+; redirect
+projects[redirect][subdir] = 'contrib'
+projects[redirect][version] = '1.0-rc3'
+
 ;======================================
 ; Libraries
 ;======================================
