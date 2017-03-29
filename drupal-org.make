@@ -16,8 +16,6 @@ projects[redhen_raiser][download][tag] = "7.x-1.12"
 projects[redhen_raiser][download][url] = https://github.com/thinkshout/redhen_raiser.git
 projects[redhen_raiser][download][working-copy] = TRUE
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-add-billing-address-2542948.patch
-;projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_for_blank_address_input-2726781-2.patch
-;projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/allow_donation_editing-2726807-2.patch
 ; Adds social buttons to RedHen Campaign Invite Donors tab
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/invite-donors-social-2783523-4.patch
 ;projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-2822403-remove-delete_1.patch
@@ -73,6 +71,10 @@ projects[redhen][patch][] = https://www.drupal.org/files/issues/redhen-2711981-2
 ; commerce_iats
 projects[commerce_iats][subdir] = 'contrib'
 projects[commerce_iats][version] = '2.11'
+
+; context_condition_theme
+projects[context_condition_theme][subdir] = 'contrib'
+projects[context_condition_theme][version] = '1.0'
 
 ; google_analytics
 projects[google_analytics][subdir] = 'contrib'
