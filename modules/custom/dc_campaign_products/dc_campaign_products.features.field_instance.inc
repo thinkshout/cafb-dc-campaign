@@ -245,6 +245,82 @@ function dc_campaign_products_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'redhen_campaign-general-field_product'.
+  $field_instances['redhen_campaign-general-field_product'] = array(
+    'bundle' => 'general',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'To create a new product, or edit an existing product, visit the <a href="/admin/commerce/products" target="_blank">Product Admin page</a>.',
+    'display' => array(
+      'banner' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'contextual_banner' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'progress' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'promotion' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'redhen_campaign',
+    'field_name' => 'field_product',
+    'label' => 'Product',
+    'required' => 0,
+    'settings' => array(
+      'field_injection' => 0,
+      'referenceable_types' => array(
+        'donation' => 0,
+        'product' => 'product',
+        'recurring' => 0,
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'commerce_product_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'commerce_product/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'commerce_product_reference_autocomplete',
+      'weight' => 2,
+    ),
+  );
+
   // Exported field_instance:
   // 'redhen_donation-redhen_raiser_donation-field_card_type'.
   $field_instances['redhen_donation-redhen_raiser_donation-field_card_type'] = array(
@@ -306,9 +382,11 @@ function dc_campaign_products_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Card Type');
   t('Price');
+  t('Product');
   t('Product Description');
   t('Product Image');
   t('Tax Deductible Amount');
+  t('To create a new product, or edit an existing product, visit the <a href="/admin/commerce/products" target="_blank">Product Admin page</a>.');
 
   return $field_instances;
 }
