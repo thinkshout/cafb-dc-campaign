@@ -37,6 +37,16 @@ function dc_campaign_core_permissions_user_default_permissions() {
     'module' => 'mandrill',
   );
 
+  // Exported permission: 'administer redirects'.
+  $permissions['administer redirects'] = array(
+    'name' => 'administer redirects',
+    'roles' => array(
+      'admin' => 'admin',
+      'editor' => 'editor',
+    ),
+    'module' => 'redirect',
+  );
+
   // Exported permission: 'configure mandrill templates'.
   $permissions['configure mandrill templates'] = array(
     'name' => 'configure mandrill templates',
