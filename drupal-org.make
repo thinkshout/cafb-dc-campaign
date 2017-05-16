@@ -17,6 +17,8 @@ projects[redhen_raiser][download][working-copy] = TRUE
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-add-billing-address-2542948.patch
 ; Adds social buttons to RedHen Campaign Invite Donors tab
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/invite-donors-social-2783523-4.patch
+; Adds Admin_views
+projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/admin-views.patch
 
 ; redhen_donation
 ; Add patches to donation for product support
