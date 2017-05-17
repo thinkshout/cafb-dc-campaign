@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Campaigns Report feature.
+ */
+
+include_once 'campaigns_report.features.inc';
