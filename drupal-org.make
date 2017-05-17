@@ -19,6 +19,8 @@ projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_ra
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/invite-donors-social-2783523-4.patch
 ; Adds Admin_views
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/admin-views.patch
+; update CC description
+projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/update-other-description.patch
 
 ; redhen_donation
 ; Add patches to donation for product support
@@ -34,7 +36,8 @@ projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-default_donation_amount-2825883-2.patch
 ; Fix reversed function arguments when initializing a new donation.
 projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/redhen_donation-2836240-3.patch
-
+; Improve other donation amount validation
+projects[redhen_donation][patch][] = https://www.drupal.org/files/issues/update-donation-error-check_0.patch
 ; Add the ability to re-allocate donations to different campaign pages.
 projects[redhen_campaign][patch][] = "https://www.drupal.org/files/issues/redhen_campaign-2708871-6-campaign_add_edit_recalculate.patch"
 ; Don't over-write campaign authors if they exist.
@@ -43,6 +46,8 @@ projects[redhen_campaign][patch][] = "https://www.drupal.org/files/issues/dont-o
 projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/invite-donors-2780939-3.patch
 ; Add path editing elements to campaign & campaign page edit forms
 projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/add_pathauto_editing-2861681-2.patch
+; Add patch to set time at the end of the day
+projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/add-time-to-end-date.patch
 
 ; redhen
 projects[redhen][version] = "1.11"
