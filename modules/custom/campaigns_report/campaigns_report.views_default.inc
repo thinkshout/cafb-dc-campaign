@@ -83,12 +83,50 @@ function campaigns_report_views_default_views() {
   $handler->display->display_options['fields']['redhen_contact_email']['table'] = 'field_data_redhen_contact_email';
   $handler->display->display_options['fields']['redhen_contact_email']['field'] = 'redhen_contact_email';
   $handler->display->display_options['fields']['redhen_contact_email']['relationship'] = 'contact_id';
+  $handler->display->display_options['fields']['redhen_contact_email']['type'] = 'redhen_email_primary';
   $handler->display->display_options['fields']['redhen_contact_email']['delta_offset'] = '0';
+  /* Filter criterion: Contact: First name */
+  $handler->display->display_options['filters']['first_name']['id'] = 'first_name';
+  $handler->display->display_options['filters']['first_name']['table'] = 'redhen_contact';
+  $handler->display->display_options['filters']['first_name']['field'] = 'first_name';
+  $handler->display->display_options['filters']['first_name']['relationship'] = 'contact_id';
+  $handler->display->display_options['filters']['first_name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['first_name']['group'] = 1;
+  $handler->display->display_options['filters']['first_name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['first_name']['expose']['operator_id'] = 'first_name_op';
+  $handler->display->display_options['filters']['first_name']['expose']['label'] = 'First name';
+  $handler->display->display_options['filters']['first_name']['expose']['operator'] = 'first_name_op';
+  $handler->display->display_options['filters']['first_name']['expose']['identifier'] = 'first_name';
+  $handler->display->display_options['filters']['first_name']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+  );
+  /* Filter criterion: Contact: Last name */
+  $handler->display->display_options['filters']['last_name']['id'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['table'] = 'redhen_contact';
+  $handler->display->display_options['filters']['last_name']['field'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['relationship'] = 'contact_id';
+  $handler->display->display_options['filters']['last_name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['last_name']['group'] = 1;
+  $handler->display->display_options['filters']['last_name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['last_name']['expose']['operator_id'] = 'last_name_op';
+  $handler->display->display_options['filters']['last_name']['expose']['label'] = 'Last name';
+  $handler->display->display_options['filters']['last_name']['expose']['operator'] = 'last_name_op';
+  $handler->display->display_options['filters']['last_name']['expose']['identifier'] = 'last_name';
+  $handler->display->display_options['filters']['last_name']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    4 => 0,
+    3 => 0,
+  );
   /* Filter criterion: RedHen Campaign Page: Campaign Page Name */
   $handler->display->display_options['filters']['label']['id'] = 'label';
   $handler->display->display_options['filters']['label']['table'] = 'redhen_campaign_page';
   $handler->display->display_options['filters']['label']['field'] = 'label';
   $handler->display->display_options['filters']['label']['operator'] = 'contains';
+  $handler->display->display_options['filters']['label']['group'] = 1;
   $handler->display->display_options['filters']['label']['exposed'] = TRUE;
   $handler->display->display_options['filters']['label']['expose']['operator_id'] = 'label_op';
   $handler->display->display_options['filters']['label']['expose']['label'] = 'Campaign Page Name';
