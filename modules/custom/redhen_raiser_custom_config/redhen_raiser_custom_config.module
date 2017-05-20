@@ -51,3 +51,22 @@ function redhen_raiser_custom_config_preprocess_entity(&$variables) {
     $variables['classes_array'][] = 'custom-thermometer';
   }
 }
+
+
+/**
+ * Implements hook_entity_presave().
+ *
+ * Make campaigns end at the end of the selected day and not the start.
+ */
+function redhen_raiser_custom_config_entity_presave($entity, $type) {
+  if ($type == 'redhen_campaign') {
+    $wrapper = entity_metadata_wrapper($type, $entity);
+    if (isset($entity->field_end_date['und'][0]['value'])) {
+      $end_date = $entity->field_end_date['und'][0]['value'];
+      if (strpos($end_date, '00:00:00') !== false) {
+        $end_date = format_date(strtotime('+23 hours', strtotime($end_date)), 'custom', 'Y-m-d H:i:s');
+        $entity->field_end_date['und'][0]['value'] = $end_date;
+      }
+    }
+  }
+}
