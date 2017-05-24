@@ -46,8 +46,6 @@ projects[redhen_campaign][patch][] = "https://www.drupal.org/files/issues/dont-o
 projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/invite-donors-2780939-3.patch
 ; Add path editing elements to campaign & campaign page edit forms
 projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/add_pathauto_editing-2861681-2.patch
-; Add patch to set time at the end of the day
-projects[redhen_campaign][patch][] = https://www.drupal.org/files/issues/add-time-to-end-date.patch
 
 ; redhen
 projects[redhen][version] = "1.11"
