@@ -21,8 +21,8 @@ projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/invite-do
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/admin-views.patch
 ; update CC description
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/update-other-description.patch
-; add replicate for campaigns
-projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/add-campaign-replicate.patch
+; replicate for campaigns
+projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/replicate-campaigns-and-pages.patch
 
 ; redhen_donation
 ; Add patches to donation for product support
