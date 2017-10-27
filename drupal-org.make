@@ -87,7 +87,7 @@ projects[context_condition_theme][version] = '1.0'
 
 ; google_analytics
 projects[google_analytics][subdir] = 'contrib'
-projects[google_analytics][version] = '2.1'
+projects[google_analytics][version] = '2.4'
 
 ; ga_push
 projects[ga_push][subdir] = 'contrib'
