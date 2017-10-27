@@ -19,9 +19,11 @@ projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_ra
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/invite-donors-social-2783523-4.patch
 ; Adds Admin_views
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/admin-views.patch
-; update CC description
+; Improve CC description
+; https://www.drupal.org/node/2879197
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/update-other-description.patch
-; replicate for campaigns
+; Add Replicate and allow campaign pages to replicate
+; https://www.drupal.org/node/2881864
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/replicate-campaigns-and-pages-3.patch
 
 ; redhen_donation
