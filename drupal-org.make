@@ -22,7 +22,7 @@ projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/admin-vie
 ; update CC description
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/update-other-description.patch
 ; replicate for campaigns
-projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/replicate-campaigns-and-pages-2.patch
+projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/replicate-campaigns-and-pages-3.patch
 
 ; redhen_donation
 ; Add patches to donation for product support
