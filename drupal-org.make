@@ -99,7 +99,7 @@ projects[commerce_google_analytics][version] = '2.0-beta2'
 
 ; hybridauth
 projects[hybridauth][subdir] = 'contrib'
-projects[hybridauth][version] = '2.13'
+projects[hybridauth][version] = '2.15'
 
 ; mailsystem
 projects[mailsystem][subdir] = 'contrib'
