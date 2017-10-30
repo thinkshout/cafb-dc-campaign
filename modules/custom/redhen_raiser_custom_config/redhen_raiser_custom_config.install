@@ -84,3 +84,10 @@ Capital Area Food Bank Tax ID (501(c)(3) # 52-1167581',
 function redhen_raiser_custom_config_update_7011() {
   module_enable(array('redirect'));
 }
+
+/**
+ * Enable file_entity module.
+ */
+function redhen_raiser_custom_config_update_7012() {
+  module_enable(array('file_entity'));
+}
