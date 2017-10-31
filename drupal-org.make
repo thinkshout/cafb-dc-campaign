@@ -86,10 +86,6 @@ projects[commerce_iats][version] = '2.11'
 projects[context_condition_theme][subdir] = 'contrib'
 projects[context_condition_theme][version] = '1.0'
 
-; file_entity
-projects[file_entity][subdir] = 'contrib'
-projects[file_entity][version] = '2.11'
-
 ; google_analytics
 projects[google_analytics][subdir] = 'contrib'
 projects[google_analytics][version] = '2.4'
