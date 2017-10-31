@@ -11,8 +11,7 @@ core = 7.x
 ; Download the RedHen Raiser install profile and recursively build all its dependencies:
 projects[redhen_raiser][type] = profile
 projects[redhen_raiser][download][type] = "git"
-projects[redhen_raiser][download][tag] = "7.x-1.14"
-;projects[redhen_raiser][download][revision] = "a6f6fea424e228ccd625e29401ad37ae87e69e22"
+projects[redhen_raiser][download][tag] = "7.x-1.15"
 projects[redhen_raiser][download][url] = https://github.com/thinkshout/redhen_raiser.git
 projects[redhen_raiser][download][working-copy] = TRUE
 projects[redhen_raiser][patch][] = https://www.drupal.org/files/issues/redhen_raiser-add-billing-address-2542948.patch
