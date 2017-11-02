@@ -162,6 +162,14 @@
       display: none;
     }
   }
+
+  #edit-field-story-media {
+    padding-bottom: 0.001em;
+
+    .media-widget {
+      margin-top: 1.5em;
+    }
+  }
 }
 
 @include xsmall {
