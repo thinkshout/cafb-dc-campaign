@@ -633,14 +633,18 @@ label.option {
 
 /* Buttons used by contrib modules like Media. */
 a.button {
-  @include appearance(button);
   border-radius: 0.7em;
   box-shadow: 0 2px 3px #666;
-  background: #f8971c;
+  background: $action;
   border: 3px solid #fff;
   color: #fff;
   text-transform: uppercase;
   padding: 0.8em 5em;
+
+  &:hover {
+    color: $white;
+    background: $action + 20;
+  }
 }
 
 /* Password confirmation. */
