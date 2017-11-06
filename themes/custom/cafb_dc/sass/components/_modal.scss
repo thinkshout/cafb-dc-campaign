@@ -58,6 +58,10 @@
   max-width: none !important;
 }
 
-.media-browser-tabset {
+#media-browser-page-wrapper {
   height: calc(100% - 8px) !important;
+}
+
+#media-browser-page, #media-browser-tabset {
+  height: 100% !important;
 }
