@@ -821,3 +821,7 @@ tr.selected td {
     background-image: image-url("progress.gif");
   }
 }
+
+.form-type-media label, .form-type-media .media-widget {
+  margin-bottom: 10px;
+}
